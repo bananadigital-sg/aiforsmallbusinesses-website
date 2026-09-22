@@ -96,6 +96,11 @@ nav {
 }
 .article-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:44px 0 6px; }
 .article-eyebrow + h2 { margin-top:0; }
+.section-heading-row {
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.article-eyebrow + .section-heading-row h2 { margin-top:0; }
+.section-heading-row .copy-btn { flex-shrink:0; padding:10px 20px; }
 .article-body h3 {
   font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
 }
@@ -336,7 +341,10 @@ Before drafting, list any critical information that is missing. If nothing criti
   <p style="font-size:13px;color:var(--muted);"><strong>Tip:</strong> save your completed business background and customer sections. Reuse them instead of rewriting them for every prompt.</p>
 
   <div class="article-eyebrow">Ready To Use</div>
-  <h2>Five prompts for everyday business work</h2>
+  <div class="section-heading-row">
+    <h2>Five prompts for everyday business work</h2>
+    <button class="copy-btn" id="copyAllBtn" onclick="copyAllPrompts(this)">Copy all 5</button>
+  </div>
 
   <div class="prompt-card">
     <div class="prompt-card-num"><span class="n">1</span><span class="t">Social content</span></div>
@@ -462,6 +470,19 @@ function flashCopied(btn) {
   btn.textContent = 'Copied ✓';
   btn.classList.add('copied');
   setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+function copyAllPrompts(btn) {
+  const prompts = [
+    ['1. Social content', 'p1'],
+    ['2. Email', 'p2'],
+    ['3. Offer clarity', 'p3'],
+    ['4. Customer response', 'p4'],
+    ['5. Weekly planning', 'p5']
+  ];
+  const text = prompts
+    .map(([label, id]) => `${label}\n${document.getElementById(id).textContent}`)
+    .join('\n\n');
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
 }
 function copyBrief(btn) {
   const fields = [
