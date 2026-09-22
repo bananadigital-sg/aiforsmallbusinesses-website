@@ -281,29 +281,31 @@ footer {
 
   <div class="brief-field">
     <label>Business: What do you do, and what do you sell?</label>
-    <textarea placeholder="Type your answer here..."></textarea>
+    <textarea id="briefBusiness" placeholder="Type your answer here..."></textarea>
   </div>
   <div class="brief-field">
     <label>Customer: Who do you serve, and what problem are they trying to solve?</label>
-    <textarea placeholder="Type your answer here..."></textarea>
+    <textarea id="briefCustomer" placeholder="Type your answer here..."></textarea>
   </div>
   <div class="brief-field">
     <label>Difference: Why should someone choose you instead of the alternatives?</label>
-    <textarea placeholder="Type your answer here..."></textarea>
+    <textarea id="briefDifference" placeholder="Type your answer here..."></textarea>
   </div>
   <div class="brief-field">
     <label>Proof: What results, experience, process, or evidence can you mention?</label>
-    <textarea placeholder="Type your answer here..."></textarea>
+    <textarea id="briefProof" placeholder="Type your answer here..."></textarea>
   </div>
   <div class="brief-field">
     <label>Voice: Choose three words that describe how your brand should sound.</label>
-    <textarea style="min-height:44px;" placeholder="Type your answer here..."></textarea>
+    <textarea id="briefVoice" style="min-height:44px;" placeholder="Type your answer here..."></textarea>
   </div>
   <div class="brief-field">
     <label>Avoid: What claims, phrases, tones, or topics should AI not use?</label>
-    <textarea style="min-height:44px;" placeholder="Type your answer here..."></textarea>
+    <textarea id="briefAvoid" style="min-height:44px;" placeholder="Type your answer here..."></textarea>
   </div>
-  <p style="font-size:12px;color:var(--muted);">This box is just scratch space in your browser, it won't save. Once you're happy with your answers, copy them into a note or document you can reuse.</p>
+
+  <button class="copy-btn" id="copyBriefBtn" onclick="copyBrief(this)" style="padding:12px 28px;font-size:13px;">Copy my answers</button>
+  <p id="copyBriefNote" style="font-size:12px;color:var(--muted);margin-top:12px;">This box is just scratch space in your browser, it won't save anything. Click "Copy my answers" once you're done, then paste it into a Google Doc, Notes app, or wherever you keep your notes, so you have it saved for next time.</p>
 
   <div class="article-eyebrow">Copy And Paste</div>
   <h2>Your master business prompt</h2>
@@ -460,6 +462,28 @@ function flashCopied(btn) {
   btn.textContent = 'Copied ✓';
   btn.classList.add('copied');
   setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+function copyBrief(btn) {
+  const fields = [
+    ['Business', 'briefBusiness'],
+    ['Customer', 'briefCustomer'],
+    ['Difference', 'briefDifference'],
+    ['Proof', 'briefProof'],
+    ['Voice', 'briefVoice'],
+    ['Avoid', 'briefAvoid']
+  ];
+  const text = fields
+    .map(([label, id]) => `${label}:\n${document.getElementById(id).value.trim() || '(not answered)'}`)
+    .join('\n\n');
+  navigator.clipboard.writeText(text).then(() => {
+    flashCopied(btn);
+    const note = document.getElementById('copyBriefNote');
+    const original = note.textContent;
+    note.textContent = 'Copied! Now open a Google Doc, your Notes app, or wherever you keep notes, and paste it in (Ctrl+V or Cmd+V) so you have it saved for next time.';
+    note.style.color = 'var(--dark)';
+    note.style.fontWeight = '600';
+    setTimeout(() => { note.textContent = original; note.style.color = ''; note.style.fontWeight = ''; }, 6000);
+  });
 }
 </script>
 
