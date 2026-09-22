@@ -465,15 +465,15 @@ function flashCopied(btn) {
 }
 function copyBrief(btn) {
   const fields = [
-    ['Business', 'briefBusiness'],
-    ['Customer', 'briefCustomer'],
-    ['Difference', 'briefDifference'],
-    ['Proof', 'briefProof'],
-    ['Voice', 'briefVoice'],
-    ['Avoid', 'briefAvoid']
+    ['Business: What do you do, and what do you sell?', 'briefBusiness'],
+    ['Customer: Who do you serve, and what problem are they trying to solve?', 'briefCustomer'],
+    ['Difference: Why should someone choose you instead of the alternatives?', 'briefDifference'],
+    ['Proof: What results, experience, process, or evidence can you mention?', 'briefProof'],
+    ['Voice: Choose three words that describe how your brand should sound.', 'briefVoice'],
+    ['Avoid: What claims, phrases, tones, or topics should AI not use?', 'briefAvoid']
   ];
   const text = fields
-    .map(([label, id]) => `${label}:\n${document.getElementById(id).value.trim() || '(not answered)'}`)
+    .map(([question, id]) => `${question}\n${document.getElementById(id).value.trim() || '(not answered)'}`)
     .join('\n\n');
   navigator.clipboard.writeText(text).then(() => {
     flashCopied(btn);
