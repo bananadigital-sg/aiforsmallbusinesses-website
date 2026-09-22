@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code for Small Business Owners: Automate Reports & Spreadsheets Without a Developer</title>
+<meta name="description" content="No coding background needed. How a non-technical small business owner can use Claude Code to build recurring reports, clean up spreadsheets, and automate busywork.">
+<link rel="canonical" href="https://smallbizgrowth.ai/resources/claude-code-automate-reports-spreadsheets/">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Use Claude Code to Automate Reports and Spreadsheets Without a Developer",
+  "description": "A step-by-step guide for non-technical small business owners on using Claude Code to automate recurring reports and spreadsheet busywork.",
+  "step": [
+    { "@type": "HowToStep", "name": "Install Claude Code", "text": "Download and set up Claude Code, Anthropic's command-line coding assistant, on your computer." },
+    { "@type": "HowToStep", "name": "Point it at your files", "text": "Open the folder with your spreadsheets or reports and describe in plain English what you want done." },
+    { "@type": "HowToStep", "name": "Describe the recurring task", "text": "Tell Claude Code what the report should pull, how it should be formatted, and how often you need it." },
+    { "@type": "HowToStep", "name": "Review and refine", "text": "Check the first output, tell Claude Code what to fix in plain language, and it adjusts the automation." },
+    { "@type": "HowToStep", "name": "Save it as a repeatable script", "text": "Once it's right, Claude Code saves it as a script you can re-run any time with one command — no rebuilding from scratch." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need to know how to code to use Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Claude Code is a coding assistant you talk to in plain English — you describe what you want, and it writes and runs the code for you. You review the results in normal language, not code." }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of reports can Claude Code automate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Anything that involves pulling data from a spreadsheet or export and turning it into a formatted summary — weekly sales reports, expense summaries, inventory counts, client status updates, and similar recurring tasks." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my business data safe using Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Claude Code runs on your own computer and works with the files you point it at — it doesn't upload your spreadsheets anywhere unless you explicitly ask it to. Always review what a tool is doing with sensitive data before relying on it for anything containing customer or financial information." }
+    }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+
+:root {
+  --gold:    #D4A55A;
+  --amber:   #C4835A;
+  --dark:    #3A2C20;
+  --muted:   #9A8870;
+  --light:   #EED8A4;
+  --bg:      #FDFAF4;
+  --bg-alt:  #F0E8D4;
+  --surface: #FFFFFF;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(253,250,244,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(212,165,90,0.15);
+  padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.nav-logo-text { font-size:14px; font-weight:700; color:var(--dark); }
+.nav-logo-sub  { font-size:9px; color:var(--muted); display:block; line-height:1; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--dark); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cta {
+  padding:9px 22px; background:var(--dark); color:var(--bg);
+  border-radius:100px; font-size:13px; font-weight:700;
+  text-decoration:none; transition:background 0.2s;
+}
+.nav-cta:hover { background:#5A4030; }
+
+.breadcrumb {
+  max-width:720px; margin:0 auto; padding:120px 24px 0;
+  font-size:12px; color:var(--muted);
+}
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--gold); }
+
+.article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
+.article-tags { display:flex; gap:8px; margin-bottom:16px; }
+.article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
+.article-tag.tool { color:var(--gold); }
+.article-header h1 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800; color:var(--dark);
+  line-height:1.15; letter-spacing:-0.5px; margin-bottom:16px;
+}
+.article-dek { font-size:17px; color:var(--muted); line-height:1.65; }
+
+.article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-body h2 {
+  font-size:24px; font-weight:800; color:var(--dark); margin:40px 0 16px; letter-spacing:-0.3px;
+}
+.article-body h3 {
+  font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
+}
+.article-body p { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:16px; }
+.article-body ul, .article-body ol { margin:0 0 16px 22px; }
+.article-body li { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:8px; }
+.callout {
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.25);
+  border-radius:12px; padding:20px 24px; margin:24px 0;
+}
+.callout p { margin-bottom:0; font-size:14px; }
+.callout p strong { color:var(--dark); }
+.step-list { counter-reset:step; margin:24px 0; }
+.step-item {
+  display:flex; gap:16px; margin-bottom:20px; align-items:flex-start;
+}
+.step-num {
+  flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;
+}
+.step-content h3 { margin:0 0 4px; }
+.step-content p { margin-bottom:0; }
+.faq-item { margin-bottom:20px; }
+.faq-item h3 { margin-bottom:6px; }
+.faq-item p { margin-bottom:0; }
+
+.article-cta {
+  max-width:720px; margin:48px auto 0; padding:0 24px;
+}
+.article-cta-box {
+  background:#2A1F16; border-radius:20px; padding:40px 32px; text-align:center;
+}
+.article-cta-box h2 { color:var(--bg); font-size:22px; font-weight:800; margin-bottom:10px; }
+.article-cta-box p { color:rgba(253,250,244,0.6); font-size:14px; margin-bottom:20px; }
+.btn-primary {
+  padding:14px 32px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:14px; font-weight:800; text-decoration:none;
+  display:inline-block; transition:all 0.2s;
+}
+.btn-primary:hover { background:#E8C070; transform:translateY(-1px); }
+
+.related { max-width:720px; margin:56px auto 0; padding:32px 24px 0; border-top:1px solid rgba(58,44,32,0.1); }
+.related h2 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:16px; }
+.related a { display:block; font-size:15px; font-weight:700; color:var(--dark); text-decoration:none; margin-bottom:8px; }
+.related a:hover { color:var(--gold); }
+
+footer {
+  background:var(--dark); padding:40px 24px; margin-top:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; }
+.footer-logo-text { font-size:13px; font-weight:700; color:var(--bg); }
+.footer-logo-sub  { font-size:9px; color:rgba(253,250,244,0.4); display:block; margin-top:2px; }
+.footer-copy { font-size:11px; color:rgba(253,250,244,0.35); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:11px; color:rgba(253,250,244,0.45); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="nav-logo-text">AI for Small Businesses</span>
+      <span class="nav-logo-sub">by Banana Digital</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/resources/">Resources</a>
+    <a href="/#waitlist" class="nav-cta">Get free access</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/resources/">Resources</a> / Guide</div>
+
+<div class="article-header">
+  <div class="article-tags"><span class="article-tag">Guide</span><span class="article-tag tool">Claude Code</span></div>
+  <h1>Claude Code for Small Business Owners: Automate Reports &amp; Spreadsheets Without a Developer</h1>
+  <p class="article-dek">You don't need to hire a developer or learn to code. Here's exactly how a non-technical business owner can get Claude Code doing your recurring reports and spreadsheet cleanup for you.</p>
+</div>
+
+<div class="article-body">
+  <p>If you run a small business, you've probably got at least one recurring task that lives in a spreadsheet: a weekly sales summary, a monthly expense report, an inventory count, a client status update. It's not hard work exactly, it's just <em>repetitive</em>, and it eats an hour you don't have every single week.</p>
+  <p>Claude Code is a tool built by Anthropic, the company behind the Claude AI assistant, that can automate exactly this kind of task. You talk to it in plain English, not code. This guide walks through what it is, and how to set it up for your first recurring report.</p>
+
+  <h2>What Claude Code actually is</h2>
+  <p>Think of Claude Code as an assistant that lives in a small window on your computer. You type what you want in normal sentences, for example "pull the totals from this spreadsheet and format them into a weekly summary," and it does the work: reading your files, organizing the data, and producing the result. It's not a chatbot that just talks back; it actually goes and does the task, then shows you what it did.</p>
+  <p>The difference from something like ChatGPT is that Claude Code works directly with the files on your computer, and it can repeat the exact same process every time you ask. That's what makes it useful for a task you do every week or month, not just once.</p>
+
+  <div class="callout">
+    <p><strong>You don't need to know what "code" even means.</strong> You describe the task the same way you'd explain it to a new employee. Claude Code handles the technical part behind the scenes.</p>
+  </div>
+
+  <h2>Setting up your first automated report</h2>
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <h3>Install Claude Code</h3>
+        <p>Download and set it up on your computer. It takes a few minutes, and Anthropic's own setup guide walks through it step by step.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <h3>Point it at your files</h3>
+        <p>Open the folder where your spreadsheet or export lives, and tell Claude Code what's in it. For example: "this is our weekly sales export from Square."</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <h3>Describe the report you want</h3>
+        <p>Be specific: what numbers matter, how you want them grouped, and what the output should look like. Claude Code will ask questions if anything's unclear.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <h3>Review and refine</h3>
+        <p>Check the first version. If something's off (wrong column, wrong date range, formatting you don't like), just say so in plain language and it corrects it.</p>
+      </div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content">
+        <h3>Save it as a repeatable script</h3>
+        <p>Once it's right, ask Claude Code to save the process so you can re-run it next week with a single command. No rebuilding from scratch each time.</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>What to try it on first</h2>
+  <ul>
+    <li>A weekly sales or revenue summary pulled from your POS or bookkeeping export</li>
+    <li>Cleaning up a messy spreadsheet: removing duplicates, fixing inconsistent formatting, standardizing columns</li>
+    <li>A monthly expense breakdown by category</li>
+    <li>Combining several exports into one master tracking sheet</li>
+  </ul>
+
+  <h2>A word of caution</h2>
+  <p>If your spreadsheets contain customer data, financial details, or anything sensitive, take a minute to understand what any tool does with your files before you rely on it for that data. Claude Code works with the files on your own computer and doesn't send them anywhere unless you explicitly ask it to, but it's worth checking this for any AI tool, not just this one.</p>
+
+  <h2>Frequently asked questions</h2>
+  <div class="faq-item">
+    <h3>Do I need to know how to code to use Claude Code?</h3>
+    <p>No. You describe what you want in plain English, and Claude Code writes and runs the technical steps for you. You review the results in normal language, not code.</p>
+  </div>
+  <div class="faq-item">
+    <h3>What kind of reports can it automate?</h3>
+    <p>Anything that involves pulling data from a spreadsheet or export and turning it into a formatted summary: sales reports, expense summaries, inventory counts, client status updates, and similar recurring tasks.</p>
+  </div>
+  <div class="faq-item">
+    <h3>Is my business data safe using it?</h3>
+    <p>Claude Code runs on your own computer and works with the files you point it at. It doesn't upload your spreadsheets anywhere unless you explicitly ask it to. Always check this for any tool before using it with customer or financial information.</p>
+  </div>
+</div>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h2>Want more guides like this?</h2>
+    <p>Join our free list for free AI guides, tools and strategies for small business owners, straight to your inbox.</p>
+    <a href="/#waitlist" class="btn-primary">Get free access ✦</a>
+  </div>
+</div>
+
+<div class="related">
+  <h2>More resources</h2>
+  <a href="/resources/">← Back to all resources</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="footer-logo-text">AI for Small Businesses</span>
+      <span class="footer-logo-sub">by Banana Digital</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="/#what">What we do</a>
+    <a href="/resources/">Resources</a>
+    <a href="https://bananadigital.com.au" target="_blank">Banana Digital</a>
+  </div>
+  <div class="footer-copy">© 2026 Banana Digital. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
