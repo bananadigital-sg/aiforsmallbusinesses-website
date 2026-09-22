@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Business AI Prompt Framework: A Beginner-Friendly System for Better AI Output</title>
+<meta name="description" content="A beginner-friendly system for turning vague AI requests into useful, on-brand business output. Includes the BRIEF framework, a fill-in business brief, a master prompt, and five ready-to-use prompts.">
+<link rel="canonical" href="https://smallbizgrowth.ai/resources/business-ai-prompt-framework/">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Business AI Prompt Framework",
+  "description": "A beginner-friendly system for turning vague AI requests into useful, on-brand business output.",
+  "url": "https://smallbizgrowth.ai/resources/business-ai-prompt-framework/",
+  "publisher": { "@type": "Organization", "name": "Banana Digital" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Set Up the Business AI Prompt Framework in 10 Minutes",
+  "description": "A short setup process for turning vague AI requests into useful, on-brand business output using the BRIEF framework.",
+  "step": [
+    { "@type": "HowToStep", "name": "Complete the business brief", "text": "Write the facts AI should reuse instead of guessing." },
+    { "@type": "HowToStep", "name": "Save the master prompt", "text": "Keep a completed copy in a note, document, or AI project." },
+    { "@type": "HowToStep", "name": "Choose one real task", "text": "Start with a task you already need to finish this week." },
+    { "@type": "HowToStep", "name": "Review before using", "text": "Check facts, claims, tone, and whether the output fits the customer." },
+    { "@type": "HowToStep", "name": "Improve the input", "text": "When the result is weak, add context or an example before asking for another draft." }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+
+:root {
+  --gold:    #D4A55A;
+  --amber:   #C4835A;
+  --dark:    #3A2C20;
+  --muted:   #9A8870;
+  --light:   #EED8A4;
+  --bg:      #FDFAF4;
+  --bg-alt:  #F0E8D4;
+  --surface: #FFFFFF;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:rgba(253,250,244,0.92); backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(212,165,90,0.15);
+  padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+.nav-logo-text { font-size:14px; font-weight:700; color:var(--dark); }
+.nav-logo-sub  { font-size:9px; color:var(--muted); display:block; line-height:1; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--dark); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-cta {
+  padding:9px 22px; background:var(--dark); color:var(--bg);
+  border-radius:100px; font-size:13px; font-weight:700;
+  text-decoration:none; transition:background 0.2s;
+}
+.nav-cta:hover { background:#5A4030; }
+
+.breadcrumb {
+  max-width:720px; margin:0 auto; padding:120px 24px 0;
+  font-size:12px; color:var(--muted);
+}
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--gold); }
+
+.article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
+.article-tags { display:flex; gap:8px; margin-bottom:16px; }
+.article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
+.article-tag.tool { color:var(--gold); }
+.article-header h1 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800; color:var(--dark);
+  line-height:1.15; letter-spacing:-0.5px; margin-bottom:16px;
+}
+.article-dek { font-size:17px; color:var(--muted); line-height:1.65; }
+.article-includes {
+  margin-top:20px; padding:16px 20px; background:var(--surface); border-radius:12px;
+  border:1px solid rgba(212,165,90,0.2); font-size:13px; color:var(--muted);
+}
+.article-includes strong { color:var(--dark); }
+
+.article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-body h2 {
+  font-size:24px; font-weight:800; color:var(--dark); margin:44px 0 8px; letter-spacing:-0.3px;
+}
+.article-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:44px 0 6px; }
+.article-eyebrow + h2 { margin-top:0; }
+.article-body h3 {
+  font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
+}
+.article-body p { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:16px; }
+.article-body ul, .article-body ol { margin:0 0 16px 22px; }
+.article-body li { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:8px; }
+
+.callout {
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.25);
+  border-radius:12px; padding:20px 24px; margin:24px 0;
+}
+.callout p { margin-bottom:0; font-size:14px; }
+.callout p strong { color:var(--dark); }
+
+/* BRIEF table */
+.brief-table { width:100%; border-collapse:collapse; margin:20px 0 8px; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(58,44,32,0.06); }
+.brief-table th { background:var(--dark); color:var(--bg); font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:12px 16px; text-align:left; }
+.brief-table td { padding:14px 16px; font-size:14px; color:#4A3A2A; border-bottom:1px solid rgba(58,44,32,0.08); background:var(--surface); }
+.brief-table tr:nth-child(odd) td { background:var(--bg-alt); }
+.brief-letter { font-size:20px; font-weight:800; color:var(--gold); width:36px; }
+.brief-name { font-weight:700; color:var(--dark); }
+
+/* Business brief fill-in */
+.brief-field { margin-bottom:22px; }
+.brief-field label { display:block; font-size:14px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+.brief-field textarea {
+  width:100%; min-height:64px; padding:12px 16px; border-radius:10px;
+  border:1.5px solid rgba(58,44,32,0.15); background:var(--surface);
+  font-family:'Manrope',sans-serif; font-size:14px; color:var(--dark);
+  outline:none; resize:vertical; transition:border-color 0.2s;
+}
+.brief-field textarea:focus { border-color:var(--gold); }
+
+/* Copy blocks */
+.copy-block {
+  position:relative; background:var(--dark); border-radius:14px; padding:24px 24px 20px; margin:20px 0;
+}
+.copy-block-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.copy-block pre {
+  white-space:pre-wrap; font-family:'Manrope',sans-serif; font-size:13.5px; line-height:1.75;
+  color:rgba(253,250,244,0.9);
+}
+.copy-btn {
+  margin-top:16px; padding:9px 18px; background:var(--gold); color:var(--dark);
+  border:none; border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:800; cursor:pointer; transition:all 0.15s;
+}
+.copy-btn:hover { background:#E8C070; }
+.copy-btn.copied { background:#7CB87C; color:#1a3a1a; }
+
+/* Prompt cards */
+.prompt-card {
+  background:var(--surface); border:1px solid rgba(212,165,90,0.2); border-radius:14px;
+  padding:20px 22px; margin-bottom:16px;
+}
+.prompt-card-num { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.prompt-card-num span.n {
+  width:26px; height:26px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0;
+}
+.prompt-card-num span.t { font-size:15px; font-weight:700; color:var(--dark); }
+.prompt-card p { font-size:14px; color:#4A3A2A; margin-bottom:12px; }
+.prompt-card .copy-btn { margin-top:0; }
+
+/* Before/after */
+.ba-block { border-radius:12px; padding:20px 22px; margin:16px 0; }
+.ba-vague { background:var(--bg-alt); border:1px dashed rgba(58,44,32,0.25); }
+.ba-vague p { font-style:italic; color:var(--muted); margin-bottom:0; }
+.ba-useful { background:var(--surface); border:1px solid rgba(212,165,90,0.3); }
+.ba-useful p { margin-bottom:0; }
+
+/* Quick start steps */
+.step-list { counter-reset:step; margin:24px 0; }
+.step-item { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+.step-num {
+  flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;
+}
+.step-content h3 { margin:0 0 4px; }
+.step-content p { margin-bottom:0; }
+
+.checklist-simple { list-style:none; margin:0 0 16px; }
+.checklist-simple li { display:flex; gap:10px; font-size:15px; color:#4A3A2A; margin-bottom:10px; }
+.checklist-simple li::before { content:'✓'; color:var(--gold); font-weight:800; flex-shrink:0; }
+
+.final-line {
+  text-align:center; font-size:18px; font-weight:800; color:var(--dark);
+  background:var(--light); border-radius:12px; padding:20px; margin:28px 0 0;
+}
+
+.article-cta { max-width:720px; margin:48px auto 0; padding:0 24px; }
+.article-cta-box { background:#2A1F16; border-radius:20px; padding:40px 32px; text-align:center; }
+.article-cta-box h2 { color:var(--bg); font-size:22px; font-weight:800; margin-bottom:10px; }
+.article-cta-box p { color:rgba(253,250,244,0.6); font-size:14px; margin-bottom:20px; }
+.btn-primary {
+  padding:14px 32px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:14px; font-weight:800; text-decoration:none;
+  display:inline-block; transition:all 0.2s;
+}
+.btn-primary:hover { background:#E8C070; transform:translateY(-1px); }
+
+.related { max-width:720px; margin:56px auto 0; padding:32px 24px 0; border-top:1px solid rgba(58,44,32,0.1); }
+.related h2 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:16px; }
+.related a { display:block; font-size:15px; font-weight:700; color:var(--dark); text-decoration:none; margin-bottom:8px; }
+.related a:hover { color:var(--gold); }
+
+footer {
+  background:var(--dark); padding:40px 24px; margin-top:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; }
+.footer-logo-text { font-size:13px; font-weight:700; color:var(--bg); }
+.footer-logo-sub  { font-size:9px; color:rgba(253,250,244,0.4); display:block; margin-top:2px; }
+.footer-copy { font-size:11px; color:rgba(253,250,244,0.35); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:11px; color:rgba(253,250,244,0.45); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="24" height="24" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="nav-logo-text">AI for Small Businesses</span>
+      <span class="nav-logo-sub">by Banana Digital</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/resources/">Resources</a>
+    <a href="/#waitlist" class="nav-cta">Get free access</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/resources/">Resources</a> / Guide</div>
+
+<div class="article-header">
+  <div class="article-tags"><span class="article-tag">Guide</span><span class="article-tag tool">Multi-Tool</span></div>
+  <h1>The Business AI Prompt Framework</h1>
+  <p class="article-dek">A beginner-friendly system for turning vague AI requests into useful, on-brand business output.</p>
+  <div class="article-includes"><strong>Inside:</strong> a five-part prompt framework, a fill-in business brief, one master prompt, and five ready-to-use prompts.</div>
+</div>
+
+<div class="article-body">
+
+  <div class="article-eyebrow">The Shift</div>
+  <h2>Stop using AI like a search box</h2>
+  <p>A search box gives you an answer. A capable assistant produces better work when it understands the business behind the request.</p>
+
+  <h3>Why one-line prompts disappoint</h3>
+  <ul>
+    <li>They force AI to guess who your customer is.</li>
+    <li>They leave out your offer, proof, positioning, and brand voice.</li>
+    <li>They rarely define what a good result should look like.</li>
+    <li>They produce generic ideas that could belong to any business.</li>
+  </ul>
+
+  <h3>A stronger way to prompt</h3>
+  <p>Before asking for the work, give AI a short business brief. Then define the job, show it what to use, and specify the format you want.</p>
+  <div class="callout"><p style="text-align:center;font-weight:800;font-size:15px;letter-spacing:0.5px;">CONTEXT → TASK → USEFUL OUTPUT</p></div>
+  <p>You do not need a long prompt every time. You need the right information, organized clearly.</p>
+
+  <div class="article-eyebrow">The Framework</div>
+  <h2>Use the BRIEF method</h2>
+  <p>Build every important business prompt from five ingredients. Use the full version for strategic work and a shorter version for everyday tasks.</p>
+
+  <table class="brief-table">
+    <tr><th>Letter</th><th>Prompt ingredient</th><th>What to include</th></tr>
+    <tr><td class="brief-letter">B</td><td class="brief-name">Business background</td><td>What you do, what you sell, and what makes you different.</td></tr>
+    <tr><td class="brief-letter">R</td><td class="brief-name">Reader or customer</td><td>Who the output is for, what they want, and what they struggle with.</td></tr>
+    <tr><td class="brief-letter">I</td><td class="brief-name">Intended outcome</td><td>The result you want AI to help create or improve.</td></tr>
+    <tr><td class="brief-letter">E</td><td class="brief-name">Evidence and examples</td><td>Offers, facts, proof, source material, and examples to follow.</td></tr>
+    <tr><td class="brief-letter">F</td><td class="brief-name">Format and voice</td><td>Channel, length, structure, tone, constraints, and call to action.</td></tr>
+  </table>
+
+  <div class="callout"><p><strong>The simple rule:</strong> if the output sounds generic, do not immediately ask for more ideas. Add missing context, show a better example, or tighten the format.</p></div>
+
+  <div class="article-eyebrow">Your Business Brief</div>
+  <h2>Give AI the facts it should not guess</h2>
+  <p>Complete this once, keep it somewhere easy to copy, and update it whenever your offer or positioning changes.</p>
+
+  <div class="brief-field">
+    <label>Business: What do you do, and what do you sell?</label>
+    <textarea placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="brief-field">
+    <label>Customer: Who do you serve, and what problem are they trying to solve?</label>
+    <textarea placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="brief-field">
+    <label>Difference: Why should someone choose you instead of the alternatives?</label>
+    <textarea placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="brief-field">
+    <label>Proof: What results, experience, process, or evidence can you mention?</label>
+    <textarea placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="brief-field">
+    <label>Voice: Choose three words that describe how your brand should sound.</label>
+    <textarea style="min-height:44px;" placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="brief-field">
+    <label>Avoid: What claims, phrases, tones, or topics should AI not use?</label>
+    <textarea style="min-height:44px;" placeholder="Type your answer here..."></textarea>
+  </div>
+  <p style="font-size:12px;color:var(--muted);">This box is just scratch space in your browser, it won't save. Once you're happy with your answers, copy them into a note or document you can reuse.</p>
+
+  <div class="article-eyebrow">Copy And Paste</div>
+  <h2>Your master business prompt</h2>
+  <p>Replace the bracketed text. Keep this prompt as your reusable starting point for marketing, sales, planning, and customer communication.</p>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Master Prompt</div>
+    <pre id="masterPrompt">You are helping me as a practical business assistant.
+
+BUSINESS BACKGROUND
+My business is [what you do]. We sell [offer] and help [customer] achieve [result]. What makes us different is [difference].
+
+READER OR CUSTOMER
+This is for [specific audience]. They care about [desire] and are concerned about [problem or objection].
+
+INTENDED OUTCOME
+Create [specific deliverable] that helps me [business goal]. The reader should [desired next action].
+
+EVIDENCE AND EXAMPLES
+Use these facts, offers, examples, or source notes: [paste material]. Do not invent claims or details.
+
+FORMAT AND VOICE
+Use a [tone] voice. Make it [length and structure]. Include [required elements]. Avoid [phrases, claims, or styles].
+
+Before drafting, list any critical information that is missing. If nothing critical is missing, produce the final answer.</pre>
+    <button class="copy-btn" onclick="copyBlock('masterPrompt', this)">Copy prompt</button>
+  </div>
+  <p style="font-size:13px;color:var(--muted);"><strong>Tip:</strong> save your completed business background and customer sections. Reuse them instead of rewriting them for every prompt.</p>
+
+  <div class="article-eyebrow">Ready To Use</div>
+  <h2>Five prompts for everyday business work</h2>
+
+  <div class="prompt-card">
+    <div class="prompt-card-num"><span class="n">1</span><span class="t">Social content</span></div>
+    <p id="p1">Using my business brief, create 10 social post ideas for [audience]. Group them into education, trust, and offer-related posts. For each idea, include a hook, the core point, and a natural call to action. Avoid generic motivational advice.</p>
+    <button class="copy-btn" onclick="copyText('p1', this)">Copy</button>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-card-num"><span class="n">2</span><span class="t">Email</span></div>
+    <p id="p2">Write a short email to [audience] about [topic or offer]. Open with a relevant problem, explain one useful idea, connect it to [offer], and end with [call to action]. Use my brand voice and do not invent urgency or results.</p>
+    <button class="copy-btn" onclick="copyText('p2', this)">Copy</button>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-card-num"><span class="n">3</span><span class="t">Offer clarity</span></div>
+    <p id="p3">Review this offer description: [paste]. Identify what is unclear, generic, or unsupported. Then rewrite it so the customer, problem, outcome, deliverables, and next step are obvious. Keep all factual claims unchanged.</p>
+    <button class="copy-btn" onclick="copyText('p3', this)">Copy</button>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-card-num"><span class="n">4</span><span class="t">Customer response</span></div>
+    <p id="p4">Draft a helpful reply to this customer message: [paste]. Acknowledge the concern, answer directly using these policies or facts: [paste], and suggest the most appropriate next step. Keep the tone calm and human.</p>
+    <button class="copy-btn" onclick="copyText('p4', this)">Copy</button>
+  </div>
+  <div class="prompt-card">
+    <div class="prompt-card-num"><span class="n">5</span><span class="t">Weekly planning</span></div>
+    <p id="p5">Based on these priorities, deadlines, and constraints: [paste], create a realistic five-day plan. Separate must-do work from optional work, identify dependencies, and flag anything that cannot fit without moving another task.</p>
+    <button class="copy-btn" onclick="copyText('p5', this)">Copy</button>
+  </div>
+
+  <div class="article-eyebrow">Before And After</div>
+  <h2>See what context changes</h2>
+
+  <h3>The vague request</h3>
+  <div class="ba-block ba-vague"><p>Give me 10 Instagram post ideas.</p></div>
+  <p>Likely result: broad topics, recycled advice, and ideas that do not naturally connect to your offer.</p>
+
+  <h3>The useful request</h3>
+  <div class="ba-block ba-useful"><p>I run a bookkeeping service for independent tradespeople with teams of 1 to 10. They are good at their trade but often fall behind on receipts, cash-flow visibility, and tax preparation. Our offer is a fixed monthly bookkeeping package with plain-English reporting and a monthly review call. Create 10 Instagram post ideas that build trust with this audience. Group them into education, common mistakes, and behind-the-scenes process. For each, include a hook, one teaching point, and a soft call to action. Sound practical and reassuring, not corporate. Do not promise tax savings or guaranteed results.</p></div>
+
+  <h3>Why it works</h3>
+  <ul>
+    <li>AI knows the business model and the offer.</li>
+    <li>The audience and their real problems are specific.</li>
+    <li>The desired result, structure, voice, and guardrails are clear.</li>
+  </ul>
+
+  <div class="article-eyebrow">Quick Start</div>
+  <h2>Your 10 minute setup</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>Complete the business brief</h3><p>Write the facts AI should reuse instead of guessing.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>Save the master prompt</h3><p>Keep a completed copy in a note, document, or AI project.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>Choose one real task</h3><p>Start with a task you already need to finish this week.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content"><h3>Review before using</h3><p>Check facts, claims, tone, and whether the output fits the customer.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content"><h3>Improve the input</h3><p>When the result is weak, add context or an example before asking for another draft.</p></div>
+    </div>
+  </div>
+
+  <h3>Before you press send</h3>
+  <ul class="checklist-simple">
+    <li>Is every important fact accurate?</li>
+    <li>Does this sound like your business?</li>
+    <li>Would the intended customer understand it?</li>
+    <li>Is the next action clear?</li>
+  </ul>
+
+  <div class="final-line">Better prompts begin with better context.</div>
+
+</div>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h2>Want more guides like this?</h2>
+    <p>Join our free list, free AI guides, tools and strategies for small business owners, straight to your inbox.</p>
+    <a href="/#waitlist" class="btn-primary">Get free access ✦</a>
+  </div>
+</div>
+
+<div class="related">
+  <h2>More resources</h2>
+  <a href="/resources/">← Back to all resources</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="footer-logo-text">AI for Small Businesses</span>
+      <span class="footer-logo-sub">by Banana Digital</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="/#what">What we do</a>
+    <a href="/resources/">Resources</a>
+    <a href="https://bananadigital.com.au" target="_blank">Banana Digital</a>
+  </div>
+  <div class="footer-copy">© 2026 Banana Digital. All rights reserved.</div>
+</footer>
+
+<script>
+function copyBlock(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
+}
+function copyText(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
+}
+function flashCopied(btn) {
+  const original = btn.textContent;
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+</script>
+
+</body>
+</html>
