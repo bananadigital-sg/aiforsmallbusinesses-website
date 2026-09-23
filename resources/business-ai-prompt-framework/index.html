@@ -123,38 +123,64 @@ nav {
   .pdf-callout-actions { width:100%; }
   .pdf-btn { flex:1; justify-content:center; }
 }
+.print-footer { display:none; }
+
 @media print {
-  @page { size:A4; margin:20mm 16mm 26mm 16mm; }
+  @page { size:A4; margin:18mm 18mm 28mm 18mm; }
   nav, .breadcrumb, .pdf-callout, .article-cta, .related,
-  .copy-btn, #copyBriefNote, .footer-links { display:none !important; }
+  .copy-btn, #copyBriefNote, footer { display:none !important; }
   body { background:#fff; color:#2A1F16; }
-  .article-header, .article-body { padding-top:0; max-width:100%; }
   a { color:inherit; text-decoration:none; }
 
-  h2, h3 { page-break-after:avoid; }
+  /* Repeating footer, one copy per printed page. A fixed-position element pinned
+     at the very top of <body> (before nav) is what Chrome actually repeats
+     reliably on every page when printing — table-footer-group looked like the
+     "correct" CSS-spec approach but Chrome doesn't repeat it; a later-in-body
+     fixed element also misbehaved in testing. This placement was verified by
+     rendering the PDF and checking each page. */
+  .print-footer {
+    display:block; position:fixed; left:0; right:0; bottom:0;
+    background:#fff; padding:10px 0 0; margin:0;
+    border-top:1px solid rgba(154,136,112,0.35);
+  }
+  .print-footer-row {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .print-footer-brand { display:flex; align-items:center; gap:8px; }
+  .print-footer-text { font-size:11px; font-weight:700; color:var(--muted); display:block; }
+  .print-footer-sub { font-size:9px; color:rgba(154,136,112,0.75); display:block; }
+  .print-footer-copy { font-size:10px; color:rgba(154,136,112,0.75); text-align:right; }
+  .print-footer svg polygon { fill:var(--amber); }
+
+  /* Keep headings glued to what follows them, and boxed elements whole */
+  h2, h3, .article-eyebrow {
+    break-after:avoid-page; page-break-after:avoid;
+  }
   .prompt-card, .callout, .step-item, tr, .copy-block,
-  .ba-block, .brief-field, .brief-table { page-break-inside:avoid; }
+  .ba-block, .brief-field, .brief-table, .final-line {
+    break-inside:avoid-page; page-break-inside:avoid;
+  }
+  /* These two sections (5 prompt cards; the closing 10-minute setup) are short
+     enough to fit on one page each — starting them fresh avoids mid-card splits */
+  .print-fresh-page { break-before:page; page-break-before:always; }
 
-  .copy-block { background:#fff; border:1px solid rgba(58,44,32,0.2); }
-  .copy-block-label { color:var(--amber); }
-  .copy-block pre { color:#2A1F16; }
+  /* Brand color accents: gold underline on section headings, amber numbers, warm callouts.
+     !important here because these classes have a later, same-specificity base rule
+     for the same property (screen styling), which otherwise wins print's cascade too. */
+  .article-body h2 { border-bottom:2px solid var(--gold); padding-bottom:8px; }
+  .prompt-card-num span.n, .step-num { background:var(--amber) !important; color:#fff !important; }
+  .callout { border:1px solid rgba(196,131,90,0.4) !important; background:#FBF3E3 !important; }
+  .brief-letter { color:var(--amber) !important; }
 
-  .brief-table th { background:var(--light); color:#2A1F16; }
-  .brief-table td { background:#fff; }
-  .brief-table tr:nth-child(odd) td { background:#FAF5E8; }
+  .copy-block { background:#fff !important; border:1px solid rgba(58,44,32,0.2) !important; }
+  .copy-block-label { color:var(--amber) !important; }
+  .copy-block pre { color:#2A1F16 !important; }
+
+  .brief-table th { background:var(--amber) !important; color:#fff !important; }
+  .brief-table td { background:#fff !important; }
+  .brief-table tr:nth-child(odd) td { background:#FBF3E3 !important; }
 
   .brief-field textarea { border:1px solid rgba(58,44,32,0.3); background:#fff; min-height:50px; }
-
-  /* Repeating branded footer, one copy per printed page, in a lighter tone */
-  footer {
-    display:flex !important; position:fixed !important; left:0 !important; right:0 !important; bottom:0 !important;
-    background:#fff !important; padding:8px 0 0 !important; margin:0 !important;
-    border-top:1px solid rgba(154,136,112,0.35) !important;
-    align-items:center !important; justify-content:space-between !important; gap:12px !important;
-  }
-  footer .footer-logo-text { color:var(--muted) !important; font-weight:700 !important; }
-  footer .footer-logo-sub, footer .footer-copy { color:rgba(154,136,112,0.7) !important; }
-  footer svg polygon { fill:var(--gold) !important; opacity:0.6; }
 }
 
 .article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
@@ -289,6 +315,19 @@ footer {
 </style>
 </head>
 <body>
+
+<div class="print-footer">
+  <div class="print-footer-row">
+    <div class="print-footer-brand">
+      <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+      <div>
+        <span class="print-footer-text">AI for Small Businesses</span>
+        <span class="print-footer-sub">smallbizgrowth.ai/resources/business-ai-prompt-framework/</span>
+      </div>
+    </div>
+    <span class="print-footer-copy">© 2026 Banana Digital</span>
+  </div>
+</div>
 
 <nav>
   <a href="/" class="nav-logo">
@@ -427,7 +466,7 @@ Before drafting, list any critical information that is missing. If nothing criti
   </div>
   <p style="font-size:13px;color:var(--muted);"><strong>Tip:</strong> save your completed business background and customer sections. Reuse them instead of rewriting them for every prompt.</p>
 
-  <div class="article-eyebrow">Ready To Use</div>
+  <div class="article-eyebrow print-fresh-page">Ready To Use</div>
   <div class="section-heading-row">
     <h2>Five prompts for everyday business work</h2>
     <button class="copy-btn" id="copyAllBtn" onclick="copyAllPrompts(this)">Copy all 5</button>
@@ -476,7 +515,15 @@ Before drafting, list any critical information that is missing. If nothing criti
     <li>The desired result, structure, voice, and guardrails are clear.</li>
   </ul>
 
-  <div class="article-eyebrow">Quick Start</div>
+  <h3>Before you press send</h3>
+  <ul class="checklist-simple">
+    <li>Is every important fact accurate?</li>
+    <li>Does this sound like your business?</li>
+    <li>Would the intended customer understand it?</li>
+    <li>Is the next action clear?</li>
+  </ul>
+
+  <div class="article-eyebrow print-fresh-page">Quick Start</div>
   <h2>Your 10 minute setup</h2>
 
   <div class="step-list">
@@ -501,14 +548,6 @@ Before drafting, list any critical information that is missing. If nothing criti
       <div class="step-content"><h3>Improve the input</h3><p>When the result is weak, add context or an example before asking for another draft.</p></div>
     </div>
   </div>
-
-  <h3>Before you press send</h3>
-  <ul class="checklist-simple">
-    <li>Is every important fact accurate?</li>
-    <li>Does this sound like your business?</li>
-    <li>Would the intended customer understand it?</li>
-    <li>Is the next action clear?</li>
-  </ul>
 
   <div class="final-line">Better prompts begin with better context.</div>
 
