@@ -84,7 +84,6 @@ nav {
   font-size:16px; color:var(--muted); font-weight:400;
   max-width:480px; margin:0 0 28px; line-height:1.65;
 }
-.hero-actions { display:flex; gap:12px; flex-wrap:wrap; }
 .btn-primary {
   padding:16px 36px; background:var(--dark); color:var(--bg);
   border-radius:100px; font-size:15px; font-weight:700;
@@ -92,27 +91,16 @@ nav {
   display:inline-flex; align-items:center; gap:8px;
 }
 .btn-primary:hover { background:#5A4030; transform:translateY(-1px); }
-.btn-secondary {
-  padding:16px 32px; background:transparent; color:var(--dark);
-  border:2px solid rgba(58,44,32,0.2); border-radius:100px;
-  font-size:15px; font-weight:600; text-decoration:none; transition:all 0.2s;
-}
-.btn-secondary:hover { border-color:var(--gold); color:var(--gold); }
 .hero-proof {
   margin-top:20px; font-size:12px; color:var(--muted); letter-spacing:0.3px;
 }
 .hero-star { margin-bottom:24px; }
 
-/* ── HERO: newsletter form card ── */
-.hero-form-card {
-  background:var(--surface); border-radius:16px; padding:22px 22px 6px;
-  box-shadow:0 3px 20px rgba(58,44,32,0.08);
-  border:1px solid rgba(212,165,90,0.14);
-  max-width:480px;
-}
-.hero-form-heading { font-size:14px; font-weight:700; color:var(--dark); margin-bottom:12px; }
-.hero-form-card iframe { display:block; width:100%; min-height:400px; border:none; border-radius:8px; }
-.hero-form-note { font-size:11px; color:var(--muted); margin:6px 0 14px; }
+/* ── HERO: newsletter form (no extra card — the embedded form already renders its own white box) ── */
+.hero-form-card { max-width:480px; }
+.hero-form-heading { font-size:16px; font-weight:700; color:var(--dark); margin:0 0 14px; }
+.hero-form-card iframe { display:block; width:100%; height:380px; border:none; border-radius:12px; }
+.hero-form-note { font-size:11px; color:var(--muted); margin:8px 0 0; }
 
 /* ── HERO: video ── */
 .hero-video-col { flex:0 0 316px; }
@@ -147,8 +135,7 @@ nav {
   .hero { padding:104px 20px 56px; }
   .hero-inner { flex-direction:column; gap:40px; }
   .hero-left { max-width:100%; text-align:center; }
-  .hero-eyebrow, .hero-form-card, .hero-actions { margin-left:auto; margin-right:auto; }
-  .hero-actions { justify-content:center; }
+  .hero-eyebrow, .hero-form-card { margin-left:auto; margin-right:auto; }
   .hero-sub { margin-left:auto; margin-right:auto; }
   .hero-proof { text-align:center; }
   .hero-video-col { flex:0 0 auto; }
@@ -305,7 +292,6 @@ footer {
         <div class="hero-form-heading">Get free AI guides &amp; tools sent to your email inbox! </div>
         <iframe
           src="https://link.bananadigital.com.au/widget/form/rqMIKjb7c04Okq9lIMjM"
-          style="width:100%;height:100%;border:none;border-radius:8px"
           id="inline-rqMIKjb7c04Okq9lIMjM-hero"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
@@ -325,9 +311,6 @@ footer {
         <p class="hero-form-note">Unsubscribe any time.</p>
       </div>
 
-      <div class="hero-actions">
-        <a href="#what" class="btn-secondary">Learn more</a>
-      </div>
       <p class="hero-proof">✦ By Banana Digital · Built for small businesses worldwide</p>
     </div>
 
@@ -337,7 +320,7 @@ footer {
         <video id="heroVideo" poster="hero-intro-poster.jpg" playsinline preload="metadata">
           <source src="hero-intro.mp4" type="video/mp4">
         </video>
-        <span class="hero-video-badge">0:30</span>
+        <span id="heroVideoBadge" class="hero-video-badge">0:30</span>
         <button id="heroPlayBtn" class="hero-video-play" aria-label="Play intro video from Heart">
           <svg width="22" height="24" viewBox="0 0 24 26"><polygon points="0,0 24,13 0,26" fill="#3A2C20"/></svg>
         </button>
@@ -550,15 +533,20 @@ footer {
   var v = document.getElementById('heroVideo');
   var btn = document.getElementById('heroPlayBtn');
   var cap = document.getElementById('heroVideoCaption');
+  var badge = document.getElementById('heroVideoBadge');
   if(!v || !btn) return;
   btn.addEventListener('click', function(){
+    v.controls = true;
     v.play();
     btn.style.display = 'none';
     if(cap) cap.style.display = 'none';
+    if(badge) badge.style.display = 'none';
   });
   v.addEventListener('ended', function(){
+    v.controls = false;
     btn.style.display = 'flex';
     if(cap) cap.style.display = 'flex';
+    if(badge) badge.style.display = 'block';
     v.currentTime = 0;
   });
 })();
