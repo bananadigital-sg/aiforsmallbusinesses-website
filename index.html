@@ -140,6 +140,8 @@ nav {
 /* ── HERO: newsletter form (no extra card — the embedded form already renders its own white box) ── */
 .hero-form-card { max-width:480px; }
 .hero-form-heading { font-size:16px; font-weight:700; color:var(--dark); margin:0 0 14px; }
+/* holds the form's space while GoHighLevel's loader briefly hides it, so the page doesn't jump on load */
+.hero-form-frame { min-height:451px; }
 .hero-form-card iframe { display:block; width:100%; height:432px; border:none; border-radius:12px; }
 
 /* ── HERO: video ── */
@@ -328,6 +330,7 @@ footer {
 
       <div class="hero-form-card">
         <div class="hero-form-heading">Get free AI guides &amp; tools sent to your email inbox! </div>
+        <div class="hero-form-frame">
         <iframe
           src="https://link.bananadigital.com.au/widget/form/rqMIKjb7c04Okq9lIMjM"
           id="inline-rqMIKjb7c04Okq9lIMjM-hero"
@@ -346,6 +349,7 @@ footer {
           data-cookie-consent-provider="auto"
           title="Newsletter Sign Up Form"
         ></iframe>
+        </div>
       </div>
     </div>
 
