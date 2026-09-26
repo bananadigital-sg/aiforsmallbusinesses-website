@@ -9,7 +9,10 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+/* size-matched stand-in so text doesn't re-wrap (and shift the page) when Manrope finishes loading */
+@font-face { font-family:'Manrope Fallback'; src:local('Arial Bold'), local('Arial-BoldMT'), local('Helvetica Bold'), local('Arial'); font-weight:800; size-adjust:88%; }
+@font-face { font-family:'Manrope Fallback'; src:local('Arial'), local('ArialMT'), local('Helvetica'); font-weight:100 700; }
+body { font-family:'Manrope','Manrope Fallback',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
 
 /* ── TOKENS ── */
 :root {
@@ -141,8 +144,10 @@ nav {
 .hero-form-card { max-width:480px; }
 .hero-form-heading { font-size:16px; font-weight:700; color:var(--dark); margin:0 0 14px; }
 /* holds the form's space while GoHighLevel's loader briefly hides it, so the page doesn't jump on load */
-.hero-form-frame { min-height:451px; }
+.hero-form-frame { min-height:453px; }
 .hero-form-card iframe { display:block; width:100%; height:432px; border:none; border-radius:12px; }
+/* stay invisible until GoHighLevel's loader reveals the form, then fade in once (no show-hide-show blink) */
+.hero-form-card iframe { opacity:0; transition:opacity 0.4s ease; }
 
 /* ── HERO: video ── */
 .hero-video-col { flex:0 0 316px; }
@@ -544,6 +549,13 @@ footer {
       ></iframe>
     </div>
     <script src="https://link.bananadigital.com.au/js/form_embed.js"></script>
+    <script>
+    // safety net: if GoHighLevel's loader never reveals the hero form, show it anyway
+    setTimeout(function(){
+      var f=document.getElementById('inline-rqMIKjb7c04Okq9lIMjM-hero');
+      if(f && f.style.opacity!=='1'){ f.style.opacity='1'; f.style.visibility='visible'; f.style.pointerEvents='auto'; f.style.left=''; f.style.position='relative'; }
+    },6000);
+    </script>
     <p class="cta-note">Free forever. Unsubscribe any time.</p>
   </div>
 </section>
