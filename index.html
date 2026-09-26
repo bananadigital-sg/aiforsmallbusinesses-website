@@ -97,7 +97,6 @@ nav {
 .hero-form-card { max-width:480px; }
 .hero-form-heading { font-size:16px; font-weight:700; color:var(--dark); margin:0 0 14px; }
 .hero-form-card iframe { display:block; width:100%; height:432px; border:none; border-radius:12px; }
-.hero-form-note { font-size:11px; color:var(--muted); margin:8px 0 0; }
 
 /* ── HERO: video ── */
 .hero-video-col { flex:0 0 316px; }
@@ -121,12 +120,11 @@ nav {
 }
 .hero-video-play:hover { transform:translate(-50%,-50%) scale(1.06); }
 .hero-video-caption {
-  position:absolute; bottom:16px; left:16px; right:16px;
-  background:rgba(58,44,32,0.88); border-radius:14px; padding:12px 14px;
-  display:flex; align-items:center; gap:10px;
+  margin-top:16px;
+  display:flex; align-items:center; justify-content:center; gap:10px;
 }
-.hero-video-caption-name { font-size:12.5px; font-weight:700; color:var(--bg); }
-.hero-video-caption-sub { font-size:10px; color:rgba(253,250,244,0.65); margin-top:1px; }
+.hero-video-caption-name { font-size:13px; font-weight:700; color:var(--dark); }
+.hero-video-caption-sub { font-size:11px; color:var(--muted); margin-top:1px; }
 
 @media(max-width:920px){
   .hero { padding:104px 20px 56px; }
@@ -304,7 +302,6 @@ footer {
           data-cookie-consent-provider="auto"
           title="Newsletter Sign Up Form"
         ></iframe>
-        <p class="hero-form-note">Unsubscribe any time.</p>
       </div>
     </div>
 
@@ -318,12 +315,12 @@ footer {
         <button id="heroPlayBtn" class="hero-video-play" aria-label="Play intro video from Heart">
           <svg width="22" height="24" viewBox="0 0 24 26"><polygon points="0,0 24,13 0,26" fill="#3A2C20"/></svg>
         </button>
-        <div id="heroVideoCaption" class="hero-video-caption">
-          <svg width="16" height="16" viewBox="0 0 100 100" style="flex-shrink:0;"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
-          <div>
-            <div class="hero-video-caption-name">Hi, I'm Heart</div>
-            <div class="hero-video-caption-sub">Founder, Banana Digital</div>
-          </div>
+      </div>
+      <div id="heroVideoCaption" class="hero-video-caption">
+        <svg width="16" height="16" viewBox="0 0 100 100" style="flex-shrink:0;"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+        <div>
+          <div class="hero-video-caption-name">Hearty Dave</div>
+          <div class="hero-video-caption-sub">Founder, Banana Digital</div>
         </div>
       </div>
     </div>
@@ -526,20 +523,17 @@ footer {
 (function(){
   var v = document.getElementById('heroVideo');
   var btn = document.getElementById('heroPlayBtn');
-  var cap = document.getElementById('heroVideoCaption');
   var badge = document.getElementById('heroVideoBadge');
   if(!v || !btn) return;
   btn.addEventListener('click', function(){
     v.controls = true;
     v.play();
     btn.style.display = 'none';
-    if(cap) cap.style.display = 'none';
     if(badge) badge.style.display = 'none';
   });
   v.addEventListener('ended', function(){
     v.controls = false;
     btn.style.display = 'flex';
-    if(cap) cap.style.display = 'flex';
     if(badge) badge.style.display = 'block';
     v.currentTime = 0;
   });
