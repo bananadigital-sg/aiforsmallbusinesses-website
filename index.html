@@ -87,9 +87,42 @@ nav {
 }
 .hero h1 em {
   font-style:normal; color:var(--gold);
-  background:linear-gradient(135deg, #D4A55A, #C4835A);
+  display:inline-block; white-space:nowrap; position:relative;
+}
+.hero h1 em .w {
+  background:linear-gradient(110deg, #D4A55A 0%, #D4A55A 42%, #F6DDA6 50%, #D4A55A 58%, #D4A55A 100%);
+  background-size:250% 100%; background-position:100% 0;
   -webkit-background-clip:text; -webkit-text-fill-color:transparent;
   background-clip:text;
+}
+/* hero headline: words rise in one by one, gold words shimmer, underline draws in */
+.hero h1 .w { display:inline-block; animation:heroWordIn 0.7s cubic-bezier(.2,.7,.2,1) both; }
+.hero h1 .w:nth-of-type(1) { animation-delay:0.10s; }
+.hero h1 .w:nth-of-type(2) { animation-delay:0.20s; }
+.hero h1 em .w:nth-of-type(1) { animation:heroWordIn 0.7s cubic-bezier(.2,.7,.2,1) 0.34s both, heroShimmer 7s ease-in-out 1.3s infinite; }
+.hero h1 em .w:nth-of-type(2) { animation:heroWordIn 0.7s cubic-bezier(.2,.7,.2,1) 0.46s both, heroShimmer 7s ease-in-out 1.3s infinite; }
+.hero h1 .l2 .w:nth-of-type(1) { animation-delay:0.62s; }
+.hero h1 .l2 .w:nth-of-type(2) { animation-delay:0.72s; }
+.hero h1 .l2 .w:nth-of-type(3) { animation-delay:0.82s; }
+.hero h1 em::after {
+  content:""; position:absolute; left:2px; right:2px; bottom:-0.14em; height:4px;
+  border-radius:5px; background:#D4A55A; opacity:0.35;
+  transform:scaleX(0); transform-origin:left center;
+  animation:heroUnderline 0.8s cubic-bezier(.6,0,.2,1) 1.0s both;
+}
+@keyframes heroWordIn {
+  from { opacity:0; transform:translateY(0.45em); filter:blur(6px); }
+  to   { opacity:1; transform:none; filter:blur(0); }
+}
+@keyframes heroShimmer {
+  0%   { background-position:100% 0; }
+  18%  { background-position:0% 0; }
+  100% { background-position:0% 0; }
+}
+@keyframes heroUnderline { to { transform:scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero h1 .w, .hero h1 em .w { animation:none !important; }
+  .hero h1 em::after { animation:none; transform:scaleX(1); }
 }
 .hero-sub {
   font-size:16px; color:var(--muted); font-weight:400;
@@ -290,7 +323,7 @@ footer {
     <!-- LEFT: headline + form -->
     <div class="hero-left">
       <div class="hero-eyebrow">AI for Small Businesses</div>
-      <h1>AI that <em>actually works</em><br>for your business.</h1>
+      <h1><span class="w">AI</span> <span class="w">that</span> <em><span class="w">actually</span> <span class="w">works</span></em><br><span class="l2"><span class="w">for</span> <span class="w">your</span> <span class="w">business.</span></span></h1>
       <p class="hero-sub">Practical AI tools, strategies and guides — created for small business owners who want to work smarter, not harder. No tech degree required.</p>
 
       <div class="hero-form-card">
