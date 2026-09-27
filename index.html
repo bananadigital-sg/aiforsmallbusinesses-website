@@ -280,8 +280,10 @@ section { padding:96px 24px; }
 .cta-embed {
   max-width:480px; margin:0 auto;
   background:#FDFAF4; border-radius:12px; padding:4px;
+  overflow:hidden;
 }
-.cta-embed iframe { display:block; min-height:432px; }
+/* the form page carries ~103px of empty space under its card vs 40px above it; hide the extra 63px so the gap is even top and bottom (the frame still auto-grows for error messages) */
+.cta-embed iframe { display:block; min-height:432px; margin-bottom:-63px; }
 .cta-note { font-size:11px; color:rgba(253,250,244,0.35); margin-top:16px; }
 
 /* ── FOOTER ── */
