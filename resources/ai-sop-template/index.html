@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI SOP Template: Turn One Person's AI Skill Into a Team System</title>
+<meta name="description" content="One person on your team is great at using AI. That's fragile until it's written down. Here's the free 5-part template for turning any AI skill into an SOP anyone can repeat, plus a filled-in example.">
+<link rel="canonical" href="https://smallbizgrowth.ai/resources/ai-sop-template/">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The AI SOP Template: Turn One Person's AI Skill Into a Team System",
+  "description": "A free 5-part template for turning any AI skill into a standard operating procedure anyone on the team can repeat.",
+  "url": "https://smallbizgrowth.ai/resources/ai-sop-template/",
+  "publisher": { "@type": "Organization", "name": "Banana Digital" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Turn an AI Skill Into an SOP",
+  "description": "A five-part process for documenting an AI workflow so anyone on the team can repeat it.",
+  "step": [
+    { "@type": "HowToStep", "name": "Define the trigger and inputs", "text": "Write down what starts the task and exactly what information the AI needs to do it." },
+    { "@type": "HowToStep", "name": "Record the tool and prompt", "text": "Name the AI tool used and save the exact prompt, word for word, so anyone can copy it." },
+    { "@type": "HowToStep", "name": "Describe the expected output", "text": "Define what a correct result looks like: format, length, tone, and what it must never include." },
+    { "@type": "HowToStep", "name": "Set the human approval step", "text": "Decide exactly what a person checks before the output is used, and who that person is." },
+    { "@type": "HowToStep", "name": "Plan for AI getting it wrong", "text": "Write down what happens when the output is wrong, and the specific failure pattern to watch for." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is an AI SOP?",
+      "acceptedAnswer": { "@type": "Answer", "text": "An AI SOP (standard operating procedure) is a written record of how one AI-assisted task is actually done: what starts it, which tool and prompt are used, what a correct result looks like, what a human must check, and what happens when the output is wrong. It turns a skill one person has into a process anyone on the team can repeat." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why not just let the person who's good at AI keep doing it?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Because it's fragile. If that person is on leave, changes roles, or leaves the business, the skill leaves with them and nobody else can reproduce the result. Writing it down as an SOP means the result survives without depending on one specific person." }
+    },
+    {
+      "@type": "Question",
+      "name": "What should an AI SOP always include?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Five things: what goes in and what triggers the task, which tool and exact prompt is used, what the output should look like, what requires a human to check it before it's used, and what happens when the AI gets it wrong." }
+    }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+
+:root {
+  --gold:    #D4A55A;
+  --amber:   #C4835A;
+  --dark:    #3A2C20;
+  --muted:   #9A8870;
+  --light:   #EED8A4;
+  --bg:      #FDFAF4;
+  --bg-alt:  #F0E8D4;
+  --surface: #FFFFFF;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:var(--dark);
+  border-bottom:1px solid rgba(212,165,90,0.25);
+  padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo svg { filter:drop-shadow(0 0 8px rgba(212,165,90,0.45)); }
+.nav-logo-text { font-size:14px; font-weight:700; color:var(--bg); }
+.nav-logo-sub  { font-size:9px; color:rgba(253,250,244,0.55); display:block; line-height:1; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--bg); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-links a.nav-cta {
+  padding:9px 22px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:13px; font-weight:700;
+  text-decoration:none; transition:background 0.2s;
+}
+.nav-links a.nav-cta:hover { background:var(--light); color:var(--dark); }
+@media(max-width:560px){
+  nav { padding:0 14px; }
+  .nav-logo { gap:8px; }
+  .nav-logo svg { width:24px; height:24px; }
+  .nav-logo-text { font-size:12px; line-height:1.2; display:block; }
+  .nav-logo-sub { display:none; }
+  .nav-links { gap:12px; }
+  .nav-links a { font-size:12px; }
+  .nav-links a.nav-cta { padding:8px 14px; font-size:12px; white-space:nowrap; }
+}
+
+.breadcrumb {
+  max-width:720px; margin:0 auto; padding:120px 24px 0;
+  font-size:12px; color:var(--muted);
+}
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--gold); }
+
+.article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
+.article-tags { display:flex; gap:8px; margin-bottom:16px; }
+.article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
+.article-tag.tool { color:var(--gold); }
+.article-header h1 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800; color:var(--dark);
+  line-height:1.15; letter-spacing:-0.5px; margin-bottom:16px;
+}
+.article-dek { font-size:17px; color:var(--muted); line-height:1.65; }
+.article-includes {
+  margin-top:20px; padding:16px 20px; background:var(--surface); border-radius:12px;
+  border:1px solid rgba(212,165,90,0.2); font-size:13px; color:var(--muted);
+}
+.article-includes strong { color:var(--dark); }
+
+.pdf-callout {
+  max-width:720px; margin:24px auto 0; padding:20px 24px;
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.3); border-radius:16px;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+}
+.pdf-callout-icon {
+  flex-shrink:0; width:40px; height:40px; border-radius:10px;
+  background:var(--gold); color:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+}
+.pdf-callout-body { flex:1 1 240px; min-width:200px; }
+.pdf-callout-title { font-size:14px; font-weight:800; color:var(--dark); display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+.pdf-callout-badge {
+  font-size:10px; font-weight:800; letter-spacing:0.5px; color:var(--surface);
+  background:var(--amber); padding:2px 8px; border-radius:100px;
+}
+.pdf-callout-sub { font-size:13px; color:var(--muted); margin:0; }
+.pdf-callout-actions { display:flex; gap:10px; flex-shrink:0; }
+.pdf-btn {
+  display:inline-flex; align-items:center; gap:7px; padding:10px 18px;
+  border-radius:100px; font-family:'Manrope',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; border:none; transition:all 0.15s; white-space:nowrap;
+}
+.pdf-btn-download { background:var(--gold); color:var(--dark); }
+.pdf-btn-download:hover { background:#E8C070; }
+.pdf-btn-share { background:var(--surface); color:var(--dark); border:1.5px solid rgba(58,44,32,0.15); }
+.pdf-btn-share:hover { border-color:var(--gold); color:var(--amber); }
+.pdf-btn-share.copied { background:#7CB87C; color:#1a3a1a; border-color:transparent; }
+@media (max-width:520px) {
+  .pdf-callout { padding:18px; }
+  .pdf-callout-actions { width:100%; }
+  .pdf-btn { flex:1; justify-content:center; }
+}
+.print-footer { display:none; }
+
+@media print {
+  @page { size:A4; margin:18mm 18mm 28mm 18mm; }
+  nav, .breadcrumb, .pdf-callout, .article-cta, .related,
+  .copy-btn, #copyFieldsNote, footer { display:none !important; }
+  body { background:#fff; color:#2A1F16; }
+  a { color:inherit; text-decoration:none; }
+
+  .print-footer {
+    display:block; position:fixed; left:0; right:0; bottom:0;
+    background:#fff; padding:10px 0 0; margin:0;
+    border-top:1px solid rgba(154,136,112,0.35);
+  }
+  .print-footer-row {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .print-footer-brand { display:flex; align-items:center; gap:8px; }
+  .print-footer-text { font-size:11px; font-weight:700; color:var(--muted); display:block; }
+  .print-footer-sub { font-size:9px; color:rgba(154,136,112,0.75); display:block; }
+  .print-footer-copy { font-size:10px; color:rgba(154,136,112,0.75); text-align:right; }
+  .print-footer svg polygon { fill:var(--amber); }
+
+  h2, h3, .article-eyebrow {
+    break-after:avoid-page; page-break-after:avoid;
+  }
+  .prompt-card, .callout, .step-item, tr, .copy-block,
+  .fill-field, .parts-table, .final-line {
+    break-inside:avoid-page; page-break-inside:avoid;
+  }
+  .print-fresh-page { break-before:page; page-break-before:always; }
+
+  .article-body h2 { border-bottom:2px solid var(--gold); padding-bottom:8px; }
+  .prompt-card-num span.n, .step-num { background:var(--amber) !important; color:#fff !important; }
+  .callout { border:1px solid rgba(196,131,90,0.4) !important; background:#FBF3E3 !important; }
+  .parts-num { color:var(--amber) !important; }
+
+  .copy-block { background:#fff !important; border:1px solid rgba(58,44,32,0.2) !important; }
+  .copy-block-label { color:var(--amber) !important; }
+  .copy-block pre { color:#2A1F16 !important; }
+
+  .parts-table th { background:var(--amber) !important; color:#fff !important; }
+  .parts-table td { background:#fff !important; }
+  .parts-table tr:nth-child(odd) td { background:#FBF3E3 !important; }
+
+  .fill-field textarea { border:1px solid rgba(58,44,32,0.3); background:#fff; min-height:50px; }
+}
+
+.article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-body h2 {
+  font-size:24px; font-weight:800; color:var(--dark); margin:44px 0 8px; letter-spacing:-0.3px;
+}
+.article-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:44px 0 6px; }
+.article-eyebrow + h2 { margin-top:0; }
+.section-heading-row {
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.article-eyebrow + .section-heading-row h2 { margin-top:0; }
+.article-body h3 {
+  font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
+}
+.article-body p { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:16px; }
+.article-body ul, .article-body ol { margin:0 0 16px 22px; }
+.article-body li { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:8px; }
+
+.callout {
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.25);
+  border-radius:12px; padding:20px 24px; margin:24px 0;
+}
+.callout p { margin-bottom:0; font-size:14px; }
+.callout p strong { color:var(--dark); }
+
+/* 5-part table */
+.parts-table { width:100%; border-collapse:collapse; margin:20px 0 8px; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(58,44,32,0.06); }
+.parts-table th { background:var(--dark); color:var(--bg); font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:12px 16px; text-align:left; }
+.parts-table td { padding:14px 16px; font-size:14px; color:#4A3A2A; border-bottom:1px solid rgba(58,44,32,0.08); background:var(--surface); }
+.parts-table tr:nth-child(odd) td { background:var(--bg-alt); }
+.parts-num { font-size:20px; font-weight:800; color:var(--gold); width:36px; }
+.parts-name { font-weight:700; color:var(--dark); }
+
+/* Fill-in fields */
+.fill-field { margin-bottom:22px; }
+.fill-field label { display:block; font-size:14px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+.fill-field textarea {
+  width:100%; min-height:64px; padding:12px 16px; border-radius:10px;
+  border:1.5px solid rgba(58,44,32,0.15); background:var(--surface);
+  font-family:'Manrope',sans-serif; font-size:14px; color:var(--dark);
+  outline:none; resize:vertical; transition:border-color 0.2s;
+}
+.fill-field textarea:focus { border-color:var(--gold); }
+
+/* Copy blocks */
+.copy-block {
+  position:relative; background:var(--dark); border-radius:14px; padding:24px 24px 20px; margin:20px 0;
+}
+.copy-block-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.copy-block pre {
+  white-space:pre-wrap; font-family:'Manrope',sans-serif; font-size:13.5px; line-height:1.75;
+  color:rgba(253,250,244,0.9);
+}
+.copy-btn {
+  margin-top:16px; padding:9px 18px; background:var(--gold); color:var(--dark);
+  border:none; border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:800; cursor:pointer; transition:all 0.15s;
+}
+.copy-btn:hover { background:#E8C070; }
+.copy-btn.copied { background:#7CB87C; color:#1a3a1a; }
+
+/* Worked example */
+.example-block {
+  background:var(--surface); border:1px solid rgba(212,165,90,0.25); border-radius:14px;
+  padding:6px 22px 6px; margin:16px 0;
+}
+.example-row { padding:16px 0; border-bottom:1px solid rgba(58,44,32,0.08); }
+.example-row:last-child { border-bottom:none; }
+.example-label { font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--amber); margin-bottom:6px; }
+.example-row p { font-size:14px; margin-bottom:0; color:#4A3A2A; }
+
+/* Quick start steps */
+.step-list { counter-reset:step; margin:24px 0; }
+.step-item { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+.step-num {
+  flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;
+}
+.step-content h3 { margin:0 0 4px; }
+.step-content p { margin-bottom:0; }
+
+.checklist-simple { list-style:none; margin:0 0 16px; }
+.checklist-simple li { display:flex; gap:10px; font-size:15px; color:#4A3A2A; margin-bottom:10px; }
+.checklist-simple li::before { content:'✓'; color:var(--gold); font-weight:800; flex-shrink:0; }
+
+.final-line {
+  text-align:center; font-size:18px; font-weight:800; color:var(--dark);
+  background:var(--light); border-radius:12px; padding:20px; margin:28px 0 0;
+}
+
+.article-cta { max-width:720px; margin:48px auto 0; padding:0 24px; }
+.article-cta-box { background:#2A1F16; border-radius:20px; padding:40px 32px; text-align:center; }
+.article-cta-box h2 { color:var(--bg); font-size:22px; font-weight:800; margin-bottom:10px; }
+.article-cta-box p { color:rgba(253,250,244,0.6); font-size:14px; margin-bottom:20px; }
+.btn-primary {
+  padding:14px 32px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:14px; font-weight:800; text-decoration:none;
+  display:inline-block; transition:all 0.2s;
+}
+.btn-primary:hover { background:#E8C070; transform:translateY(-1px); }
+
+.related { max-width:720px; margin:56px auto 0; padding:32px 24px 0; border-top:1px solid rgba(58,44,32,0.1); }
+.related h2 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:16px; }
+.related a { display:block; font-size:15px; font-weight:700; color:var(--dark); text-decoration:none; margin-bottom:8px; }
+.related a:hover { color:var(--gold); }
+
+footer {
+  background:var(--dark); padding:40px 24px; margin-top:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; }
+.footer-logo-text { font-size:13px; font-weight:700; color:var(--bg); }
+.footer-logo-sub  { font-size:9px; color:rgba(253,250,244,0.4); display:block; margin-top:2px; }
+.footer-copy { font-size:11px; color:rgba(253,250,244,0.35); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:11px; color:rgba(253,250,244,0.45); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="print-footer">
+  <div class="print-footer-row">
+    <div class="print-footer-brand">
+      <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+      <div>
+        <span class="print-footer-text">AI for Small Businesses</span>
+        <span class="print-footer-sub">smallbizgrowth.ai/resources/ai-sop-template/</span>
+      </div>
+    </div>
+    <span class="print-footer-copy">© 2026 Banana Digital</span>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="30" height="30" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="nav-logo-text">AI for Small Businesses</span>
+      <span class="nav-logo-sub">by Banana Digital</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/resources/">Resources</a>
+    <a href="https://link.bananadigital.com.au/widget/booking/UA18tOy6qNeAuB4NQ2tc" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/resources/">Resources</a> / Template</div>
+
+<div class="article-header">
+  <div class="article-tags"><span class="article-tag">Template</span><span class="article-tag tool">Multi-Tool</span></div>
+  <h1>The AI SOP Template: Turn One Person's AI Skill Into a Team System</h1>
+  <p class="article-dek">One person on your team gets great at using AI to qualify leads, write proposals, or handle replies. Useful, until they're on leave, change roles, or leave the business. Here's how to write it down so anyone can repeat it.</p>
+  <div class="article-includes"><strong>Inside:</strong> the 5-part SOP framework, a fill-in template for your own AI workflow, and one filled-in example (qualifying inbound leads).</div>
+</div>
+
+<div class="pdf-callout">
+  <div class="pdf-callout-icon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg>
+  </div>
+  <div class="pdf-callout-body">
+    <div class="pdf-callout-title">Get the full template as a PDF <span class="pdf-callout-badge">FREE</span></div>
+    <p class="pdf-callout-sub">Save it, print it, read it offline. It's yours.</p>
+  </div>
+  <div class="pdf-callout-actions">
+    <button class="pdf-btn pdf-btn-download" onclick="downloadArticlePdf()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download PDF
+    </button>
+    <button class="pdf-btn pdf-btn-share" id="shareBtn" onclick="shareArticle(this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.1M8.3 13.3l7.4 4.1"/></svg>
+      Share
+    </button>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="article-eyebrow">The Problem</div>
+  <h2>A skill that lives in one person's head isn't a system yet</h2>
+  <p>Someone on your team gets genuinely good at using AI, maybe for qualifying leads, drafting proposals, or answering customer questions. That's a real win. It's also fragile: if that person is out sick, changes roles, or leaves, the result stops happening, and nobody else knows how to get it back.</p>
+  <p>The fix isn't hoping everyone eventually "gets it" through osmosis. It's writing down exactly what that person does, so somebody else can follow the same steps and get the same result, without having to reinvent it themselves.</p>
+  <p>That's the difference between an AI trick and a business system: a trick lives in one person. A system survives without them.</p>
+
+  <div class="article-eyebrow">The Framework</div>
+  <h2>The 5 questions every AI SOP needs to answer</h2>
+  <p>An SOP (standard operating procedure) for an AI-assisted task doesn't need to be long. It needs to answer five specific questions, so someone with zero context could pick it up and run it correctly.</p>
+
+  <table class="parts-table">
+    <tr><th>#</th><th>Part</th><th>What to write down</th></tr>
+    <tr><td class="parts-num">1</td><td class="parts-name">Trigger &amp; inputs</td><td>What starts this task, and exactly what information the AI needs to do it.</td></tr>
+    <tr><td class="parts-num">2</td><td class="parts-name">Tool &amp; prompt</td><td>Which AI tool is used, and the exact prompt, word for word, not a rough description of it.</td></tr>
+    <tr><td class="parts-num">3</td><td class="parts-name">Expected output</td><td>What a correct result looks like: format, length, tone, and what it must never include.</td></tr>
+    <tr><td class="parts-num">4</td><td class="parts-name">Human approval</td><td>What a person checks before the output is used, and who that person is.</td></tr>
+    <tr><td class="parts-num">5</td><td class="parts-name">When AI gets it wrong</td><td>What happens next when the result is off, and the specific way this task tends to fail.</td></tr>
+  </table>
+
+  <div class="callout"><p><strong>The simple test:</strong> if someone else on your team can't follow this and get the same result, it isn't an SOP yet. It's still a trick only one person knows.</p></div>
+
+  <div class="article-eyebrow">Fill It In</div>
+  <h2>Your AI SOP template</h2>
+  <p>Pick one AI task someone on your team already does well, and answer these five questions about it.</p>
+
+  <div class="fill-field">
+    <label>1. Trigger &amp; inputs: What starts this task, and what does the AI need to do it?</label>
+    <textarea id="sopTrigger" placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="fill-field">
+    <label>2. Tool &amp; prompt: Which AI tool, and what's the exact prompt used?</label>
+    <textarea id="sopTool" placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="fill-field">
+    <label>3. Expected output: What does a correct result look like?</label>
+    <textarea id="sopOutput" placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="fill-field">
+    <label>4. Human approval: What does a person check, and who checks it?</label>
+    <textarea id="sopApproval" placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="fill-field">
+    <label>5. When AI gets it wrong: What happens next, and what's the failure to watch for?</label>
+    <textarea id="sopFailure" placeholder="Type your answer here..."></textarea>
+  </div>
+
+  <button class="copy-btn" id="copyFieldsBtn" onclick="copyFields(this)" style="padding:12px 28px;font-size:13px;">Copy my answers</button>
+  <p id="copyFieldsNote" style="font-size:12px;color:var(--muted);margin-top:12px;">This box is just scratch space in your browser, it won't save anything. Click "Copy my answers" once you're done, then paste it into a Google Doc, Notes app, or wherever your SOPs live.</p>
+
+  <div class="article-eyebrow">Copy And Paste</div>
+  <h2>The blank template</h2>
+  <p>Prefer to paste straight into a doc? Here's the same five parts as one block you can copy and fill in directly.</p>
+
+  <div class="copy-block">
+    <div class="copy-block-label">AI SOP Template</div>
+    <pre id="masterTemplate">TASK NAME: [name this workflow, e.g. "Qualifying inbound leads"]
+
+1. TRIGGER & INPUTS
+This runs when: [what starts the task]. It needs: [the information the AI needs to do it].
+
+2. TOOL & PROMPT
+Use: [which AI tool]. The exact prompt: [paste the full prompt, word for word].
+
+3. EXPECTED OUTPUT
+A correct result: [format, length, tone]. It always includes: [required elements]. It never includes: [what should never appear].
+
+4. HUMAN APPROVAL
+Before this is used, [role, not name] checks: [exactly what they're checking].
+
+5. WHEN AI GETS IT WRONG
+If the output is wrong, [what happens next]. Common failure to watch for: [the specific way this task tends to go wrong].</pre>
+    <button class="copy-btn" onclick="copyBlock('masterTemplate', this)">Copy template</button>
+  </div>
+
+  <div class="article-eyebrow">See It Filled In</div>
+  <h2>Example: qualifying inbound leads</h2>
+  <p>Here's the same template, filled in for a real, common task: someone on the team has gotten good at using AI to size up a new lead before replying.</p>
+
+  <div class="example-block">
+    <div class="example-row">
+      <div class="example-label">1. Trigger &amp; inputs</div>
+      <p>Runs when a new lead fills out the contact form. Needs their message, our current services and pricing, and our availability.</p>
+    </div>
+    <div class="example-row">
+      <div class="example-label">2. Tool &amp; prompt</div>
+      <p>Claude, in a saved project with our services and pricing loaded. Prompt: "Here's a new lead enquiry: [paste message]. Based on our services and pricing, tell me (1) what they're likely after, (2) whether we're a fit, and (3) a first reply I can send."</p>
+    </div>
+    <div class="example-row">
+      <div class="example-label">3. Expected output</div>
+      <p>Three short parts: what they want, a yes/no/maybe fit call, and a draft reply under 100 words. Always includes a clear next step. Never includes a quoted price, pricing is confirmed by a person.</p>
+    </div>
+    <div class="example-row">
+      <div class="example-label">4. Human approval</div>
+      <p>Before anything is sent, whoever is on lead-reply duty that day checks that the fit call is right and that no price has been mentioned.</p>
+    </div>
+    <div class="example-row">
+      <div class="example-label">5. When AI gets it wrong</div>
+      <p>If the fit call looks wrong, it's flagged in the team channel before anything goes out. The failure to watch for: AI marking an out-of-area enquiry as a good fit, always double check location first.</p>
+    </div>
+  </div>
+
+  <div class="article-eyebrow print-fresh-page">Quick Start</div>
+  <h2>Turn your first AI trick into an SOP</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>Pick one task someone already does well</h3><p>Choose something real that's already working, not a hypothetical.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>Interview them for 10 minutes</h3><p>Walk through the 5 questions above with them, out loud, and write down their actual answers.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>Write it up in the template</h3><p>Keep it short. If it takes more than one page to read, it's too long to actually get used.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content"><h3>Have someone else run it, alone</h3><p>No hints, no help. If they get stuck, that's exactly what's missing from the SOP.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content"><h3>Fix what wasn't clear, then call it done</h3><p>Update it, save it somewhere the whole team can find it, and move on to the next skill.</p></div>
+    </div>
+  </div>
+
+  <ul class="checklist-simple">
+    <li>Could someone with zero context follow this and get the same result?</li>
+    <li>Is the exact prompt written out, not just described?</li>
+    <li>Is it obvious what needs a human's okay before it's used?</li>
+  </ul>
+
+  <div class="final-line">An AI trick only one person can do is a skill. Written down so anyone can repeat it, it's a system.</div>
+
+</div>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h2>Want more guides like this?</h2>
+    <p>Join our free list, free AI guides, tools and strategies for small business owners, straight to your inbox.</p>
+    <a href="/#waitlist" class="btn-primary">Get free access ✦</a>
+  </div>
+</div>
+
+<div class="related">
+  <h2>More resources</h2>
+  <a href="/resources/business-ai-prompt-framework/">The Business AI Prompt Framework</a>
+  <a href="/resources/claude-weekly-workflow-guide/">The Weekly Claude Workflow Guide</a>
+  <a href="/resources/">← Back to all resources</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="footer-logo-text">AI for Small Businesses</span>
+      <span class="footer-logo-sub">by Banana Digital</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="/#what">What we do</a>
+    <a href="/resources/">Resources</a>
+    <a href="https://bananadigital.co" target="_blank">Banana Digital</a>
+  </div>
+  <div class="footer-copy">© 2026 Banana Digital. All rights reserved.</div>
+</footer>
+
+<script>
+function downloadArticlePdf() {
+  window.print();
+}
+function shareArticle(btn) {
+  const shareData = { title: document.title, url: window.location.href };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+    return;
+  }
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const original = btn.innerHTML;
+    btn.textContent = 'Link copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+function copyBlock(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
+}
+function flashCopied(btn) {
+  const original = btn.textContent;
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+function copyFields(btn) {
+  const fields = [
+    ['1. Trigger & inputs', 'sopTrigger'],
+    ['2. Tool & prompt', 'sopTool'],
+    ['3. Expected output', 'sopOutput'],
+    ['4. Human approval', 'sopApproval'],
+    ['5. When AI gets it wrong', 'sopFailure']
+  ];
+  const text = fields
+    .map(([label, id]) => `${label}\n${document.getElementById(id).value.trim() || '(not answered)'}`)
+    .join('\n\n');
+  navigator.clipboard.writeText(text).then(() => {
+    flashCopied(btn);
+    const note = document.getElementById('copyFieldsNote');
+    const original = note.textContent;
+    note.textContent = 'Copied! Now open a Google Doc, your Notes app, or wherever your SOPs live, and paste it in (Ctrl+V or Cmd+V).';
+    note.style.color = 'var(--dark)';
+    note.style.fontWeight = '600';
+    setTimeout(() => { note.textContent = original; note.style.color = ''; note.style.fontWeight = ''; }, 6000);
+  });
+}
+</script>
+
+</body>
+</html>
