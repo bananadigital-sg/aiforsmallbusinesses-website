@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Trigger, Action, Owner Framework: AI Workflows Your Team Can Actually Explain</title>
+<meta name="description" content="The best automation is the one your team can explain in a sentence. The free 3-part framework (Trigger, Action, Owner) for building AI workflows that actually get used.">
+<link rel="canonical" href="https://smallbizgrowth.ai/resources/ai-workflow-framework/">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Trigger, Action, Owner Framework: AI Workflows Your Team Can Actually Explain",
+  "description": "The free 3-part framework for building AI workflows simple enough for anyone on the team to explain in one sentence.",
+  "url": "https://smallbizgrowth.ai/resources/ai-workflow-framework/",
+  "publisher": { "@type": "Organization", "name": "Banana Digital" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Build an AI Workflow Using Trigger, Action, Owner",
+  "description": "A three-part process for designing an AI automation simple enough for anyone on the team to explain in one sentence.",
+  "step": [
+    { "@type": "HowToStep", "name": "Name the exact trigger", "text": "Write down the one specific event that starts the workflow, not a vague category of events." },
+    { "@type": "HowToStep", "name": "Give AI exactly one action", "text": "Define the single thing AI does automatically. Resist adding a second or third action at this stage." },
+    { "@type": "HowToStep", "name": "Assign one human owner", "text": "Name the specific person who checks the output before it's used, and what they're checking for." },
+    { "@type": "HowToStep", "name": "Run the one-sentence test", "text": "Ask the person using the workflow to explain what it does. If it takes more than a sentence, simplify it first." },
+    { "@type": "HowToStep", "name": "Run it for a week before adding anything", "text": "Only add branches, extra tools, or extra steps once the simple version has proven itself." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the Trigger, Action, Owner framework?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It's a simple structure for designing an AI-powered workflow: name the exact event that starts it (Trigger), the one thing AI does automatically (Action), and the specific person who checks it before it's used (Owner). If a workflow can't be described in those three parts, it's too complicated to start with." }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do AI automations get too complicated?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Because it's easy to keep adding: another branch, another tool, another AI agent, before the simple version has even been tested. The result is a workflow nobody on the team can explain, which means nobody trusts it and nobody can fix it when it breaks. Starting with one trigger, one action, and one owner keeps the workflow explainable and debuggable." }
+    },
+    {
+      "@type": "Question",
+      "name": "How many tools should I use when I start an AI workflow?",
+      "acceptedAnswer": { "@type": "Answer", "text": "One trigger, one AI action, and one human owner is enough for a first version. Add branches, extra tools, or extra AI agents only after that simple version has run for a while and proven itself. Most workflows never actually need fifteen different tools." }
+    }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+
+:root {
+  --gold:    #D4A55A;
+  --amber:   #C4835A;
+  --dark:    #3A2C20;
+  --muted:   #9A8870;
+  --light:   #EED8A4;
+  --bg:      #FDFAF4;
+  --bg-alt:  #F0E8D4;
+  --surface: #FFFFFF;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:var(--dark);
+  border-bottom:1px solid rgba(212,165,90,0.25);
+  padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo svg { filter:drop-shadow(0 0 8px rgba(212,165,90,0.45)); }
+.nav-logo-text { font-size:14px; font-weight:700; color:var(--bg); }
+.nav-logo-sub  { font-size:9px; color:rgba(253,250,244,0.55); display:block; line-height:1; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--bg); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-links a.nav-cta {
+  padding:9px 22px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:13px; font-weight:700;
+  text-decoration:none; transition:background 0.2s;
+}
+.nav-links a.nav-cta:hover { background:var(--light); color:var(--dark); }
+@media(max-width:560px){
+  nav { padding:0 14px; }
+  .nav-logo { gap:8px; }
+  .nav-logo svg { width:24px; height:24px; }
+  .nav-logo-text { font-size:12px; line-height:1.2; display:block; }
+  .nav-logo-sub { display:none; }
+  .nav-links { gap:12px; }
+  .nav-links a { font-size:12px; }
+  .nav-links a.nav-cta { padding:8px 14px; font-size:12px; white-space:nowrap; }
+}
+
+.breadcrumb {
+  max-width:720px; margin:0 auto; padding:120px 24px 0;
+  font-size:12px; color:var(--muted);
+}
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--gold); }
+
+.article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
+.article-tags { display:flex; gap:8px; margin-bottom:16px; }
+.article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
+.article-tag.tool { color:var(--gold); }
+.article-header h1 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800; color:var(--dark);
+  line-height:1.15; letter-spacing:-0.5px; margin-bottom:16px;
+}
+.article-dek { font-size:17px; color:var(--muted); line-height:1.65; }
+.article-includes {
+  margin-top:20px; padding:16px 20px; background:var(--surface); border-radius:12px;
+  border:1px solid rgba(212,165,90,0.2); font-size:13px; color:var(--muted);
+}
+.article-includes strong { color:var(--dark); }
+
+.pdf-callout {
+  max-width:720px; margin:24px auto 0; padding:20px 24px;
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.3); border-radius:16px;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+}
+.pdf-callout-icon {
+  flex-shrink:0; width:40px; height:40px; border-radius:10px;
+  background:var(--gold); color:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+}
+.pdf-callout-body { flex:1 1 240px; min-width:200px; }
+.pdf-callout-title { font-size:14px; font-weight:800; color:var(--dark); display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+.pdf-callout-badge {
+  font-size:10px; font-weight:800; letter-spacing:0.5px; color:var(--surface);
+  background:var(--amber); padding:2px 8px; border-radius:100px;
+}
+.pdf-callout-sub { font-size:13px; color:var(--muted); margin:0; }
+.pdf-callout-actions { display:flex; gap:10px; flex-shrink:0; }
+.pdf-btn {
+  display:inline-flex; align-items:center; gap:7px; padding:10px 18px;
+  border-radius:100px; font-family:'Manrope',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; border:none; transition:all 0.15s; white-space:nowrap;
+}
+.pdf-btn-download { background:var(--gold); color:var(--dark); }
+.pdf-btn-download:hover { background:#E8C070; }
+.pdf-btn-share { background:var(--surface); color:var(--dark); border:1.5px solid rgba(58,44,32,0.15); }
+.pdf-btn-share:hover { border-color:var(--gold); color:var(--amber); }
+.pdf-btn-share.copied { background:#7CB87C; color:#1a3a1a; border-color:transparent; }
+@media (max-width:520px) {
+  .pdf-callout { padding:18px; }
+  .pdf-callout-actions { width:100%; }
+  .pdf-btn { flex:1; justify-content:center; }
+}
+.print-footer { display:none; }
+
+@media print {
+  @page { size:A4; margin:18mm 18mm 28mm 18mm; }
+  nav, .breadcrumb, .pdf-callout, .article-cta, .related,
+  .copy-btn, #copyFieldsNote, footer { display:none !important; }
+  body { background:#fff; color:#2A1F16; }
+  a { color:inherit; text-decoration:none; }
+
+  .print-footer {
+    display:block; position:fixed; left:0; right:0; bottom:0;
+    background:#fff; padding:10px 0 0; margin:0;
+    border-top:1px solid rgba(154,136,112,0.35);
+  }
+  .print-footer-row {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .print-footer-brand { display:flex; align-items:center; gap:8px; }
+  .print-footer-text { font-size:11px; font-weight:700; color:var(--muted); display:block; }
+  .print-footer-sub { font-size:9px; color:rgba(154,136,112,0.75); display:block; }
+  .print-footer-copy { font-size:10px; color:rgba(154,136,112,0.75); text-align:right; }
+  .print-footer svg polygon { fill:var(--amber); }
+
+  h2, h3, .article-eyebrow {
+    break-after:avoid-page; page-break-after:avoid;
+  }
+  .prompt-card, .callout, .step-item, tr, .copy-block,
+  .fill-field, .parts-table, .final-line {
+    break-inside:avoid-page; page-break-inside:avoid;
+  }
+  .print-fresh-page { break-before:page; page-break-before:always; }
+
+  .article-body h2 { border-bottom:2px solid var(--gold); padding-bottom:8px; }
+  .prompt-card-num span.n, .step-num { background:var(--amber) !important; color:#fff !important; }
+  .callout { border:1px solid rgba(196,131,90,0.4) !important; background:#FBF3E3 !important; }
+  .parts-num { color:var(--amber) !important; }
+
+  .copy-block { background:#fff !important; border:1px solid rgba(58,44,32,0.2) !important; }
+  .copy-block-label { color:var(--amber) !important; }
+  .copy-block pre { color:#2A1F16 !important; }
+
+  .parts-table th { background:var(--amber) !important; color:#fff !important; }
+  .parts-table td { background:#fff !important; }
+  .parts-table tr:nth-child(odd) td { background:#FBF3E3 !important; }
+
+  .fill-field textarea { border:1px solid rgba(58,44,32,0.3); background:#fff; min-height:50px; }
+}
+
+.article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-body h2 {
+  font-size:24px; font-weight:800; color:var(--dark); margin:44px 0 8px; letter-spacing:-0.3px;
+}
+.article-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:44px 0 6px; }
+.article-eyebrow + h2 { margin-top:0; }
+.section-heading-row {
+  display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.article-eyebrow + .section-heading-row h2 { margin-top:0; }
+.article-body h3 {
+  font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
+}
+.article-body p { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:16px; }
+.article-body ul, .article-body ol { margin:0 0 16px 22px; }
+.article-body li { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:8px; }
+
+.callout {
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.25);
+  border-radius:12px; padding:20px 24px; margin:24px 0;
+}
+.callout p { margin-bottom:0; font-size:14px; }
+.callout p strong { color:var(--dark); }
+
+/* 3-part table */
+.parts-table { width:100%; border-collapse:collapse; margin:20px 0 8px; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(58,44,32,0.06); }
+.parts-table th { background:var(--dark); color:var(--bg); font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:12px 16px; text-align:left; }
+.parts-table td { padding:14px 16px; font-size:14px; color:#4A3A2A; border-bottom:1px solid rgba(58,44,32,0.08); background:var(--surface); }
+.parts-table tr:nth-child(odd) td { background:var(--bg-alt); }
+.parts-num { font-size:20px; font-weight:800; color:var(--gold); width:36px; }
+.parts-name { font-weight:700; color:var(--dark); }
+
+/* Fill-in fields */
+.fill-field { margin-bottom:22px; }
+.fill-field label { display:block; font-size:14px; font-weight:700; color:var(--dark); margin-bottom:8px; }
+.fill-field textarea {
+  width:100%; min-height:64px; padding:12px 16px; border-radius:10px;
+  border:1.5px solid rgba(58,44,32,0.15); background:var(--surface);
+  font-family:'Manrope',sans-serif; font-size:14px; color:var(--dark);
+  outline:none; resize:vertical; transition:border-color 0.2s;
+}
+.fill-field textarea:focus { border-color:var(--gold); }
+
+/* Copy blocks */
+.copy-block {
+  position:relative; background:var(--dark); border-radius:14px; padding:24px 24px 20px; margin:20px 0;
+}
+.copy-block-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.copy-block pre {
+  white-space:pre-wrap; font-family:'Manrope',sans-serif; font-size:13.5px; line-height:1.75;
+  color:rgba(253,250,244,0.9);
+}
+.copy-btn {
+  margin-top:16px; padding:9px 18px; background:var(--gold); color:var(--dark);
+  border:none; border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:800; cursor:pointer; transition:all 0.15s;
+}
+.copy-btn:hover { background:#E8C070; }
+.copy-btn.copied { background:#7CB87C; color:#1a3a1a; }
+
+/* Worked example */
+.example-block {
+  background:var(--surface); border:1px solid rgba(212,165,90,0.25); border-radius:14px;
+  padding:6px 22px 6px; margin:16px 0;
+}
+.example-row { padding:16px 0; border-bottom:1px solid rgba(58,44,32,0.08); }
+.example-row:last-child { border-bottom:none; }
+.example-label { font-size:11px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:var(--amber); margin-bottom:6px; }
+.example-row p { font-size:14px; margin-bottom:0; color:#4A3A2A; }
+
+/* Quick start steps */
+.step-list { counter-reset:step; margin:24px 0; }
+.step-item { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+.step-num {
+  flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;
+}
+.step-content h3 { margin:0 0 4px; }
+.step-content p { margin-bottom:0; }
+
+.checklist-simple { list-style:none; margin:0 0 16px; }
+.checklist-simple li { display:flex; gap:10px; font-size:15px; color:#4A3A2A; margin-bottom:10px; }
+.checklist-simple li::before { content:'✓'; color:var(--gold); font-weight:800; flex-shrink:0; }
+
+.final-line {
+  text-align:center; font-size:18px; font-weight:800; color:var(--dark);
+  background:var(--light); border-radius:12px; padding:20px; margin:28px 0 0;
+}
+
+.article-cta { max-width:720px; margin:48px auto 0; padding:0 24px; }
+.article-cta-box { background:#2A1F16; border-radius:20px; padding:40px 32px; text-align:center; }
+.article-cta-box h2 { color:var(--bg); font-size:22px; font-weight:800; margin-bottom:10px; }
+.article-cta-box p { color:rgba(253,250,244,0.6); font-size:14px; margin-bottom:20px; }
+.btn-primary {
+  padding:14px 32px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:14px; font-weight:800; text-decoration:none;
+  display:inline-block; transition:all 0.2s;
+}
+.btn-primary:hover { background:#E8C070; transform:translateY(-1px); }
+
+.related { max-width:720px; margin:56px auto 0; padding:32px 24px 0; border-top:1px solid rgba(58,44,32,0.1); }
+.related h2 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:16px; }
+.related a { display:block; font-size:15px; font-weight:700; color:var(--dark); text-decoration:none; margin-bottom:8px; }
+.related a:hover { color:var(--gold); }
+
+footer {
+  background:var(--dark); padding:40px 24px; margin-top:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; }
+.footer-logo-text { font-size:13px; font-weight:700; color:var(--bg); }
+.footer-logo-sub  { font-size:9px; color:rgba(253,250,244,0.4); display:block; margin-top:2px; }
+.footer-copy { font-size:11px; color:rgba(253,250,244,0.35); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:11px; color:rgba(253,250,244,0.45); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="print-footer">
+  <div class="print-footer-row">
+    <div class="print-footer-brand">
+      <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+      <div>
+        <span class="print-footer-text">AI for Small Businesses</span>
+        <span class="print-footer-sub">smallbizgrowth.ai/resources/ai-workflow-framework/</span>
+      </div>
+    </div>
+    <span class="print-footer-copy">© 2026 Banana Digital</span>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="30" height="30" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="nav-logo-text">AI for Small Businesses</span>
+      <span class="nav-logo-sub">by Banana Digital</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/resources/">Resources</a>
+    <a href="https://link.bananadigital.com.au/widget/booking/UA18tOy6qNeAuB4NQ2tc" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/resources/">Resources</a> / Framework</div>
+
+<div class="article-header">
+  <div class="article-tags"><span class="article-tag">Framework</span><span class="article-tag tool">Multi-Tool</span></div>
+  <h1>The Trigger, Action, Owner Framework: AI Workflows Your Team Can Actually Explain</h1>
+  <p class="article-dek">The best automation is the one your team can explain in a sentence. If it takes five minutes and sounds like a diagram from NASA, it's too complicated. Here's the 3-part framework for building the kind of AI workflow that actually gets used.</p>
+  <div class="article-includes"><strong>Inside:</strong> the Trigger, Action, Owner framework, the one-sentence explain test, a fill-in template for your own workflow, and one filled-in example (a new lead arriving).</div>
+</div>
+
+<div class="pdf-callout">
+  <div class="pdf-callout-icon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg>
+  </div>
+  <div class="pdf-callout-body">
+    <div class="pdf-callout-title">Get the full framework as a PDF <span class="pdf-callout-badge">FREE</span></div>
+    <p class="pdf-callout-sub">Save it, print it, read it offline. It's yours.</p>
+  </div>
+  <div class="pdf-callout-actions">
+    <button class="pdf-btn pdf-btn-download" onclick="downloadArticlePdf()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download PDF
+    </button>
+    <button class="pdf-btn pdf-btn-share" id="shareBtn" onclick="shareArticle(this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.1M8.3 13.3l7.4 4.1"/></svg>
+      Share
+    </button>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="article-eyebrow">The Problem</div>
+  <h2>Most AI workflows die because nobody can explain them</h2>
+  <p>It usually starts small: one AI step that saves someone twenty minutes. Then a branch gets added for the edge case. Then a second tool, because the first one couldn't quite do everything. Then a third AI agent to handle what the first two miss. Six weeks later, nobody on the team can say what the automation actually does without pulling up a diagram.</p>
+  <p>That's the real failure mode. Not that the automation breaks, though it usually does, but that nobody trusts it enough to rely on it, and nobody can fix it when it goes wrong because nobody fully understands it anymore.</p>
+  <p>Here's a simple test: ask the person actually using the automation what it does. If the explanation takes five minutes and sounds like a diagram from NASA, it's been made too complicated. A workflow that works sounds like one sentence.</p>
+
+  <div class="article-eyebrow">The Framework</div>
+  <h2>The 3 parts every AI workflow needs, and nothing more to start</h2>
+  <p>A good workflow sounds like this: "When a lead arrives, AI summarizes what they want, creates the CRM task, and the salesperson approves the first reply." That sentence has exactly three parts. Get those three right before you add anything else.</p>
+
+  <table class="parts-table">
+    <tr><th>#</th><th>Part</th><th>What it means</th></tr>
+    <tr><td class="parts-num">1</td><td class="parts-name">Trigger</td><td>The one specific event that starts the workflow. Not "when things come in" — the exact thing: a form submission, a DM, a missed call.</td></tr>
+    <tr><td class="parts-num">2</td><td class="parts-name">Action</td><td>The one thing AI does automatically. Not five things stitched together, one clear action with a clear result.</td></tr>
+    <tr><td class="parts-num">3</td><td class="parts-name">Owner</td><td>The specific person who checks the output before it's used, and what exactly they're checking for. Not "the system", a name.</td></tr>
+  </table>
+
+  <div class="callout"><p><strong>The one-sentence test:</strong> ask the person who uses this workflow to explain what it does. If they can say it in one sentence, it's simple enough to trust. If it takes a diagram, simplify it before you build anything else on top.</p></div>
+
+  <div class="article-eyebrow">Fill It In</div>
+  <h2>Your Trigger, Action, Owner template</h2>
+  <p>Pick one repetitive task in your business and answer these three questions about it.</p>
+
+  <div class="fill-field">
+    <label>1. Trigger: What is the one specific event that starts this?</label>
+    <textarea id="taoTrigger" placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="fill-field">
+    <label>2. Action: What is the one thing AI does automatically?</label>
+    <textarea id="taoAction" placeholder="Type your answer here..."></textarea>
+  </div>
+  <div class="fill-field">
+    <label>3. Owner: Who checks it before it's used, and what are they checking for?</label>
+    <textarea id="taoOwner" placeholder="Type your answer here..."></textarea>
+  </div>
+
+  <button class="copy-btn" id="copyFieldsBtn" onclick="copyFields(this)" style="padding:12px 28px;font-size:13px;">Copy my answers</button>
+  <p id="copyFieldsNote" style="font-size:12px;color:var(--muted);margin-top:12px;">This box is just scratch space in your browser, it won't save anything. Click "Copy my answers" once you're done, then paste it into a Google Doc, Notes app, or wherever your workflows live.</p>
+
+  <div class="article-eyebrow">Copy And Paste</div>
+  <h2>The blank template</h2>
+  <p>Prefer to paste straight into a doc? Here's the same three parts as one block you can copy and fill in directly.</p>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Trigger, Action, Owner Template</div>
+    <pre id="masterTemplate">WORKFLOW NAME: [name this workflow, e.g. "New lead follow-up"]
+
+1. TRIGGER
+This starts when: [the one specific event, not a vague category].
+
+2. ACTION
+AI automatically: [the one thing it does, and the result it produces].
+
+3. OWNER
+Before this is used, [name/role] checks: [exactly what they're checking, e.g. accuracy, tone, whether a price was mentioned].
+
+Only after this runs cleanly for a while: consider adding a branch, another tool, or another AI step.</pre>
+    <button class="copy-btn" onclick="copyBlock('masterTemplate', this)">Copy template</button>
+  </div>
+
+  <div class="article-eyebrow">See It Filled In</div>
+  <h2>Example: a new lead arrives</h2>
+  <p>Here's the same template, filled in for the example from the video: a lead comes in and needs a fast, accurate first response.</p>
+
+  <div class="example-block">
+    <div class="example-row">
+      <div class="example-label">1. Trigger</div>
+      <p>A new lead arrives, whether that's a form submission, a DM, or a missed call that gets logged.</p>
+    </div>
+    <div class="example-row">
+      <div class="example-label">2. Action</div>
+      <p>AI reads the lead's message, summarizes what they're actually asking for, and creates the CRM (customer relationship management) task automatically, so nothing sits unassigned.</p>
+    </div>
+    <div class="example-row">
+      <div class="example-label">3. Owner</div>
+      <p>The salesperson on duty reviews the summary and approves the first reply before it's sent. They're checking that the summary is accurate and that the reply matches how the business actually talks to leads.</p>
+    </div>
+  </div>
+
+  <div class="article-eyebrow print-fresh-page">Quick Start</div>
+  <h2>Build your first workflow this week</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>Pick one recurring task</h3><p>Something that already happens often enough to be worth automating, not a hypothetical.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>Name the exact trigger</h3><p>Not "when things come in", the one specific event: which form, which inbox, which channel.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>Give AI exactly one action</h3><p>Resist the urge to make it do three things at once. One action, one clear result.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content"><h3>Assign one human owner</h3><p>A specific person, not "the team", who approves before anything goes out.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content"><h3>Run it for a week before adding anything</h3><p>Only add branches, extra tools, or extra AI agents once the simple version has proven itself.</p></div>
+    </div>
+  </div>
+
+  <ul class="checklist-simple">
+    <li>Could you explain this workflow to your team in one sentence?</li>
+    <li>Is there exactly one trigger, one action, and one owner, not several of each?</li>
+    <li>Does a named person approve it, not "the system"?</li>
+  </ul>
+
+  <div class="final-line">The best automation is the one your team can explain in a sentence.</div>
+
+</div>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h2>Want more guides like this?</h2>
+    <p>Join our free list, free AI guides, tools and strategies for small business owners, straight to your inbox.</p>
+    <a href="/#waitlist" class="btn-primary">Get free access ✦</a>
+  </div>
+</div>
+
+<div class="related">
+  <h2>More resources</h2>
+  <a href="/resources/ai-sop-template/">The AI SOP Template</a>
+  <a href="/resources/business-ai-prompt-framework/">The Business AI Prompt Framework</a>
+  <a href="/resources/">← Back to all resources</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="footer-logo-text">AI for Small Businesses</span>
+      <span class="footer-logo-sub">by Banana Digital</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="/#what">What we do</a>
+    <a href="/resources/">Resources</a>
+    <a href="https://bananadigital.co" target="_blank">Banana Digital</a>
+  </div>
+  <div class="footer-copy">© 2026 Banana Digital. All rights reserved.</div>
+</footer>
+
+<script>
+function downloadArticlePdf() {
+  window.print();
+}
+function shareArticle(btn) {
+  const shareData = { title: document.title, url: window.location.href };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+    return;
+  }
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const original = btn.innerHTML;
+    btn.textContent = 'Link copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+function copyBlock(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
+}
+function flashCopied(btn) {
+  const original = btn.textContent;
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+function copyFields(btn) {
+  const fields = [
+    ['1. Trigger', 'taoTrigger'],
+    ['2. Action', 'taoAction'],
+    ['3. Owner', 'taoOwner']
+  ];
+  const text = fields
+    .map(([label, id]) => `${label}\n${document.getElementById(id).value.trim() || '(not answered)'}`)
+    .join('\n\n');
+  navigator.clipboard.writeText(text).then(() => {
+    flashCopied(btn);
+    const note = document.getElementById('copyFieldsNote');
+    const original = note.textContent;
+    note.textContent = 'Copied! Now open a Google Doc, your Notes app, or wherever your workflows live, and paste it in (Ctrl+V or Cmd+V).';
+    note.style.color = 'var(--dark)';
+    note.style.fontWeight = '600';
+    setTimeout(() => { note.textContent = original; note.style.color = ''; note.style.fontWeight = ''; }, 6000);
+  });
+}
+</script>
+
+</body>
+</html>
