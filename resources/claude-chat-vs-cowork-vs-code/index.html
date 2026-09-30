@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Chat vs Cowork vs Code: Which One Should You Actually Use?</title>
+<meta name="description" content="Claude Chat, Cowork and Claude Code do three different jobs. Here's the plain-English difference, what each one is genuinely good at, and which to open for the task in front of you. Written for non-technical small business owners.">
+<link rel="canonical" href="https://smallbizgrowth.ai/resources/claude-chat-vs-cowork-vs-code/">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Claude Chat vs Cowork vs Code: Which One Should You Actually Use?",
+  "description": "A plain-English guide to the difference between Claude Chat, Claude Cowork and Claude Code, and which one a non-technical small business owner should use for a given task.",
+  "url": "https://smallbizgrowth.ai/resources/claude-chat-vs-cowork-vs-code/",
+  "publisher": { "@type": "Organization", "name": "Banana Digital" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Choose Between Claude Chat, Cowork and Claude Code",
+  "description": "A four-step method for picking the right Claude tool for the task in front of you.",
+  "step": [
+    { "@type": "HowToStep", "name": "Look at where the work lives", "text": "If the information is in your head or on a website, use chat. If it is in files and folders on your computer, use the agent mode that works on folders." },
+    { "@type": "HowToStep", "name": "Check how long the job is", "text": "A single question or a short piece of writing belongs in chat. A job with many steps that would take you an afternoon belongs in agent mode." },
+    { "@type": "HowToStep", "name": "Decide how much you want to be involved", "text": "If you want to review each reply as it comes, use chat. If you want to hand over a whole job and come back to a result, use agent mode or Claude Code." },
+    { "@type": "HowToStep", "name": "Only reach for Claude Code when you need more rope", "text": "Claude Code runs longer, reaches further and asks permission less often. Use it for recurring automated jobs and AI agents, not for everyday document work." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the difference between Claude Chat, Claude Cowork and Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Claude Chat is for quick, one-off tasks: questions, research and writing, where you review each answer as it arrives. Cowork is the agent way of working: you point Claude at a folder on your computer and hand over a whole multi-step job, and it reads your files and produces work there. Claude Code does the same kind of autonomous work but runs longer, reaches further across your computer and tools, and asks permission less often, which is what makes it suited to recurring automations and AI agents." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Claude Cowork being discontinued?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The Cowork name is going away, but the capability is not. From 16 September 2026 Anthropic began folding Cowork's abilities into the main Claude chat interface, starting with Pro and Max plans. Anthropic's own product page now reads 'Claude Cowork is now just Claude.' You may still see the Cowork name during the transition. Everything described in this guide still works. It just increasingly lives inside Claude rather than as a separate product." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to be technical to use Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Claude Code has a desktop app as well as a command-line version, and you instruct it in plain English exactly as you would in chat. The name describes where it came from, not who it is for. The real reason to be careful with it is not difficulty. It is that it runs longer and acts more independently, so you want to be clear about what folder you have pointed it at." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Claude tool should a small business owner spend most of their time in?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For most small business owners, the agent way of working inside Claude (what was called Cowork) is where the real time savings are, because most business work already sits in files and folders: PDFs, spreadsheets, presentations and documents. Chat is best for quick questions and short pieces of writing. Claude Code is worth learning once you have a job you want to happen repeatedly without you." }
+    }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+
+:root {
+  --gold:    #D4A55A;
+  --amber:   #C4835A;
+  --dark:    #3A2C20;
+  --muted:   #9A8870;
+  --light:   #EED8A4;
+  --bg:      #FDFAF4;
+  --bg-alt:  #F0E8D4;
+  --surface: #FFFFFF;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:var(--dark);
+  border-bottom:1px solid rgba(212,165,90,0.25);
+  padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo svg { filter:drop-shadow(0 0 8px rgba(212,165,90,0.45)); }
+.nav-logo-text { font-size:14px; font-weight:700; color:var(--bg); }
+.nav-logo-sub  { font-size:9px; color:rgba(253,250,244,0.55); display:block; line-height:1; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--bg); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-links a.nav-cta {
+  padding:9px 22px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:13px; font-weight:700;
+  text-decoration:none; transition:background 0.2s;
+}
+.nav-links a.nav-cta:hover { background:var(--light); color:var(--dark); }
+@media(max-width:560px){
+  nav { padding:0 14px; }
+  .nav-logo { gap:8px; }
+  .nav-logo svg { width:24px; height:24px; }
+  .nav-logo-text { font-size:12px; line-height:1.2; display:block; }
+  .nav-logo-sub { display:none; }
+  .nav-links { gap:12px; }
+  .nav-links a { font-size:12px; }
+  .nav-links a.nav-cta { padding:8px 14px; font-size:12px; white-space:nowrap; }
+}
+
+.breadcrumb {
+  max-width:720px; margin:0 auto; padding:120px 24px 0;
+  font-size:12px; color:var(--muted);
+}
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--gold); }
+
+.article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
+.article-tags { display:flex; gap:8px; margin-bottom:16px; }
+.article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
+.article-tag.tool { color:var(--gold); }
+.article-header h1 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800; color:var(--dark);
+  line-height:1.15; letter-spacing:-0.5px; margin-bottom:16px;
+}
+.article-dek { font-size:17px; color:var(--muted); line-height:1.65; }
+.article-includes {
+  margin-top:20px; padding:16px 20px; background:var(--surface); border-radius:12px;
+  border:1px solid rgba(212,165,90,0.2); font-size:13px; color:var(--muted);
+}
+.article-includes strong { color:var(--dark); }
+
+.pdf-callout {
+  max-width:720px; margin:24px auto 0; padding:20px 24px;
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.3); border-radius:16px;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+}
+.pdf-callout-icon {
+  flex-shrink:0; width:40px; height:40px; border-radius:10px;
+  background:var(--gold); color:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+}
+.pdf-callout-body { flex:1 1 240px; min-width:200px; }
+.pdf-callout-title { font-size:14px; font-weight:800; color:var(--dark); display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+.pdf-callout-badge {
+  font-size:10px; font-weight:800; letter-spacing:0.5px; color:var(--surface);
+  background:var(--amber); padding:2px 8px; border-radius:100px;
+}
+.pdf-callout-sub { font-size:13px; color:var(--muted); margin:0; }
+.pdf-callout-actions { display:flex; gap:10px; flex-shrink:0; }
+.pdf-btn {
+  display:inline-flex; align-items:center; gap:7px; padding:10px 18px;
+  border-radius:100px; font-family:'Manrope',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; border:none; transition:all 0.15s; white-space:nowrap;
+}
+.pdf-btn-download { background:var(--gold); color:var(--dark); }
+.pdf-btn-download:hover { background:#E8C070; }
+.pdf-btn-share { background:var(--surface); color:var(--dark); border:1.5px solid rgba(58,44,32,0.15); }
+.pdf-btn-share:hover { border-color:var(--gold); color:var(--amber); }
+.pdf-btn-share.copied { background:#7CB87C; color:#1a3a1a; border-color:transparent; }
+@media (max-width:520px) {
+  .pdf-callout { padding:18px; }
+  .pdf-callout-actions { width:100%; }
+  .pdf-btn { flex:1; justify-content:center; }
+}
+.print-footer { display:none; }
+
+@media print {
+  @page { size:A4; margin:18mm 18mm 28mm 18mm; }
+  nav, .breadcrumb, .pdf-callout, .article-cta, .related,
+  .copy-btn, .tool-finder, footer { display:none !important; }
+  body { background:#fff; color:#2A1F16; }
+  a { color:inherit; text-decoration:none; }
+
+  .print-footer {
+    display:block; position:fixed; left:0; right:0; bottom:0;
+    background:#fff; padding:10px 0 0; margin:0;
+    border-top:1px solid rgba(154,136,112,0.35);
+  }
+  .print-footer-row {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .print-footer-brand { display:flex; align-items:center; gap:8px; }
+  .print-footer-text { font-size:11px; font-weight:700; color:var(--muted); display:block; }
+  .print-footer-sub { font-size:9px; color:rgba(154,136,112,0.75); display:block; }
+  .print-footer-copy { font-size:10px; color:rgba(154,136,112,0.75); text-align:right; }
+  .print-footer svg polygon { fill:var(--amber); }
+
+  h2, h3, .article-eyebrow {
+    break-after:avoid-page; page-break-after:avoid;
+  }
+  .callout, .step-item, tr, .copy-block,
+  .compare-table, .final-line, .pick-row {
+    break-inside:avoid-page; page-break-inside:avoid;
+  }
+  .print-fresh-page { break-before:page; page-break-before:always; }
+
+  .article-body h2 { border-bottom:2px solid var(--gold); padding-bottom:8px; }
+  .step-num { background:var(--amber) !important; color:#fff !important; }
+  .callout { border:1px solid rgba(196,131,90,0.4) !important; background:#FBF3E3 !important; }
+
+  .copy-block { background:#fff !important; border:1px solid rgba(58,44,32,0.2) !important; }
+  .copy-block-label { color:var(--amber) !important; }
+  .copy-block pre { color:#2A1F16 !important; }
+
+  .compare-table th { background:var(--amber) !important; color:#fff !important; }
+  .compare-table td { background:#fff !important; }
+  .compare-table tr:nth-child(odd) td { background:#FBF3E3 !important; }
+}
+
+.article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-body h2 {
+  font-size:24px; font-weight:800; color:var(--dark); margin:44px 0 8px; letter-spacing:-0.3px;
+}
+.article-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:44px 0 6px; }
+.article-eyebrow + h2 { margin-top:0; }
+.article-body h3 {
+  font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
+}
+.article-body p { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:16px; }
+.article-body ul, .article-body ol { margin:0 0 16px 22px; }
+.article-body li { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:8px; }
+
+.callout {
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.25);
+  border-radius:12px; padding:20px 24px; margin:24px 0;
+}
+.callout p { margin-bottom:0; font-size:14px; }
+.callout p strong { color:var(--dark); }
+.callout p + p { margin-top:12px; }
+
+/* Comparison table */
+.compare-table { width:100%; border-collapse:collapse; margin:20px 0 8px; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(58,44,32,0.06); }
+.compare-table th { background:var(--dark); color:var(--bg); font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:12px 14px; text-align:left; }
+.compare-table td { padding:14px; font-size:14px; color:#4A3A2A; border-bottom:1px solid rgba(58,44,32,0.08); background:var(--surface); vertical-align:top; }
+.compare-table tr:nth-child(odd) td { background:var(--bg-alt); }
+.compare-table td:first-child { font-weight:700; color:var(--dark); white-space:nowrap; }
+@media (max-width:600px) {
+  .compare-table th, .compare-table td { padding:10px; font-size:13px; }
+  .compare-table td:first-child { white-space:normal; }
+}
+
+/* Tool cards */
+.tool-card {
+  background:var(--surface); border:1px solid rgba(212,165,90,0.25); border-radius:16px;
+  padding:24px 26px; margin:20px 0;
+}
+.tool-card-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; flex-wrap:wrap; }
+.tool-card-num {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--gold); color:var(--dark);
+  display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800;
+}
+.tool-card-name { font-size:19px; font-weight:800; color:var(--dark); }
+.tool-card-for { font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--amber); margin-bottom:12px; }
+.tool-card p { font-size:14.5px; margin-bottom:12px; }
+.tool-card p:last-child { margin-bottom:0; }
+
+/* Pick-one rows */
+.pick-list { margin:22px 0; }
+.pick-row {
+  display:flex; gap:14px; align-items:baseline; padding:13px 0;
+  border-bottom:1px solid rgba(58,44,32,0.08);
+}
+.pick-row:last-child { border-bottom:none; }
+.pick-q { flex:1 1 auto; font-size:14.5px; color:#4A3A2A; }
+.pick-a {
+  flex-shrink:0; font-size:11.5px; font-weight:800; letter-spacing:0.5px;
+  color:var(--dark); background:var(--light); padding:4px 12px; border-radius:100px;
+  white-space:nowrap;
+}
+@media (max-width:520px) {
+  .pick-row { flex-direction:column; gap:6px; }
+  .pick-a { align-self:flex-start; }
+}
+
+
+/* Tool finder */
+.tool-finder {
+  background:var(--dark); border-radius:18px; padding:30px 28px; margin:24px 0;
+}
+.tool-finder-eyebrow {
+  font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:10px;
+}
+.tf-q { font-size:19px; font-weight:800; color:var(--bg); line-height:1.35; margin-bottom:18px; }
+.tf-options { display:flex; flex-direction:column; gap:10px; }
+.tf-opt {
+  text-align:left; width:100%; padding:15px 20px; border-radius:12px;
+  background:rgba(253,250,244,0.07); border:1.5px solid rgba(212,165,90,0.3);
+  color:var(--bg); font-family:'Manrope',sans-serif; font-size:14.5px; font-weight:600;
+  cursor:pointer; transition:all 0.15s; line-height:1.45;
+}
+.tf-opt:hover { background:rgba(212,165,90,0.16); border-color:var(--gold); }
+.tf-opt:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+.tf-answer { display:none; }
+.tf-answer.show { display:block; }
+.tf-answer-label { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.tf-answer-name { font-size:26px; font-weight:800; color:var(--bg); margin-bottom:10px; letter-spacing:-0.4px; }
+.tf-answer p { font-size:14.5px; color:rgba(253,250,244,0.72); line-height:1.7; margin-bottom:18px; }
+.tf-restart {
+  padding:9px 20px; background:transparent; border:1.5px solid rgba(253,250,244,0.25);
+  color:rgba(253,250,244,0.75); border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:700; cursor:pointer; transition:all 0.15s;
+}
+.tf-restart:hover { border-color:var(--gold); color:var(--gold); }
+@media (prefers-reduced-motion:reduce) { .tf-opt { transition:none; } }
+
+/* Copy blocks */
+.copy-block {
+  position:relative; background:var(--dark); border-radius:14px; padding:24px 24px 20px; margin:20px 0;
+}
+.copy-block-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.copy-block pre {
+  white-space:pre-wrap; font-family:'Manrope',sans-serif; font-size:13.5px; line-height:1.75;
+  color:rgba(253,250,244,0.9);
+}
+.copy-btn {
+  margin-top:16px; padding:9px 18px; background:var(--gold); color:var(--dark);
+  border:none; border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:800; cursor:pointer; transition:all 0.15s;
+}
+.copy-btn:hover { background:#E8C070; }
+.copy-btn.copied { background:#7CB87C; color:#1a3a1a; }
+
+/* Quick start steps */
+.step-list { counter-reset:step; margin:24px 0; }
+.step-item { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+.step-num {
+  flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;
+}
+.step-content h3 { margin:0 0 4px; }
+.step-content p { margin-bottom:0; }
+
+.checklist-simple { list-style:none; margin:0 0 16px; }
+.checklist-simple li { display:flex; gap:10px; font-size:15px; color:#4A3A2A; margin-bottom:10px; }
+.checklist-simple li::before { content:'✓'; color:var(--gold); font-weight:800; flex-shrink:0; }
+
+.final-line {
+  text-align:center; font-size:18px; font-weight:800; color:var(--dark);
+  background:var(--light); border-radius:12px; padding:20px; margin:28px 0 0;
+}
+
+.article-cta { max-width:720px; margin:48px auto 0; padding:0 24px; }
+.article-cta-box { background:#2A1F16; border-radius:20px; padding:40px 32px; text-align:center; }
+.article-cta-box h2 { color:var(--bg); font-size:22px; font-weight:800; margin-bottom:10px; }
+.article-cta-box p { color:rgba(253,250,244,0.6); font-size:14px; margin-bottom:20px; }
+.btn-primary {
+  padding:14px 32px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:14px; font-weight:800; text-decoration:none;
+  display:inline-block; transition:all 0.2s;
+}
+.btn-primary:hover { background:#E8C070; transform:translateY(-1px); }
+
+.related { max-width:720px; margin:56px auto 0; padding:32px 24px 0; border-top:1px solid rgba(58,44,32,0.1); }
+.related h2 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:16px; }
+.related a { display:block; font-size:15px; font-weight:700; color:var(--dark); text-decoration:none; margin-bottom:8px; }
+.related a:hover { color:var(--gold); }
+
+footer {
+  background:var(--dark); padding:40px 24px; margin-top:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; }
+.footer-logo-text { font-size:13px; font-weight:700; color:var(--bg); }
+.footer-logo-sub  { font-size:9px; color:rgba(253,250,244,0.4); display:block; margin-top:2px; }
+.footer-copy { font-size:11px; color:rgba(253,250,244,0.35); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:11px; color:rgba(253,250,244,0.45); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+</style>
+</head>
+<body>
+
+<div class="print-footer">
+  <div class="print-footer-row">
+    <div class="print-footer-brand">
+      <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+      <div>
+        <span class="print-footer-text">AI for Small Businesses</span>
+        <span class="print-footer-sub">smallbizgrowth.ai/resources/claude-chat-vs-cowork-vs-code/</span>
+      </div>
+    </div>
+    <span class="print-footer-copy">© 2026 Banana Digital</span>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="30" height="30" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="nav-logo-text">AI for Small Businesses</span>
+      <span class="nav-logo-sub">by Banana Digital</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/resources/">Resources</a>
+    <a href="https://link.bananadigital.com.au/widget/booking/UA18tOy6qNeAuB4NQ2tc" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/resources/">Resources</a> / Guide</div>
+
+<div class="article-header">
+  <div class="article-tags"><span class="article-tag">Guide</span><span class="article-tag tool">Claude</span></div>
+  <h1>Claude Chat vs Cowork vs Code: Which One Should You Actually Use?</h1>
+  <p class="article-dek">Three names, three different jobs, and almost nobody explains the difference in plain English. Here's what each one is genuinely good at, and how to tell in about five seconds which one to open for the task in front of you.</p>
+  <div class="article-includes"><strong>Inside:</strong> a side-by-side comparison, what each tool is actually for, a pick-one cheat sheet for common business tasks, copy-and-paste starter prompts, and a first-week plan.</div>
+</div>
+
+<div class="pdf-callout">
+  <div class="pdf-callout-icon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg>
+  </div>
+  <div class="pdf-callout-body">
+    <div class="pdf-callout-title">Get the full guide as a PDF <span class="pdf-callout-badge">FREE</span></div>
+    <p class="pdf-callout-sub">Save it, print it, read it offline. It's yours.</p>
+  </div>
+  <div class="pdf-callout-actions">
+    <button class="pdf-btn pdf-btn-download" onclick="downloadArticlePdf()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download PDF
+    </button>
+    <button class="pdf-btn pdf-btn-share" id="shareBtn" onclick="shareArticle(this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.1M8.3 13.3l7.4 4.1"/></svg>
+      Share
+    </button>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="article-eyebrow">Read This First</div>
+  <h2>One thing changed recently, and it's good news</h2>
+  <p>If you've been confused about where Cowork fits, you weren't being slow. Anthropic changed it.</p>
+  <p>From <strong>16 September 2026</strong>, Cowork stopped being a separate product and started being folded into the main Claude app. Anthropic's own product page now says it plainly: <em>"Claude Cowork is now just Claude."</em> The rollout began with Pro and Max plans, with others following, so depending on your plan you may still see the Cowork name for a while during the changeover.</p>
+  <div class="callout">
+    <p><strong>What this means for you:</strong> nothing you'll learn here is wasted. The <em>way of working</em> that Cowork introduced (pointing Claude at a folder on your computer and handing over a whole job) is not going away. It's becoming a normal part of Claude. Only the separate name is disappearing.</p>
+    <p><strong>What still hasn't merged:</strong> Claude Code. It remains its own separate thing, and it's still the most capable of the three.</p>
+  </div>
+  <p>So the honest way to think about it today is <strong>two tools and two gears</strong>: Claude (which has a quick gear and an agent gear), and Claude Code. This guide walks all three, because the three names are still what you'll see and hear.</p>
+
+  <div class="article-eyebrow">The Short Answer</div>
+  <h2>The difference in one table</h2>
+
+  <table class="compare-table">
+    <tr><th></th><th>Claude Chat</th><th>Cowork (agent mode)</th><th>Claude Code</th></tr>
+    <tr>
+      <td>Best for</td>
+      <td>Quick questions, research, short writing</td>
+      <td>Real document work across your files</td>
+      <td>Big, repeating, mostly hands-off jobs</td>
+    </tr>
+    <tr>
+      <td>Where the work lives</td>
+      <td>In the conversation</td>
+      <td>In a folder on your computer</td>
+      <td>Across your computer and connected tools</td>
+    </tr>
+    <tr>
+      <td>How long it runs</td>
+      <td>Seconds</td>
+      <td>Minutes</td>
+      <td>Long stretches, largely unattended</td>
+    </tr>
+    <tr>
+      <td>How involved you are</td>
+      <td>You read every reply</td>
+      <td>You set the job, then review the result</td>
+      <td>You set it going and check back</td>
+    </tr>
+    <tr>
+      <td>Asks permission</td>
+      <td>Every step is yours</td>
+      <td>Often</td>
+      <td>Less often, by design</td>
+    </tr>
+    <tr>
+      <td>Feels like</td>
+      <td>A very fast researcher</td>
+      <td>A capable colleague</td>
+      <td>A colleague you've stopped supervising</td>
+    </tr>
+  </table>
+
+  <div class="article-eyebrow">One By One</div>
+  <h2>What each one is actually for</h2>
+
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">1</div>
+      <div class="tool-card-name">Claude Chat</div>
+    </div>
+    <div class="tool-card-for">Quick, one-off, in-and-out</div>
+    <p>This is the one most people already know: you open Claude, ask something, and read the answer. It's built for tasks that start and finish inside a single conversation: a question you need answered, a bit of research, a first draft of an email or a social post.</p>
+    <p>It's easy to dismiss chat as the beginner option. It isn't. Skills and connectors work here too, which means Claude can reach your other tools and follow your own saved instructions about how you like things written. If you want a document produced a particular way, consistently, chat handles that well.</p>
+    <p><strong>Use it when:</strong> the whole job fits in one conversation and you want to see each answer as it arrives.</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">2</div>
+      <div class="tool-card-name">Cowork, now agent mode inside Claude</div>
+    </div>
+    <div class="tool-card-for">Where most business owners get the real hours back</div>
+    <p>This is the one worth understanding properly, because it's where the actual time savings live for most small businesses. It's built for real knowledge work: PDFs, spreadsheets, presentations and documents, the stuff your business already runs on.</p>
+    <p>Two things make it genuinely different from chat.</p>
+    <p><strong>First, it works directly on the files and folders on your computer.</strong> You point it at a folder, and it reads what's in there, understands it, and produces new work in that same place. You're not copying text into a chat box and pasting results back out. It's working where your files already are.</p>
+    <p><strong>Second, it handles big jobs on its own.</strong> Give it something that would take you an afternoon and it breaks the work into a task list and moves through it, checking things off as it goes. You can watch it work, but you don't need to sit there steering every step.</p>
+    <p>Put those together and it stops feeling like a chatbot and starts feeling like working with a capable colleague, one who reads the whole folder before starting.</p>
+    <p><strong>Use it when:</strong> the information is already in files, and the job has more than a couple of steps.</p>
+  </div>
+
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">3</div>
+      <div class="tool-card-name">Claude Code</div>
+    </div>
+    <div class="tool-card-for">More rope, for jobs that should run without you</div>
+    <p>The name puts people off, and it shouldn't. Yes, it was built for developers, and yes, there's a version that runs in a terminal window. But there's also a desktop app, and you instruct it in plain English exactly as you would anywhere else. The name describes where it came from, not who it's for.</p>
+    <p>The simplest way to think about it: <strong>it's agent mode on steroids.</strong> More powerful, more autonomous, runs for longer, and reaches more things without stopping to ask you first.</p>
+    <p>That last part is the real difference, and it's the reason it's worth treating with a bit of respect. It isn't harder to use. It just does more between check-ins, which is exactly what you want when you're building something that should happen repeatedly without you, and exactly why you want to be deliberate about which folder you've pointed it at.</p>
+    <p><strong>Use it when:</strong> you want a job to keep happening without you having to start it each time: recurring reports, ongoing automations, AI agents that run on their own.</p>
+  </div>
+
+  <div class="article-eyebrow">Pick One</div>
+  <h2>Which one do you need right now?</h2>
+  <p>Two questions, about ten seconds. Answer for the actual task sitting in front of you.</p>
+
+  <div class="tool-finder">
+    <div id="tfQ1">
+      <div class="tool-finder-eyebrow">Question 1 of 2</div>
+      <div class="tf-q">Where does the work live right now?</div>
+      <div class="tf-options">
+        <button class="tf-opt" onclick="tfAnswer('chat')">In my head, or somewhere on the web. I just need something written, answered or researched.</button>
+        <button class="tf-opt" onclick="tfStep2()">In files and folders on my computer. Documents, spreadsheets, PDFs, presentations.</button>
+      </div>
+    </div>
+
+    <div id="tfQ2" style="display:none;">
+      <div class="tool-finder-eyebrow">Question 2 of 2</div>
+      <div class="tf-q">Does this need to keep happening without you starting it each time?</div>
+      <div class="tf-options">
+        <button class="tf-opt" onclick="tfAnswer('cowork')">No, it's a one-off job. I want it done properly this once.</button>
+        <button class="tf-opt" onclick="tfAnswer('code')">Yes, it's a repeating job I'd like to stop doing by hand.</button>
+      </div>
+    </div>
+
+    <div id="tfAnswerBox" class="tf-answer">
+      <div class="tf-answer-label">Open this one</div>
+      <div class="tf-answer-name" id="tfName"></div>
+      <p id="tfWhy"></p>
+      <button class="tf-restart" onclick="tfRestart()">Start again</button>
+    </div>
+  </div>
+
+  <div class="article-eyebrow print-fresh-page">Cheat Sheet</div>
+  <h2>Which one for the thing in front of you</h2>
+  <p>Common small business tasks, and where each one belongs.</p>
+
+  <div class="pick-list">
+    <div class="pick-row"><div class="pick-q">"Write me three captions for this week's promotion."</div><div class="pick-a">Chat</div></div>
+    <div class="pick-row"><div class="pick-q">"What should I know before my meeting with this supplier?"</div><div class="pick-a">Chat</div></div>
+    <div class="pick-row"><div class="pick-q">"Draft a reply to this customer complaint."</div><div class="pick-a">Chat</div></div>
+    <div class="pick-row"><div class="pick-q">"Read these three quotes and tell me which is best value."</div><div class="pick-a">Agent mode</div></div>
+    <div class="pick-row"><div class="pick-q">"Turn this folder of receipts into one expense summary."</div><div class="pick-a">Agent mode</div></div>
+    <div class="pick-row"><div class="pick-q">"Go through last quarter's numbers and build me a plan."</div><div class="pick-a">Agent mode</div></div>
+    <div class="pick-row"><div class="pick-q">"Tidy up this messy folder and name everything properly."</div><div class="pick-a">Agent mode</div></div>
+    <div class="pick-row"><div class="pick-q">"Build me the same report every month, automatically."</div><div class="pick-a">Claude Code</div></div>
+    <div class="pick-row"><div class="pick-q">"Keep an eye on this and tell me when something changes."</div><div class="pick-a">Claude Code</div></div>
+  </div>
+
+  <div class="callout"><p><strong>The five-second test:</strong> ask yourself where the work currently lives. In your head, or on a website? That's chat. In files and folders on your computer? That's agent mode. Does it need to keep happening without you starting it? That's Claude Code.</p></div>
+
+  <div class="article-eyebrow">Copy And Paste</div>
+  <h2>Three starter prompts, one for each</h2>
+  <p>The fastest way to feel the difference is to run one of each, today, on something real.</p>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Start in chat</div>
+    <pre id="promptChat">I run a [type of business] in [location]. Our customers are usually [who they are, in a sentence].
+
+Write me three short social posts about [what you want to promote this week]. Keep the tone [how you actually sound - e.g. warm and straightforward, not salesy]. No hashtags, no emojis.</pre>
+    <button class="copy-btn" onclick="copyBlock('promptChat', this)">Copy prompt</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Start in agent mode (point it at a folder first)</div>
+    <pre id="promptCowork">Read every file in this folder and give me a one-page summary I could hand to someone who has never seen it.
+
+Tell me: what's working, what isn't, and the three things I should do next. Save it in this folder as a new document. If anything in the files contradicts anything else, flag it rather than picking one.</pre>
+    <button class="copy-btn" onclick="copyBlock('promptCowork', this)">Copy prompt</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Start in Claude Code</div>
+    <pre id="promptCode">Every month I do the same thing by hand: [describe the job, step by step, as if explaining it to a new hire].
+
+Set this up so it can be done again next month without me rebuilding it. Walk me through what you're doing in plain English as you go, and ask me before anything gets deleted or overwritten.</pre>
+    <button class="copy-btn" onclick="copyBlock('promptCode', this)">Copy prompt</button>
+  </div>
+
+  <div class="article-eyebrow">Quick Start</div>
+  <h2>Your first week</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>Spend day one in chat only</h3><p>Ask it the things you'd normally google. Get a feel for how specific you need to be.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>Make a practice folder</h3><p>Copy a handful of real documents into a new folder. Copies, not originals, so you can be fearless about it.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>Point agent mode at that folder</h3><p>Use the middle prompt above. Watch it build the task list. That moment is usually when it clicks.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content"><h3>Find your one repeating job</h3><p>The thing you do every month that you resent. That's your Claude Code job, and it's the one worth the setup.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content"><h3>Write down what worked</h3><p>Whatever prompt got a good result, save it. That's the start of a system rather than a lucky day.</p></div>
+    </div>
+  </div>
+
+  <ul class="checklist-simple">
+    <li>Do you know which of the three you'd open for your next task?</li>
+    <li>Have you pointed Claude at a real folder at least once?</li>
+    <li>Have you identified the one job you'd most like to stop doing by hand?</li>
+  </ul>
+
+  <div class="final-line">Chat is for asking. Agent mode is for handing over. Claude Code is for not having to ask again.</div>
+
+</div>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h2>Want more guides like this?</h2>
+    <p>Join our free list, free AI guides, tools and strategies for small business owners, straight to your inbox.</p>
+    <a href="/#waitlist" class="btn-primary">Get free access ✦</a>
+  </div>
+</div>
+
+<div class="related">
+  <h2>More resources</h2>
+  <a href="/resources/claude-weekly-workflow-guide/">The Weekly Claude Workflow Guide</a>
+  <a href="/resources/claude-code-automate-reports-spreadsheets/">Claude Code for Small Business Owners</a>
+  <a href="/resources/business-ai-prompt-framework/">The Business AI Prompt Framework</a>
+  <a href="/resources/">← Back to all resources</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="footer-logo-text">AI for Small Businesses</span>
+      <span class="footer-logo-sub">by Banana Digital</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="/#what">What we do</a>
+    <a href="/resources/">Resources</a>
+    <a href="https://bananadigital.co" target="_blank">Banana Digital</a>
+  </div>
+  <div class="footer-copy">© 2026 Banana Digital. All rights reserved.</div>
+</footer>
+
+<script>
+function tfStep2() {
+  document.getElementById('tfQ1').style.display = 'none';
+  document.getElementById('tfQ2').style.display = 'block';
+}
+function tfAnswer(which) {
+  const answers = {
+    chat: ['Claude Chat',
+      "Open Claude and just ask. The whole job fits in one conversation, and you'll want to read each answer as it arrives rather than hand the work over. Skills and connectors work here too, so it can still follow your saved instructions about how you like things written."],
+    cowork: ['Agent mode in Claude',
+      "This is the old Cowork way of working. Point Claude at the folder those files are already sitting in, describe the job, and let it read everything before it starts. It'll break the work into a task list and move through it while you get on with something else."],
+    code: ['Claude Code',
+      "Worth the extra setup. Claude Code runs longer, reaches further, and asks permission less often, which is exactly what a repeating job needs. Set it up once, properly, and stop rebuilding it every month. You don't need to be technical, but do be clear about which folder you've pointed it at."]
+  };
+  const [name, why] = answers[which];
+  document.getElementById('tfQ1').style.display = 'none';
+  document.getElementById('tfQ2').style.display = 'none';
+  document.getElementById('tfName').textContent = name;
+  document.getElementById('tfWhy').textContent = why;
+  document.getElementById('tfAnswerBox').classList.add('show');
+}
+function tfRestart() {
+  document.getElementById('tfAnswerBox').classList.remove('show');
+  document.getElementById('tfQ2').style.display = 'none';
+  document.getElementById('tfQ1').style.display = 'block';
+}
+function downloadArticlePdf() {
+  window.print();
+}
+function shareArticle(btn) {
+  const shareData = { title: document.title, url: window.location.href };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+    return;
+  }
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const original = btn.innerHTML;
+    btn.textContent = 'Link copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+function copyBlock(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
+}
+function flashCopied(btn) {
+  const original = btn.textContent;
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+</script>
+
+</body>
+</html>
