@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Small Business AI Toolkit: 5 Free AI Tools and What Each One Is Actually For</title>
+<meta name="description" content="ChatGPT, Claude, Gemini, NotebookLM (now Gemini Notebook) and Canva AI: what each free AI tool is best for, how a small business can actually use it, what the free plan gets you, and when a paid plan is worth it.">
+<link rel="canonical" href="https://smallbizgrowth.ai/resources/small-business-ai-toolkit/">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "The Small Business AI Toolkit: 5 Free AI Tools and What Each One Is Actually For",
+  "description": "A plain-English guide to five AI tools with free plans (ChatGPT, Claude, Gemini, NotebookLM / Gemini Notebook and Canva AI): what each is best for, real small business uses, free plan limits, and when to upgrade.",
+  "url": "https://smallbizgrowth.ai/resources/small-business-ai-toolkit/",
+  "dateModified": "2026-10-02",
+  "publisher": { "@type": "Organization", "name": "Banana Digital" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to Pick Your First AI Tool as a Small Business Owner",
+  "description": "A four-step method for choosing one free AI tool and getting real time back from it in your first week.",
+  "step": [
+    { "@type": "HowToStep", "name": "Name the task you hate most", "text": "Pick one recurring admin task you already resent doing, such as writing emails, reading long documents, or making social graphics." },
+    { "@type": "HowToStep", "name": "Match the task to one tool", "text": "Writing and quick drafts suit ChatGPT. Long documents and careful thinking suit Claude. Work that lives in Gmail and Google Drive suits Gemini. Questions about your own documents suit NotebookLM. Visual content suits Canva AI." },
+    { "@type": "HowToStep", "name": "Use the free plan for a week on that one task", "text": "Run the same task through the tool every time it comes up for a week, using a starter prompt, and note how much time it saves." },
+    { "@type": "HowToStep", "name": "Only upgrade when you hit a real limit", "text": "Pay for a plan only when the free plan's usage limits are actually stopping you on work that is already saving you time." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are ChatGPT, Claude, Gemini, NotebookLM and Canva AI really free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Each one has a genuinely free plan you can start using today without a credit card. But free means free to start, not unlimited. Every free plan has usage limits, and each tool also sells paid plans that raise those limits and unlock more features. For most small business owners the free plans are enough to learn the tool and save real time on one or two tasks." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is NotebookLM still available?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. In July 2026 Google renamed NotebookLM to Gemini Notebook. It is the same product: existing notebooks, sources and links carried over, and it still works as a standalone research tool as well as inside the Gemini app." }
+    },
+    {
+      "@type": "Question",
+      "name": "Which free AI tool should a small business owner start with?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Start with the tool that removes the task you already hate doing. If it is writing emails and drafts, start with ChatGPT. If it is reading long documents, start with Claude. If your business runs on Gmail and Google Drive, start with Gemini. If you need answers from your own documents, start with NotebookLM. If it is making social graphics, start with Canva AI. Do not sign up for all five at once." }
+    },
+    {
+      "@type": "Question",
+      "name": "When is it worth paying for an AI tool?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Upgrade when the free plan's limits are stopping you on work that is already saving you time, for example you keep running out of messages halfway through the working day. Paying before you have a proven use usually means paying for a tool you do not use." }
+    }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+
+:root {
+  --gold:    #D4A55A;
+  --amber:   #C4835A;
+  --dark:    #3A2C20;
+  --muted:   #9A8870;
+  --light:   #EED8A4;
+  --bg:      #FDFAF4;
+  --bg-alt:  #F0E8D4;
+  --surface: #FFFFFF;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:var(--dark);
+  border-bottom:1px solid rgba(212,165,90,0.25);
+  padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo svg { filter:drop-shadow(0 0 8px rgba(212,165,90,0.45)); }
+.nav-logo-text { font-size:14px; font-weight:700; color:var(--bg); }
+.nav-logo-sub  { font-size:9px; color:rgba(253,250,244,0.55); display:block; line-height:1; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--bg); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-links a.nav-cta {
+  padding:9px 22px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:13px; font-weight:700;
+  text-decoration:none; transition:background 0.2s;
+}
+.nav-links a.nav-cta:hover { background:var(--light); color:var(--dark); }
+@media(max-width:560px){
+  nav { padding:0 14px; }
+  .nav-logo { gap:8px; }
+  .nav-logo svg { width:24px; height:24px; }
+  .nav-logo-text { font-size:12px; line-height:1.2; display:block; }
+  .nav-logo-sub { display:none; }
+  .nav-links { gap:12px; }
+  .nav-links a { font-size:12px; }
+  .nav-links a.nav-cta { padding:8px 14px; font-size:12px; white-space:nowrap; }
+}
+
+.breadcrumb {
+  max-width:720px; margin:0 auto; padding:120px 24px 0;
+  font-size:12px; color:var(--muted);
+}
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--gold); }
+
+.article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
+.article-tags { display:flex; gap:8px; margin-bottom:16px; }
+.article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
+.article-tag.tool { color:var(--gold); }
+.article-header h1 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800; color:var(--dark);
+  line-height:1.15; letter-spacing:-0.5px; margin-bottom:16px;
+}
+.article-dek { font-size:17px; color:var(--muted); line-height:1.65; }
+.article-includes {
+  margin-top:20px; padding:16px 20px; background:var(--surface); border-radius:12px;
+  border:1px solid rgba(212,165,90,0.2); font-size:13px; color:var(--muted);
+}
+.article-includes strong { color:var(--dark); }
+
+.pdf-callout {
+  max-width:720px; margin:24px auto 0; padding:20px 24px;
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.3); border-radius:16px;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+}
+.pdf-callout-icon {
+  flex-shrink:0; width:40px; height:40px; border-radius:10px;
+  background:var(--gold); color:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+}
+.pdf-callout-body { flex:1 1 240px; min-width:200px; }
+.pdf-callout-title { font-size:14px; font-weight:800; color:var(--dark); display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+.pdf-callout-badge {
+  font-size:10px; font-weight:800; letter-spacing:0.5px; color:var(--surface);
+  background:var(--amber); padding:2px 8px; border-radius:100px;
+}
+.pdf-callout-sub { font-size:13px; color:var(--muted); margin:0; }
+.pdf-callout-actions { display:flex; gap:10px; flex-shrink:0; }
+.pdf-btn {
+  display:inline-flex; align-items:center; gap:7px; padding:10px 18px;
+  border-radius:100px; font-family:'Manrope',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; border:none; transition:all 0.15s; white-space:nowrap;
+}
+.pdf-btn-download { background:var(--gold); color:var(--dark); }
+.pdf-btn-download:hover { background:#E8C070; }
+.pdf-btn-share { background:var(--surface); color:var(--dark); border:1.5px solid rgba(58,44,32,0.15); }
+.pdf-btn-share:hover { border-color:var(--gold); color:var(--amber); }
+.pdf-btn-share.copied { background:#7CB87C; color:#1a3a1a; border-color:transparent; }
+@media (max-width:520px) {
+  .pdf-callout { padding:18px; }
+  .pdf-callout-actions { width:100%; }
+  .pdf-btn { flex:1; justify-content:center; }
+}
+.print-footer { display:none; }
+
+@media print {
+  @page { size:A4; margin:18mm 18mm 28mm 18mm; }
+  nav, .breadcrumb, .pdf-callout, .article-cta, .related,
+  .copy-btn, .tool-finder, footer { display:none !important; }
+  body { background:#fff; color:#2A1F16; }
+  a { color:inherit; text-decoration:none; }
+
+  .print-footer {
+    display:block; position:fixed; left:0; right:0; bottom:0;
+    background:#fff; padding:10px 0 0; margin:0;
+    border-top:1px solid rgba(154,136,112,0.35);
+  }
+  .print-footer-row {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .print-footer-brand { display:flex; align-items:center; gap:8px; }
+  .print-footer-text { font-size:11px; font-weight:700; color:var(--muted); display:block; }
+  .print-footer-sub { font-size:9px; color:rgba(154,136,112,0.75); display:block; }
+  .print-footer-copy { font-size:10px; color:rgba(154,136,112,0.75); text-align:right; }
+  .print-footer svg polygon { fill:var(--amber); }
+
+  h2, h3, .article-eyebrow {
+    break-after:avoid-page; page-break-after:avoid;
+  }
+  .callout, .step-item, tr, .copy-block,
+  .compare-table, .final-line, .pick-row {
+    break-inside:avoid-page; page-break-inside:avoid;
+  }
+  .print-fresh-page { break-before:page; page-break-before:always; }
+
+  .article-body h2 { border-bottom:2px solid var(--gold); padding-bottom:8px; }
+  .step-num { background:var(--amber) !important; color:#fff !important; }
+  .callout { border:1px solid rgba(196,131,90,0.4) !important; background:#FBF3E3 !important; }
+
+  .copy-block { background:#fff !important; border:1px solid rgba(58,44,32,0.2) !important; }
+  .copy-block-label { color:var(--amber) !important; }
+  .copy-block pre { color:#2A1F16 !important; }
+
+  .compare-table th { background:var(--amber) !important; color:#fff !important; }
+  .compare-table td { background:#fff !important; }
+  .compare-table tr:nth-child(odd) td { background:#FBF3E3 !important; }
+}
+
+.article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-body h2 {
+  font-size:24px; font-weight:800; color:var(--dark); margin:44px 0 8px; letter-spacing:-0.3px;
+}
+.article-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:44px 0 6px; }
+.article-eyebrow + h2 { margin-top:0; }
+.article-body h3 {
+  font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
+}
+.article-body p { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:16px; }
+.article-body ul, .article-body ol { margin:0 0 16px 22px; }
+.article-body li { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:8px; }
+
+.callout {
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.25);
+  border-radius:12px; padding:20px 24px; margin:24px 0;
+}
+.callout p { margin-bottom:0; font-size:14px; }
+.callout p strong { color:var(--dark); }
+.callout p + p { margin-top:12px; }
+
+/* Comparison table */
+.compare-table { width:100%; border-collapse:collapse; margin:20px 0 8px; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(58,44,32,0.06); }
+.compare-table th { background:var(--dark); color:var(--bg); font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:12px 14px; text-align:left; }
+.compare-table td { padding:14px; font-size:14px; color:#4A3A2A; border-bottom:1px solid rgba(58,44,32,0.08); background:var(--surface); vertical-align:top; }
+.compare-table tr:nth-child(odd) td { background:var(--bg-alt); }
+.compare-table td:first-child { font-weight:700; color:var(--dark); white-space:nowrap; }
+@media (max-width:600px) {
+  .compare-table th, .compare-table td { padding:10px; font-size:13px; }
+  .compare-table td:first-child { white-space:normal; }
+}
+
+/* Tool cards */
+.tool-card {
+  background:var(--surface); border:1px solid rgba(212,165,90,0.25); border-radius:16px;
+  padding:24px 26px; margin:20px 0;
+}
+.tool-card-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; flex-wrap:wrap; }
+.tool-card-num {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--gold); color:var(--dark);
+  display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800;
+}
+.tool-card-name { font-size:19px; font-weight:800; color:var(--dark); }
+.tool-card-for { font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--amber); margin-bottom:12px; }
+.tool-card p { font-size:14.5px; margin-bottom:12px; }
+.tool-card p:last-child { margin-bottom:0; }
+
+/* Pick-one rows */
+.pick-list { margin:22px 0; }
+.pick-row {
+  display:flex; gap:14px; align-items:baseline; padding:13px 0;
+  border-bottom:1px solid rgba(58,44,32,0.08);
+}
+.pick-row:last-child { border-bottom:none; }
+.pick-q { flex:1 1 auto; font-size:14.5px; color:#4A3A2A; }
+.pick-a {
+  flex-shrink:0; font-size:11.5px; font-weight:800; letter-spacing:0.5px;
+  color:var(--dark); background:var(--light); padding:4px 12px; border-radius:100px;
+  white-space:nowrap;
+}
+@media (max-width:520px) {
+  .pick-row { flex-direction:column; gap:6px; }
+  .pick-a { align-self:flex-start; }
+}
+
+
+/* Tool finder */
+.tool-finder {
+  background:var(--dark); border-radius:18px; padding:30px 28px; margin:24px 0;
+}
+.tool-finder-eyebrow {
+  font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  color:var(--gold); margin-bottom:10px;
+}
+.tf-q { font-size:19px; font-weight:800; color:var(--bg); line-height:1.35; margin-bottom:18px; }
+.tf-options { display:flex; flex-direction:column; gap:10px; }
+.tf-opt {
+  text-align:left; width:100%; padding:15px 20px; border-radius:12px;
+  background:rgba(253,250,244,0.07); border:1.5px solid rgba(212,165,90,0.3);
+  color:var(--bg); font-family:'Manrope',sans-serif; font-size:14.5px; font-weight:600;
+  cursor:pointer; transition:all 0.15s; line-height:1.45;
+}
+.tf-opt:hover { background:rgba(212,165,90,0.16); border-color:var(--gold); }
+.tf-opt:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+.tf-answer { display:none; }
+.tf-answer.show { display:block; }
+.tf-answer-label { font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+.tf-answer-name { font-size:26px; font-weight:800; color:var(--bg); margin-bottom:10px; letter-spacing:-0.4px; }
+.tf-answer p { font-size:14.5px; color:rgba(253,250,244,0.72); line-height:1.7; margin-bottom:18px; }
+.tf-restart {
+  padding:9px 20px; background:transparent; border:1.5px solid rgba(253,250,244,0.25);
+  color:rgba(253,250,244,0.75); border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:700; cursor:pointer; transition:all 0.15s;
+}
+.tf-restart:hover { border-color:var(--gold); color:var(--gold); }
+@media (prefers-reduced-motion:reduce) { .tf-opt { transition:none; } }
+
+/* Copy blocks */
+.copy-block {
+  position:relative; background:var(--dark); border-radius:14px; padding:24px 24px 20px; margin:20px 0;
+}
+.copy-block-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.copy-block pre {
+  white-space:pre-wrap; font-family:'Manrope',sans-serif; font-size:13.5px; line-height:1.75;
+  color:rgba(253,250,244,0.9);
+}
+.copy-btn {
+  margin-top:16px; padding:9px 18px; background:var(--gold); color:var(--dark);
+  border:none; border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:800; cursor:pointer; transition:all 0.15s;
+}
+.copy-btn:hover { background:#E8C070; }
+.copy-btn.copied { background:#7CB87C; color:#1a3a1a; }
+
+/* Quick start steps */
+.step-list { counter-reset:step; margin:24px 0; }
+.step-item { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+.step-num {
+  flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;
+}
+.step-content h3 { margin:0 0 4px; }
+.step-content p { margin-bottom:0; }
+
+.checklist-simple { list-style:none; margin:0 0 16px; }
+.checklist-simple li { display:flex; gap:10px; font-size:15px; color:#4A3A2A; margin-bottom:10px; }
+.checklist-simple li::before { content:'✓'; color:var(--gold); font-weight:800; flex-shrink:0; }
+
+.final-line {
+  text-align:center; font-size:18px; font-weight:800; color:var(--dark);
+  background:var(--light); border-radius:12px; padding:20px; margin:28px 0 0;
+}
+
+.article-cta { max-width:720px; margin:48px auto 0; padding:0 24px; }
+.article-cta-box { background:#2A1F16; border-radius:20px; padding:40px 32px; text-align:center; }
+.article-cta-box h2 { color:var(--bg); font-size:22px; font-weight:800; margin-bottom:10px; }
+.article-cta-box p { color:rgba(253,250,244,0.6); font-size:14px; margin-bottom:20px; }
+.btn-primary {
+  padding:14px 32px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:14px; font-weight:800; text-decoration:none;
+  display:inline-block; transition:all 0.2s;
+}
+.btn-primary:hover { background:#E8C070; transform:translateY(-1px); }
+
+.related { max-width:720px; margin:56px auto 0; padding:32px 24px 0; border-top:1px solid rgba(58,44,32,0.1); }
+.related h2 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:16px; }
+.related a { display:block; font-size:15px; font-weight:700; color:var(--dark); text-decoration:none; margin-bottom:8px; }
+.related a:hover { color:var(--gold); }
+
+footer {
+  background:var(--dark); padding:40px 24px; margin-top:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; }
+.footer-logo-text { font-size:13px; font-weight:700; color:var(--bg); }
+.footer-logo-sub  { font-size:9px; color:rgba(253,250,244,0.4); display:block; margin-top:2px; }
+.footer-copy { font-size:11px; color:rgba(253,250,244,0.35); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:11px; color:rgba(253,250,244,0.45); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+<style>
+/* Free vs paid box inside tool cards */
+.plan-split { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:16px 0 14px; }
+.plan-box { border-radius:12px; padding:14px 16px; background:var(--bg); border:1px solid rgba(58,44,32,0.08); }
+.plan-box.paid { background:var(--bg-alt); border-color:rgba(212,165,90,0.3); }
+.plan-label { font-size:10px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.plan-box.paid .plan-label { color:var(--amber); }
+.tool-card .plan-box p { font-size:13.5px; line-height:1.65; margin:0; }
+.tool-card ul { margin:0 0 12px 20px; }
+.tool-card li { font-size:14.5px; margin-bottom:6px; }
+.tool-card .copy-block { margin:14px 0 4px; }
+.name-note { font-size:12.5px; font-weight:600; color:var(--muted); }
+.price-stamp { font-size:12.5px; color:var(--muted); margin-top:-4px; }
+@media (max-width:600px) {
+  .plan-split { grid-template-columns:1fr; }
+  .compare-table.toolkit th:nth-child(3), .compare-table.toolkit td:nth-child(3) { display:none; }
+}
+@media print { .plan-box, .tool-card { break-inside:avoid-page; page-break-inside:avoid; } }
+</style>
+</head>
+<body>
+
+<div class="print-footer">
+  <div class="print-footer-row">
+    <div class="print-footer-brand">
+      <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+      <div>
+        <span class="print-footer-text">AI for Small Businesses</span>
+        <span class="print-footer-sub">smallbizgrowth.ai/resources/small-business-ai-toolkit/</span>
+      </div>
+    </div>
+    <span class="print-footer-copy">© 2026 Banana Digital</span>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="30" height="30" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="nav-logo-text">AI for Small Businesses</span>
+      <span class="nav-logo-sub">by Banana Digital</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/resources/">Resources</a>
+    <a href="https://link.bananadigital.com.au/widget/booking/UA18tOy6qNeAuB4NQ2tc" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/resources/">Resources</a> / Toolkit</div>
+
+<div class="article-header">
+  <div class="article-tags"><span class="article-tag">Toolkit</span><span class="article-tag tool">Multi-Tool</span></div>
+  <h1>The Small Business AI Toolkit: 5 Free AI Tools and What Each One Is Actually For</h1>
+  <p class="article-dek">ChatGPT, Claude, Gemini, NotebookLM and Canva AI. Five tools you can start using today without paying a cent, what each one is genuinely best at, and how to actually use it in your business, so you can pick one and get time back this week.</p>
+  <div class="article-includes"><strong>Inside:</strong> a side-by-side table, what each tool is best for, real ways to use it in a small business, what the free plan gets you (and its limits), when a paid plan is worth it, a copy-and-paste starter prompt for each, and a one-question tool picker.</div>
+</div>
+
+<div class="pdf-callout">
+  <div class="pdf-callout-icon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg>
+  </div>
+  <div class="pdf-callout-body">
+    <div class="pdf-callout-title">Get the toolkit as a PDF <span class="pdf-callout-badge">FREE</span></div>
+    <p class="pdf-callout-sub">Save it, print it, keep it next to your desk.</p>
+  </div>
+  <div class="pdf-callout-actions">
+    <button class="pdf-btn pdf-btn-download" onclick="downloadArticlePdf()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download PDF
+    </button>
+    <button class="pdf-btn pdf-btn-share" id="shareBtn" onclick="shareArticle(this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.1M8.3 13.3l7.4 4.1"/></svg>
+      Share
+    </button>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="article-eyebrow">Read This First</div>
+  <h2>"Free" means free to start, not unlimited</h2>
+  <p>Every tool in this toolkit has a genuinely free plan. You can sign up today, no credit card, and start saving time. That part is true.</p>
+  <p>But it's worth being straight with you about what "free" means here, so nothing catches you off guard:</p>
+  <div class="callout">
+    <p><strong>Every free plan has limits.</strong> You'll get a set amount of use, and when you hit it you'll be asked to wait (often a few hours) or upgrade. You may also get less access to the most powerful models and features.</p>
+    <p><strong>Every tool also sells paid plans.</strong> They raise those limits and unlock extra features. For the main tools here, the standard paid plan sits around US$20 a month.</p>
+    <p><strong>For most small business owners, free is enough to start.</strong> Learn one tool on the free plan, prove it saves you time, and only pay when the limits are genuinely getting in your way.</p>
+  </div>
+  <p class="price-stamp">Plan details and prices on this page are in US dollars and were checked on 2 October 2026. AI pricing changes often, so check the tool's own pricing page before you buy.</p>
+
+  <div class="article-eyebrow">At A Glance</div>
+  <h2>The five tools, side by side</h2>
+
+  <table class="compare-table toolkit">
+    <tr><th>Tool</th><th>Best for</th><th>Start here if…</th></tr>
+    <tr><td>ChatGPT</td><td>Drafting emails, summaries, turning messy notes into something useful</td><td>You spend too long writing</td></tr>
+    <tr><td>Claude</td><td>Long documents and thinking through detailed work</td><td>You're buried in contracts, reports or proposals</td></tr>
+    <tr><td>Gemini</td><td>Businesses that already run on Gmail, Docs and Drive</td><td>Your business lives in Google</td></tr>
+    <tr><td>NotebookLM</td><td>Getting answers from your own documents</td><td>You need to understand your own material fast</td></tr>
+    <tr><td>Canva AI</td><td>Turning ideas into basic visual content quickly</td><td>Social graphics eat your afternoons</td></tr>
+  </table>
+
+  <div class="article-eyebrow">One By One</div>
+  <h2>What each tool is for, and how to use it in your business</h2>
+
+  <!-- 1. ChatGPT -->
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">1</div>
+      <div class="tool-card-name">ChatGPT</div>
+    </div>
+    <div class="tool-card-for">Best for: writing, summarizing, cleaning up messy notes</div>
+    <p>The one most people have heard of, and for good reason. If you have to write something, ChatGPT will get you a solid first draft in seconds. It's also great at taking a mess (voice notes, scribbled meeting notes, a long email thread) and turning it into something clear.</p>
+    <p><strong>How to use it in your business:</strong></p>
+    <ul>
+      <li>Draft replies to customer emails and enquiries, in your tone</li>
+      <li>Summarize a long email thread before you reply to it</li>
+      <li>Turn meeting notes into a tidy list of actions and owners</li>
+      <li>Write first drafts of quotes, follow-ups and job descriptions</li>
+    </ul>
+    <div class="plan-split">
+      <div class="plan-box"><div class="plan-label">Free plan</div><p>Everyday chat, writing and file uploads. Usage is capped, and the most advanced models and features are limited, so busy days can hit the ceiling.</p></div>
+      <div class="plan-box paid"><div class="plan-label">Paid plans</div><p>A cheaper Go plan, Plus at about US$20/month, and Pro from US$100/month. Team plans are also available for businesses.</p></div>
+    </div>
+    <div class="copy-block">
+      <div class="copy-block-label">Starter prompt</div>
+      <pre id="pChatgpt">Here are my rough notes from today: [paste notes].
+
+Turn them into (1) a short summary I could send to my team, and (2) a list of next actions with who owns each one. Keep it plain and direct. If anything is unclear, list it as a question instead of guessing.</pre>
+      <button class="copy-btn" onclick="copyBlock('pChatgpt', this)">Copy prompt</button>
+    </div>
+  </div>
+
+  <!-- 2. Claude -->
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">2</div>
+      <div class="tool-card-name">Claude</div>
+    </div>
+    <div class="tool-card-for">Best for: long documents and detailed thinking</div>
+    <p>Claude shines when there's a lot to read, or when you want help thinking something through properly rather than just getting a quick answer. Hand it a 40-page contract, a supplier agreement or last year's numbers and ask it the questions you'd normally ask an advisor.</p>
+    <p><strong>How to use it in your business:</strong></p>
+    <ul>
+      <li>Read a contract or terms and flag what you should look at closely</li>
+      <li>Compare three supplier quotes and lay out the real differences</li>
+      <li>Think through a decision (a new hire, a price rise) step by step</li>
+      <li>Turn a long report into a one-page brief</li>
+    </ul>
+    <div class="plan-split">
+      <div class="plan-box"><div class="plan-label">Free plan</div><p>Chat on web, desktop and mobile, with web search, file creation, memory and app connections. Usage limits reset on a rolling five-hour window, so heavy days can run out.</p></div>
+      <div class="plan-box paid"><div class="plan-label">Paid plans</div><p>Pro at US$20/month (US$17/month billed yearly), Max from US$100/month, and Team plans for businesses.</p></div>
+    </div>
+    <div class="copy-block">
+      <div class="copy-block-label">Starter prompt</div>
+      <pre id="pClaude">I've attached [a contract / a supplier agreement / a report]. I run a [type of business] and I'm not a lawyer or accountant.
+
+Explain in plain English: what am I agreeing to, what could cost me money or trap me, and what questions should I ask before I sign? Quote the exact section for anything you flag.</pre>
+      <button class="copy-btn" onclick="copyBlock('pClaude', this)">Copy prompt</button>
+    </div>
+    <p class="name-note">Not legal or financial advice. Use it to get up to speed and ask better questions, then check anything important with a professional.</p>
+  </div>
+
+  <!-- 3. Gemini -->
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">3</div>
+      <div class="tool-card-name">Gemini</div>
+    </div>
+    <div class="tool-card-for">Best for: businesses that already live in Google</div>
+    <p>If your business runs on Gmail, Google Docs, Sheets and Drive, Gemini is Google's own AI and it fits naturally into the way you already work. It's a strong general assistant on its own, and it gets more useful the more of your work sits in Google.</p>
+    <p><strong>How to use it in your business:</strong></p>
+    <ul>
+      <li>Ask questions and get drafts in the free Gemini app, just like any AI chat</li>
+      <li>Find and summarize information buried in your Google files</li>
+      <li>Draft replies inside Gmail and write first drafts inside Docs</li>
+      <li>Run Deep Research on a competitor, supplier or market question</li>
+    </ul>
+    <div class="plan-split">
+      <div class="plan-box"><div class="plan-label">Free plan</div><p>The Gemini app with a capable everyday model, varying access to Google's top model, image generation, Deep Research and Gems (saved custom assistants). Usage is limited.</p></div>
+      <div class="plan-box paid"><div class="plan-label">Paid plans</div><p>Google AI Plus (2x the free usage), Google AI Pro at about US$19.99/month (4x), and Ultra. Gemini inside Gmail and Docs at work generally comes with paid Google Workspace business plans.</p></div>
+    </div>
+    <div class="copy-block">
+      <div class="copy-block-label">Starter prompt</div>
+      <pre id="pGemini">I run a [type of business] in [location]. Research my three closest competitors: [names or "find them"].
+
+For each one, tell me what they charge (if public), what they promise customers, and what their reviews complain about. Finish with three ways I could stand out. Show your sources.</pre>
+      <button class="copy-btn" onclick="copyBlock('pGemini', this)">Copy prompt</button>
+    </div>
+  </div>
+
+  <!-- 4. NotebookLM -->
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">4</div>
+      <div class="tool-card-name">NotebookLM <span class="name-note">(now called Gemini Notebook)</span></div>
+    </div>
+    <div class="tool-card-for">Best for: understanding your own source material</div>
+    <p>This one works differently from the others. Instead of answering from everything on the internet, it answers from <strong>the documents you give it</strong>: your price lists, policies, manuals, contracts, training notes. Upload them, then ask questions, get summaries, or have it build study guides and audio overviews.</p>
+    <p>Because it sticks to your material and shows where each answer came from, it's one of the best ways to make sense of a pile of your own documents without it inventing things.</p>
+    <div class="callout"><p><strong>About the name:</strong> in July 2026 Google renamed NotebookLM to <strong>Gemini Notebook</strong>. It's the same product. Your notebooks and sources carried over, and it still works as its own app as well as inside Gemini. If you search for either name, you'll find it.</p></div>
+    <p><strong>How to use it in your business:</strong></p>
+    <ul>
+      <li>Upload your policies and procedures and let staff ask questions of them</li>
+      <li>Drop in a stack of supplier or product PDFs and get the key points</li>
+      <li>Build a simple onboarding guide for new team members from your existing docs</li>
+      <li>Turn a long industry report into a short audio overview to listen to on the drive</li>
+    </ul>
+    <div class="plan-split">
+      <div class="plan-box"><div class="plan-label">Free plan</div><p>At the time of writing: up to 100 notebooks and 50 sources per notebook, with a usage allowance that refreshes every few hours up to a weekly limit.</p></div>
+      <div class="plan-box paid"><div class="plan-label">Paid plans</div><p>Higher limits come with Google's AI plans (Plus, Pro and Ultra), including more notebooks and more sources per notebook.</p></div>
+    </div>
+    <div class="copy-block">
+      <div class="copy-block-label">Starter prompt (after uploading your documents)</div>
+      <pre id="pNotebook">Using only these sources, write a one-page FAQ a new staff member could read on their first day. Cover the questions customers ask most, our key policies, and anything that must never be done.
+
+If the sources don't answer something, say so rather than filling the gap.</pre>
+      <button class="copy-btn" onclick="copyBlock('pNotebook', this)">Copy prompt</button>
+    </div>
+  </div>
+
+  <!-- 5. Canva AI -->
+  <div class="tool-card">
+    <div class="tool-card-head">
+      <div class="tool-card-num">5</div>
+      <div class="tool-card-name">Canva AI</div>
+    </div>
+    <div class="tool-card-for">Best for: quickly turning ideas into basic visuals</div>
+    <p>Canva already makes design easy for non-designers, and its AI tools make it faster. Describe what you want and get a starting design, write copy, remove a background, or resize one design into every format you need. It won't replace a designer for your brand work, but for everyday posts and flyers it's a big time saver.</p>
+    <p><strong>How to use it in your business:</strong></p>
+    <ul>
+      <li>Create social posts and simple promo graphics from a one-line description</li>
+      <li>Remove backgrounds from product photos</li>
+      <li>Resize one design for Instagram, Facebook and a flyer in one go</li>
+      <li>Draft captions and headlines with the built-in writing tool</li>
+    </ul>
+    <div class="plan-split">
+      <div class="plan-box"><div class="plan-label">Free plan</div><p>Canva's free plan includes a monthly allowance of AI uses. The heavier AI tools, like image generation, are the ones that use up the allowance fastest.</p></div>
+      <div class="plan-box paid"><div class="plan-label">Paid plans</div><p>Canva Pro and Business raise the AI allowance a lot and add brand kits and more. Prices vary by country, so check <a href="https://www.canva.com/pricing/" target="_blank" rel="noopener">canva.com/pricing</a>.</p></div>
+    </div>
+    <div class="copy-block">
+      <div class="copy-block-label">Starter prompt</div>
+      <pre id="pCanva">A clean, friendly Instagram post for [business name], a [type of business]. Announce [your offer, e.g. 15% off this week only]. Warm colors, lots of white space, one short headline, no clutter.</pre>
+      <button class="copy-btn" onclick="copyBlock('pCanva', this)">Copy prompt</button>
+    </div>
+  </div>
+
+  <div class="article-eyebrow">Pick One</div>
+  <h2>Don't sign up for all five today</h2>
+  <p>The fastest way to waste a week is to open five new accounts and get good at none of them. Pick the one that removes the task you <em>already hate doing</em>, and start there.</p>
+
+  <div class="tool-finder">
+    <div id="tfQ1">
+      <div class="tool-finder-eyebrow">One question</div>
+      <div class="tf-q">Which task would you most like to stop doing by hand?</div>
+      <div class="tf-options">
+        <button class="tf-opt" onclick="tfAnswer('chatgpt')">Writing emails, replies and first drafts</button>
+        <button class="tf-opt" onclick="tfAnswer('claude')">Reading long contracts, reports and documents</button>
+        <button class="tf-opt" onclick="tfAnswer('gemini')">Digging through Gmail and Google Drive</button>
+        <button class="tf-opt" onclick="tfAnswer('notebook')">Answering the same questions about our own policies and docs</button>
+        <button class="tf-opt" onclick="tfAnswer('canva')">Making social posts and simple graphics</button>
+      </div>
+    </div>
+
+    <div id="tfAnswerBox" class="tf-answer">
+      <div class="tf-answer-label">Start with this one</div>
+      <div class="tf-answer-name" id="tfName"></div>
+      <p id="tfWhy"></p>
+      <button class="tf-restart" onclick="tfRestart()">Start again</button>
+    </div>
+  </div>
+
+  <div class="article-eyebrow print-fresh-page">Before You Paste Anything In</div>
+  <h2>Three quick safety habits</h2>
+  <ul class="checklist-simple">
+    <li>Check each tool's privacy and data settings, especially on free plans, and decide whether your chats can be used to improve the AI.</li>
+    <li>Don't paste in anything you couldn't afford to have leak: customer card details, passwords, private health or financial records.</li>
+    <li>Read what it gives you before it goes to a customer. AI is fast and confident, and sometimes confidently wrong.</li>
+  </ul>
+
+  <div class="article-eyebrow">Quick Start</div>
+  <h2>Your first week with one tool</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>Name the task you hate</h3><p>One recurring admin job. Write it down. That's your test case for the week.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>Open a free account for one tool</h3><p>Use the picker above. Just one. Ignore the other four for now.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>Use the starter prompt every time the task comes up</h3><p>Every time, all week. Tweak the prompt when the result isn't quite right, and save the version that works.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content"><h3>Count the minutes</h3><p>Roughly how long did the task take before, and how long now? That number tells you whether it's worth keeping.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content"><h3>Only then decide about paying</h3><p>If you're regularly hitting the free limits on work that's already saving you time, that's when an upgrade pays for itself. Not before.</p></div>
+    </div>
+  </div>
+
+  <div class="final-line">One tool. One task. One week. Then decide.</div>
+
+</div>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h2>Want more guides like this?</h2>
+    <p>Join our free list, free AI guides, tools and strategies for small business owners, straight to your inbox.</p>
+    <a href="/#waitlist" class="btn-primary">Get free access ✦</a>
+  </div>
+</div>
+
+<div class="related">
+  <h2>More resources</h2>
+  <a href="/resources/business-ai-prompt-framework/">The Business AI Prompt Framework</a>
+  <a href="/resources/claude-chat-vs-cowork-vs-code/">Claude Chat vs Cowork vs Code</a>
+  <a href="/resources/claude-weekly-workflow-guide/">The Weekly Claude Workflow Guide</a>
+  <a href="/resources/">← Back to all resources</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="footer-logo-text">AI for Small Businesses</span>
+      <span class="footer-logo-sub">by Banana Digital</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="/#what">What we do</a>
+    <a href="/resources/">Resources</a>
+    <a href="https://bananadigital.co" target="_blank">Banana Digital</a>
+  </div>
+  <div class="footer-copy">© 2026 Banana Digital. All rights reserved.</div>
+</footer>
+
+<script>
+function tfAnswer(which) {
+  const answers = {
+    chatgpt: ['ChatGPT',
+      "Writing is where ChatGPT earns its keep. Paste in the email you need to answer or your rough notes, tell it who it's for and how you sound, and edit the draft rather than starting from a blank page."],
+    claude: ['Claude',
+      "Upload the document and ask the questions you'd ask an advisor: what matters here, what's risky, what should I ask? Claude handles long material well and is good at thinking a problem through with you."],
+    gemini: ['Gemini',
+      "If your work already lives in Gmail and Google Drive, start with Google's own AI. Begin in the free Gemini app, and if it sticks, look at the plans that bring it into Gmail and Docs."],
+    notebook: ['NotebookLM (now Gemini Notebook)',
+      "Upload your own policies, price lists or manuals, then ask questions of them. Answers come from your documents, with the source shown, which makes it ideal for 'how do we do this here?' questions."],
+    canva: ['Canva AI',
+      "Describe the post you want and let Canva build a starting design, then adjust. Use it for everyday social content and simple promos, and keep your designer for the important brand work."]
+  };
+  const [name, why] = answers[which];
+  document.getElementById('tfQ1').style.display = 'none';
+  document.getElementById('tfName').textContent = name;
+  document.getElementById('tfWhy').textContent = why;
+  document.getElementById('tfAnswerBox').classList.add('show');
+}
+function tfRestart() {
+  document.getElementById('tfAnswerBox').classList.remove('show');
+  document.getElementById('tfQ1').style.display = 'block';
+}
+function downloadArticlePdf() {
+  window.print();
+}
+function shareArticle(btn) {
+  const shareData = { title: document.title, url: window.location.href };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+    return;
+  }
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const original = btn.innerHTML;
+    btn.textContent = 'Link copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+function copyBlock(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
+}
+function flashCopied(btn) {
+  const original = btn.textContent;
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+</script>
+
+</body>
+</html>
