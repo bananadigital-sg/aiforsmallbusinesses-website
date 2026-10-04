@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Claude Code, Explained as a Kitchen: CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins</title>
+<meta name="description" content="A plain-English cheat sheet for Claude Code. CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins explained through one simple picture: running a restaurant kitchen. Written for non-technical small business owners.">
+<link rel="canonical" href="https://smallbizgrowth.ai/resources/claude-code-kitchen-cheat-sheet/">
+<meta property="og:title" content="Claude Code, Explained as a Kitchen">
+<meta property="og:description" content="CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins in plain English, using one picture: a restaurant kitchen.">
+<meta property="og:image" content="https://smallbizgrowth.ai/resources/claude-code-kitchen-cheat-sheet/claude-code-kitchen-cheat-sheet.jpg">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Claude Code, Explained as a Kitchen: CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins",
+  "description": "A plain-English cheat sheet that explains the six main Claude Code concepts (CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins) by comparing Claude Code to running a restaurant kitchen.",
+  "image": "https://smallbizgrowth.ai/resources/claude-code-kitchen-cheat-sheet/claude-code-kitchen-cheat-sheet.jpg",
+  "url": "https://smallbizgrowth.ai/resources/claude-code-kitchen-cheat-sheet/",
+  "publisher": { "@type": "Organization", "name": "Banana Digital" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to set up your Claude Code kitchen in five steps",
+  "description": "A beginner order for adding CLAUDE.md, Skills, MCP, Hooks and Subagents to a Claude Code project.",
+  "step": [
+    { "@type": "HowToStep", "name": "Write the briefing (CLAUDE.md)", "text": "Ask Claude Code to create a CLAUDE.md file describing your business, your standards and how you like work done. Claude reads it at the start of every session." },
+    { "@type": "HowToStep", "name": "Save your first recipe card (a Skill)", "text": "Pick one job you explain over and over and ask Claude Code to turn the instructions into a skill it can reuse whenever that job comes up." },
+    { "@type": "HowToStep", "name": "Connect one supplier (MCP)", "text": "Connect a single tool you already use, such as Gmail, Google Drive or Slack, so Claude can read from it and work with it." },
+    { "@type": "HowToStep", "name": "Add one rule that just runs (a Hook)", "text": "Ask Claude Code to set up a hook that runs automatically at a specific moment, such as checking a file before it is saved or sending a notification when a task finishes." },
+    { "@type": "HowToStep", "name": "Bring in a specialist (a Subagent)", "text": "Create a subagent for one focused job, such as reviewing drafts or researching, so it works in its own space without cluttering the main conversation." }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is CLAUDE.md in Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CLAUDE.md is a plain text file that sits in your project folder. Claude Code reads it automatically at the start of every session, so it works like a standing briefing: what the project is, how you like things done, and what to avoid. You write it once and update it when something changes." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between CLAUDE.md and a Skill?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CLAUDE.md is loaded every single time, so it should hold the things that always apply. A Skill is a saved set of instructions for one specific job that Claude only pulls in when that job comes up. Think of CLAUDE.md as the kitchen briefing and Skills as the recipe cards." }
+    },
+    {
+      "@type": "Question",
+      "name": "What does MCP mean in Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "MCP stands for Model Context Protocol. It is the standard way Claude connects to tools and data outside your project, such as Gmail, Slack, Google Drive, databases or your CRM. Each connection is called an MCP server." }
+    },
+    {
+      "@type": "Question",
+      "name": "What are hooks in Claude Code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Hooks are small scripts that run automatically at specific moments, for example before a file is edited, after a task finishes, or when a session starts. Unlike an instruction in CLAUDE.md, which Claude can forget or misjudge, a hook runs every time the moment happens." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the difference between subagents and plugins?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A subagent is a specialist worker with its own instructions and its own working space, which Claude hands a focused job to. A plugin is a package that bundles a working setup (skills, subagents, hooks, MCP connections and commands) so it can be installed in another project or shared with a team in one step." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to be technical to use these Claude Code features?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. You can ask Claude Code in plain English to create a CLAUDE.md, write a skill, set up a hook or create a subagent for you, and it will build the files itself. Knowing what each concept is for matters far more than knowing how the files are written." }
+    }
+  ]
+}
+</script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { font-family:'Manrope',sans-serif; background:#FDFAF4; color:#3A2C20; line-height:1.6; }
+
+:root {
+  --gold:    #D4A55A;
+  --amber:   #C4835A;
+  --dark:    #3A2C20;
+  --muted:   #9A8870;
+  --light:   #EED8A4;
+  --bg:      #FDFAF4;
+  --bg-alt:  #F0E8D4;
+  --surface: #FFFFFF;
+}
+
+nav {
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  background:var(--dark);
+  border-bottom:1px solid rgba(212,165,90,0.25);
+  padding:0 32px; height:64px;
+  display:flex; align-items:center; justify-content:space-between;
+}
+.nav-logo { display:flex; align-items:center; gap:12px; text-decoration:none; }
+.nav-logo svg { filter:drop-shadow(0 0 8px rgba(212,165,90,0.45)); }
+.nav-logo-text { font-size:14px; font-weight:700; color:var(--bg); }
+.nav-logo-sub  { font-size:9px; color:rgba(253,250,244,0.55); display:block; line-height:1; margin-top:1px; }
+.nav-links { display:flex; align-items:center; gap:28px; }
+.nav-links a { font-size:13px; font-weight:600; color:var(--bg); text-decoration:none; transition:color 0.2s; }
+.nav-links a:hover { color:var(--gold); }
+.nav-links a.nav-cta {
+  padding:9px 22px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:13px; font-weight:700;
+  text-decoration:none; transition:background 0.2s;
+}
+.nav-links a.nav-cta:hover { background:var(--light); color:var(--dark); }
+@media(max-width:560px){
+  nav { padding:0 14px; }
+  .nav-logo { gap:8px; }
+  .nav-logo svg { width:24px; height:24px; }
+  .nav-logo-text { font-size:12px; line-height:1.2; display:block; }
+  .nav-logo-sub { display:none; }
+  .nav-links { gap:12px; }
+  .nav-links a { font-size:12px; }
+  .nav-links a.nav-cta { padding:8px 14px; font-size:12px; white-space:nowrap; }
+}
+
+.breadcrumb {
+  max-width:720px; margin:0 auto; padding:120px 24px 0;
+  font-size:12px; color:var(--muted);
+}
+.breadcrumb a { color:var(--muted); text-decoration:none; }
+.breadcrumb a:hover { color:var(--gold); }
+
+.article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
+.article-tags { display:flex; gap:8px; margin-bottom:16px; }
+.article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
+.article-tag.tool { color:var(--gold); }
+.article-header h1 {
+  font-size:clamp(28px,4.5vw,44px); font-weight:800; color:var(--dark);
+  line-height:1.15; letter-spacing:-0.5px; margin-bottom:16px;
+}
+.article-dek { font-size:17px; color:var(--muted); line-height:1.65; }
+.article-includes {
+  margin-top:20px; padding:16px 20px; background:var(--surface); border-radius:12px;
+  border:1px solid rgba(212,165,90,0.2); font-size:13px; color:var(--muted);
+}
+.article-includes strong { color:var(--dark); }
+
+.pdf-callout {
+  max-width:720px; margin:24px auto 0; padding:20px 24px;
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.3); border-radius:16px;
+  display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+}
+.pdf-callout-icon {
+  flex-shrink:0; width:40px; height:40px; border-radius:10px;
+  background:var(--gold); color:var(--surface);
+  display:flex; align-items:center; justify-content:center;
+}
+.pdf-callout-body { flex:1 1 240px; min-width:200px; }
+.pdf-callout-title { font-size:14px; font-weight:800; color:var(--dark); display:flex; align-items:center; gap:8px; margin-bottom:4px; }
+.pdf-callout-badge {
+  font-size:10px; font-weight:800; letter-spacing:0.5px; color:var(--surface);
+  background:var(--amber); padding:2px 8px; border-radius:100px;
+}
+.pdf-callout-sub { font-size:13px; color:var(--muted); margin:0; }
+.pdf-callout-actions { display:flex; gap:10px; flex-shrink:0; }
+.pdf-btn {
+  display:inline-flex; align-items:center; gap:7px; padding:10px 18px;
+  border-radius:100px; font-family:'Manrope',sans-serif; font-size:13px; font-weight:700;
+  cursor:pointer; border:none; transition:all 0.15s; white-space:nowrap;
+}
+.pdf-btn-download { background:var(--gold); color:var(--dark); }
+.pdf-btn-download:hover { background:#E8C070; }
+.pdf-btn-share { background:var(--surface); color:var(--dark); border:1.5px solid rgba(58,44,32,0.15); }
+.pdf-btn-share:hover { border-color:var(--gold); color:var(--amber); }
+.pdf-btn-share.copied { background:#7CB87C; color:#1a3a1a; border-color:transparent; }
+@media (max-width:520px) {
+  .pdf-callout { padding:18px; }
+  .pdf-callout-actions { width:100%; }
+  .pdf-btn { flex:1; justify-content:center; }
+}
+.print-footer { display:none; }
+
+@media print {
+  @page { size:A4; margin:18mm 18mm 28mm 18mm; }
+  nav, .breadcrumb, .pdf-callout, .article-cta, .related,
+  .copy-btn, .tool-finder, footer { display:none !important; }
+  body { background:#fff; color:#2A1F16; }
+  a { color:inherit; text-decoration:none; }
+
+  .print-footer {
+    display:block; position:fixed; left:0; right:0; bottom:0;
+    background:#fff; padding:10px 0 0; margin:0;
+    border-top:1px solid rgba(154,136,112,0.35);
+  }
+  .print-footer-row {
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .print-footer-brand { display:flex; align-items:center; gap:8px; }
+  .print-footer-text { font-size:11px; font-weight:700; color:var(--muted); display:block; }
+  .print-footer-sub { font-size:9px; color:rgba(154,136,112,0.75); display:block; }
+  .print-footer-copy { font-size:10px; color:rgba(154,136,112,0.75); text-align:right; }
+  .print-footer svg polygon { fill:var(--amber); }
+
+  h2, h3, .article-eyebrow {
+    break-after:avoid-page; page-break-after:avoid;
+  }
+  .callout, .step-item, tr, .copy-block,
+  .compare-table, .final-line, .pick-row {
+    break-inside:avoid-page; page-break-inside:avoid;
+  }
+  .print-fresh-page { break-before:page; page-break-before:always; }
+
+  .article-body h2 { border-bottom:2px solid var(--gold); padding-bottom:8px; }
+  .step-num { background:var(--amber) !important; color:#fff !important; }
+  .callout { border:1px solid rgba(196,131,90,0.4) !important; background:#FBF3E3 !important; }
+
+  .copy-block { background:#fff !important; border:1px solid rgba(58,44,32,0.2) !important; }
+  .copy-block-label { color:var(--amber) !important; }
+  .copy-block pre { color:#2A1F16 !important; }
+
+  .compare-table th { background:var(--amber) !important; color:#fff !important; }
+  .compare-table td { background:#fff !important; }
+  .compare-table tr:nth-child(odd) td { background:#FBF3E3 !important; }
+}
+
+.article-body { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-body h2 {
+  font-size:24px; font-weight:800; color:var(--dark); margin:44px 0 8px; letter-spacing:-0.3px;
+}
+.article-eyebrow { font-size:10px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin:44px 0 6px; }
+.article-eyebrow + h2 { margin-top:0; }
+.article-body h3 {
+  font-size:17px; font-weight:700; color:var(--dark); margin:28px 0 10px;
+}
+.article-body p { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:16px; }
+.article-body ul, .article-body ol { margin:0 0 16px 22px; }
+.article-body li { font-size:15px; color:#4A3A2A; line-height:1.8; margin-bottom:8px; }
+
+.callout {
+  background:var(--bg-alt); border:1px solid rgba(212,165,90,0.25);
+  border-radius:12px; padding:20px 24px; margin:24px 0;
+}
+.callout p { margin-bottom:0; font-size:14px; }
+.callout p strong { color:var(--dark); }
+.callout p + p { margin-top:12px; }
+
+/* Comparison table */
+.compare-table { width:100%; border-collapse:collapse; margin:20px 0 8px; border-radius:12px; overflow:hidden; box-shadow:0 2px 10px rgba(58,44,32,0.06); }
+.compare-table th { background:var(--dark); color:var(--bg); font-size:12px; text-transform:uppercase; letter-spacing:1px; padding:12px 14px; text-align:left; }
+.compare-table td { padding:14px; font-size:14px; color:#4A3A2A; border-bottom:1px solid rgba(58,44,32,0.08); background:var(--surface); vertical-align:top; }
+.compare-table tr:nth-child(odd) td { background:var(--bg-alt); }
+.compare-table td:first-child { font-weight:700; color:var(--dark); white-space:nowrap; }
+@media (max-width:600px) {
+  .compare-table th, .compare-table td { padding:10px; font-size:13px; }
+  .compare-table td:first-child { white-space:normal; }
+}
+
+/* Tool cards */
+.tool-card {
+  background:var(--surface); border:1px solid rgba(212,165,90,0.25); border-radius:16px;
+  padding:24px 26px; margin:20px 0;
+}
+.tool-card-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; flex-wrap:wrap; }
+.tool-card-num {
+  flex-shrink:0; width:30px; height:30px; border-radius:50%; background:var(--gold); color:var(--dark);
+  display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800;
+}
+.tool-card-name { font-size:19px; font-weight:800; color:var(--dark); }
+.tool-card-for { font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--amber); margin-bottom:12px; }
+.tool-card p { font-size:14.5px; margin-bottom:12px; }
+.tool-card p:last-child { margin-bottom:0; }
+
+/* Pick-one rows */
+.pick-list { margin:22px 0; }
+.pick-row {
+  display:flex; gap:14px; align-items:baseline; padding:13px 0;
+  border-bottom:1px solid rgba(58,44,32,0.08);
+}
+.pick-row:last-child { border-bottom:none; }
+.pick-q { flex:1 1 auto; font-size:14.5px; color:#4A3A2A; }
+.pick-a {
+  flex-shrink:0; font-size:11.5px; font-weight:800; letter-spacing:0.5px;
+  color:var(--dark); background:var(--light); padding:4px 12px; border-radius:100px;
+  white-space:nowrap;
+}
+@media (max-width:520px) {
+  .pick-row { flex-direction:column; gap:6px; }
+  .pick-a { align-self:flex-start; }
+}
+
+
+
+/* Copy blocks */
+.copy-block {
+  position:relative; background:var(--dark); border-radius:14px; padding:24px 24px 20px; margin:20px 0;
+}
+.copy-block-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--gold); margin-bottom:12px; }
+.copy-block pre {
+  white-space:pre-wrap; font-family:'Manrope',sans-serif; font-size:13.5px; line-height:1.75;
+  color:rgba(253,250,244,0.9);
+}
+.copy-btn {
+  margin-top:16px; padding:9px 18px; background:var(--gold); color:var(--dark);
+  border:none; border-radius:100px; font-family:'Manrope',sans-serif;
+  font-size:12px; font-weight:800; cursor:pointer; transition:all 0.15s;
+}
+.copy-btn:hover { background:#E8C070; }
+.copy-btn.copied { background:#7CB87C; color:#1a3a1a; }
+
+/* Quick start steps */
+.step-list { counter-reset:step; margin:24px 0; }
+.step-item { display:flex; gap:16px; margin-bottom:20px; align-items:flex-start; }
+.step-num {
+  flex-shrink:0; width:32px; height:32px; border-radius:50%; background:var(--dark); color:var(--bg);
+  display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800;
+}
+.step-content h3 { margin:0 0 4px; }
+.step-content p { margin-bottom:0; }
+
+.checklist-simple { list-style:none; margin:0 0 16px; }
+.checklist-simple li { display:flex; gap:10px; font-size:15px; color:#4A3A2A; margin-bottom:10px; }
+.checklist-simple li::before { content:'✓'; color:var(--gold); font-weight:800; flex-shrink:0; }
+
+.final-line {
+  text-align:center; font-size:18px; font-weight:800; color:var(--dark);
+  background:var(--light); border-radius:12px; padding:20px; margin:28px 0 0;
+}
+
+.article-cta { max-width:720px; margin:48px auto 0; padding:0 24px; }
+.article-cta-box { background:#2A1F16; border-radius:20px; padding:40px 32px; text-align:center; }
+.article-cta-box h2 { color:var(--bg); font-size:22px; font-weight:800; margin-bottom:10px; }
+.article-cta-box p { color:rgba(253,250,244,0.6); font-size:14px; margin-bottom:20px; }
+.btn-primary {
+  padding:14px 32px; background:var(--gold); color:var(--dark);
+  border-radius:100px; font-size:14px; font-weight:800; text-decoration:none;
+  display:inline-block; transition:all 0.2s;
+}
+.btn-primary:hover { background:#E8C070; transform:translateY(-1px); }
+
+.related { max-width:720px; margin:56px auto 0; padding:32px 24px 0; border-top:1px solid rgba(58,44,32,0.1); }
+.related h2 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:16px; }
+.related a { display:block; font-size:15px; font-weight:700; color:var(--dark); text-decoration:none; margin-bottom:8px; }
+.related a:hover { color:var(--gold); }
+
+footer {
+  background:var(--dark); padding:40px 24px; margin-top:64px;
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:16px;
+}
+.footer-logo { display:flex; align-items:center; gap:10px; }
+.footer-logo-text { font-size:13px; font-weight:700; color:var(--bg); }
+.footer-logo-sub  { font-size:9px; color:rgba(253,250,244,0.4); display:block; margin-top:2px; }
+.footer-copy { font-size:11px; color:rgba(253,250,244,0.35); }
+.footer-links { display:flex; gap:20px; }
+.footer-links a { font-size:11px; color:rgba(253,250,244,0.45); text-decoration:none; transition:color 0.2s; }
+.footer-links a:hover { color:var(--gold); }
+
+/* Hero image (landscape: stacked, full width) */
+.hero-figure { max-width:1040px; margin:0 auto; padding:0 24px; }
+.hero-figure button {
+  display:block; width:100%; padding:0; border:none; background:none; cursor:zoom-in;
+  border-radius:18px; overflow:hidden; box-shadow:0 10px 36px rgba(58,44,32,0.14);
+  border:1px solid rgba(212,165,90,0.3);
+}
+.hero-figure img { display:block; width:100%; height:auto; }
+.hero-figure figcaption { text-align:center; font-size:12px; color:var(--muted); margin-top:10px; }
+.hero-figure + .pdf-callout { margin-top:28px; }
+
+/* Concept summary chips */
+.concept-strip { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; margin:22px 0 8px; }
+.concept-chip {
+  display:block; text-decoration:none; background:var(--surface); border:1px solid rgba(212,165,90,0.28);
+  border-radius:12px; padding:12px 14px; transition:border-color 0.15s, transform 0.15s;
+}
+.concept-chip:hover { border-color:var(--gold); transform:translateY(-1px); }
+.concept-chip b { display:block; font-size:14px; font-weight:800; color:var(--dark); }
+.concept-chip span { display:block; font-size:12px; color:var(--muted); line-height:1.4; margin-top:2px; }
+
+.tool-card { scroll-margin-top:84px; }
+.kitchen-line {
+  font-size:14px; color:var(--dark); background:var(--bg-alt); border-left:3px solid var(--gold);
+  padding:10px 14px; border-radius:0 10px 10px 0; margin:4px 0 14px;
+}
+.kitchen-line strong { color:var(--amber); }
+
+/* Lightbox */
+.lightbox { position:fixed; inset:0; z-index:300; background:rgba(26,19,13,0.92); display:none; align-items:center; justify-content:center; padding:16px; cursor:zoom-out; }
+.lightbox.open { display:flex; }
+.lightbox img { max-width:100%; max-height:100%; border-radius:10px; }
+@media print { .lightbox { display:none !important; } .hero-figure figcaption { display:none; } .hero-figure button { box-shadow:none; } }
+</style>
+</head>
+<body>
+
+<div class="print-footer">
+  <div class="print-footer-row">
+    <div class="print-footer-brand">
+      <svg width="16" height="16" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+      <div>
+        <span class="print-footer-text">AI for Small Businesses</span>
+        <span class="print-footer-sub">smallbizgrowth.ai/resources/claude-code-kitchen-cheat-sheet/</span>
+      </div>
+    </div>
+    <span class="print-footer-copy">© 2026 Banana Digital</span>
+  </div>
+</div>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <svg width="30" height="30" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="nav-logo-text">AI for Small Businesses</span>
+      <span class="nav-logo-sub">by Banana Digital</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="/resources/">Resources</a>
+    <a href="https://link.bananadigital.com.au/widget/booking/UA18tOy6qNeAuB4NQ2tc" target="_blank" class="nav-cta">Book a Call</a>
+  </div>
+</nav>
+
+<div class="breadcrumb"><a href="/resources/">Resources</a> / Cheat Sheet</div>
+
+<div class="article-header">
+  <div class="article-tags"><span class="article-tag">Cheat Sheet</span><span class="article-tag tool">Claude Code</span></div>
+  <h1>Claude Code, Explained as a Kitchen</h1>
+  <p class="article-dek">CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins sound overwhelming. They aren't. Each one has a simple job, and every one of them makes sense once you picture Claude Code as a restaurant kitchen.</p>
+</div>
+
+<figure class="hero-figure">
+  <button type="button" onclick="openLightbox()" aria-label="Open the full-size cheat sheet image">
+    <picture>
+      <source srcset="claude-code-kitchen-cheat-sheet.webp" type="image/webp">
+      <img src="claude-code-kitchen-cheat-sheet.jpg" width="1672" height="941" alt="Claude Code explained as a kitchen: CLAUDE.md is the chef's briefing folio, Skills are recipe cards, MCP is suppliers at the service window, Hooks are an automatic bell and timer, Subagents are specialist chefs at separate stations, and Plugins are a proven kitchen kit carried to a new kitchen.">
+    </picture>
+  </button>
+  <figcaption>Tap the image to see it full size. Save it as your one-page reminder.</figcaption>
+</figure>
+
+<div class="pdf-callout">
+  <div class="pdf-callout-icon" aria-hidden="true">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4L12 2z"/></svg>
+  </div>
+  <div class="pdf-callout-body">
+    <div class="pdf-callout-title">Get the cheat sheet as a PDF <span class="pdf-callout-badge">FREE</span></div>
+    <p class="pdf-callout-sub">Save it, print it, stick it next to your desk.</p>
+  </div>
+  <div class="pdf-callout-actions">
+    <button class="pdf-btn pdf-btn-download" onclick="downloadArticlePdf()">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/></svg>
+      Download PDF
+    </button>
+    <button class="pdf-btn pdf-btn-share" id="shareBtn" onclick="shareArticle(this)">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.6"/><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="19" r="2.6"/><path d="M8.3 10.7l7.4-4.1M8.3 13.3l7.4 4.1"/></svg>
+      Share
+    </button>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="article-eyebrow">The Short Version</div>
+  <h2>Six ideas, one kitchen</h2>
+  <p>Think of Claude Code as a restaurant kitchen and Claude as the head chef. Every concept below is just one part of how a good kitchen runs. Tap any one to jump to it.</p>
+
+  <div class="concept-strip">
+    <a class="concept-chip" href="#claude-md"><b>CLAUDE.md</b><span>The head chef's briefing</span></a>
+    <a class="concept-chip" href="#skills"><b>Skills</b><span>Recipe cards</span></a>
+    <a class="concept-chip" href="#mcp"><b>MCP</b><span>Your suppliers</span></a>
+    <a class="concept-chip" href="#hooks"><b>Hooks</b><span>Rules that just run</span></a>
+    <a class="concept-chip" href="#subagents"><b>Subagents</b><span>Specialist chefs</span></a>
+    <a class="concept-chip" href="#plugins"><b>Plugins</b><span>A kitchen kit to go</span></a>
+  </div>
+
+  <table class="compare-table">
+    <tr><th>Concept</th><th>In the kitchen</th><th>What it does for you</th></tr>
+    <tr><td>CLAUDE.md</td><td>The briefing before service</td><td>Gives Claude a memory of your whole project, every session</td></tr>
+    <tr><td>Skills</td><td>Recipe cards for dishes on repeat</td><td>Saved, reusable instructions Claude pulls out when needed</td></tr>
+    <tr><td>MCP</td><td>Suppliers: produce, linen, the POS system</td><td>Connects Claude to Gmail, Slack, databases and other tools</td></tr>
+    <tr><td>Hooks</td><td>"Wash hands before service"</td><td>Scripts that fire automatically at specific moments</td></tr>
+    <tr><td>Subagents</td><td>A pastry chef, a grill cook</td><td>Focused helpers that each work their own station</td></tr>
+    <tr><td>Plugins</td><td>A proven setup for a new kitchen</td><td>Package your setup so a new project starts ready to go</td></tr>
+  </table>
+
+  <div class="article-eyebrow">One By One</div>
+  <h2>What each one actually is</h2>
+
+  <div class="tool-card" id="claude-md">
+    <div class="tool-card-head">
+      <div class="tool-card-num">1</div>
+      <div class="tool-card-name">CLAUDE.md</div>
+    </div>
+    <div class="tool-card-for">What Claude knows, every single time</div>
+    <p class="kitchen-line"><strong>In the kitchen:</strong> before anyone touches a knife, the head chef gets a briefing. The menu, the standards, how this kitchen runs.</p>
+    <p>CLAUDE.md is a plain text file that lives in your project folder. Claude Code reads it automatically at the start of every session, so you never have to re-explain who you are, what the project is, or how you like things done.</p>
+    <p>Good things to put in it: what your business does, who your customers are, your tone of voice, rules you always want followed ("never send anything without asking me first"), and where important files live.</p>
+    <p><strong>Use it for:</strong> anything that should be true every single time Claude works on this project.</p>
+  </div>
+
+  <div class="tool-card" id="skills">
+    <div class="tool-card-head">
+      <div class="tool-card-num">2</div>
+      <div class="tool-card-name">Skills</div>
+    </div>
+    <div class="tool-card-for">What Claude knows, when the job calls for it</div>
+    <p class="kitchen-line"><strong>In the kitchen:</strong> every kitchen has recipe cards for the dishes it makes on repeat. You're not explaining how to make the sauce every single service.</p>
+    <p>A skill is a saved, reusable set of instructions for one specific job, like writing your monthly client report, formatting a quote, or turning call notes into a follow-up email. Claude only pulls the recipe card out when that job comes up, so your CLAUDE.md stays short.</p>
+    <p><strong>Use it for:</strong> any task you've explained to Claude more than twice.</p>
+  </div>
+
+  <div class="tool-card" id="mcp">
+    <div class="tool-card-head">
+      <div class="tool-card-num">3</div>
+      <div class="tool-card-name">MCP</div>
+    </div>
+    <div class="tool-card-for">What Claude can reach</div>
+    <p class="kitchen-line"><strong>In the kitchen:</strong> no kitchen produces everything in-house. You have suppliers: your produce guy, your linen service, your POS system.</p>
+    <p>MCP stands for Model Context Protocol. It's the standard way Claude connects to things outside your project folder: Gmail, Slack, Google Drive, your calendar, a database, your CRM. Each connection is one "supplier" Claude can order from.</p>
+    <p><strong>Use it for:</strong> letting Claude read and work with the tools your business already runs on, instead of you copying and pasting between them.</p>
+  </div>
+
+  <div class="tool-card" id="hooks">
+    <div class="tool-card-head">
+      <div class="tool-card-num">4</div>
+      <div class="tool-card-name">Hooks</div>
+    </div>
+    <div class="tool-card-for">Rules that enforce themselves</div>
+    <p class="kitchen-line"><strong>In the kitchen:</strong> great kitchens don't rely on reminders. Wash hands before service. Check temps every hour. They just happen.</p>
+    <p>Hooks are small scripts that fire automatically at specific moments: before Claude edits a file, after it finishes a task, when a session starts. Claude doesn't need telling, and it can't forget.</p>
+    <p>That's the real difference from CLAUDE.md. An instruction in CLAUDE.md is a request Claude will usually follow. A hook is a rule that runs every time, no matter what.</p>
+    <p><strong>Use it for:</strong> anything that must happen every time without fail, like a safety check, a backup, or a notification when a long job is done.</p>
+  </div>
+
+  <div class="tool-card" id="subagents">
+    <div class="tool-card-head">
+      <div class="tool-card-num">5</div>
+      <div class="tool-card-name">Subagents</div>
+    </div>
+    <div class="tool-card-for">Workers you don't babysit</div>
+    <p class="kitchen-line"><strong>In the kitchen:</strong> big service? You bring in specialists. A pastry chef. A grill cook. Each focused, each working their own station.</p>
+    <p>A subagent is a specialist helper with its own instructions and its own working space. Claude hands it one focused job, like researching a topic, reviewing a draft, or checking numbers, and it reports back with the result. Because it works at its own station, the main conversation stays clean.</p>
+    <p><strong>Use it for:</strong> jobs that need focus, or several jobs that can happen side by side.</p>
+  </div>
+
+  <div class="tool-card" id="plugins">
+    <div class="tool-card-head">
+      <div class="tool-card-num">6</div>
+      <div class="tool-card-name">Plugins</div>
+    </div>
+    <div class="tool-card-for">Your whole setup, packaged</div>
+    <p class="kitchen-line"><strong>In the kitchen:</strong> build a kitchen setup that works, package it up, and every new kitchen on your team starts with the same great setup instantly.</p>
+    <p>A plugin bundles the pieces you've built (skills, subagents, hooks, MCP connections and shortcut commands) into one package. Install it in a new project, or share it with your team, and everything arrives in one step.</p>
+    <p><strong>Use it for:</strong> copying a setup that works to a new project, a new team member, or a new client, instead of rebuilding it from scratch.</p>
+  </div>
+
+  <div class="article-eyebrow print-fresh-page">Pick One</div>
+  <h2>Which one do you need?</h2>
+  <p>Match the problem you actually have to the part of the kitchen that fixes it.</p>
+
+  <div class="pick-list">
+    <div class="pick-row"><div class="pick-q">"I'm sick of re-explaining my business every time I start."</div><div class="pick-a">CLAUDE.md</div></div>
+    <div class="pick-row"><div class="pick-q">"I keep typing out the same steps for my weekly report."</div><div class="pick-a">Skill</div></div>
+    <div class="pick-row"><div class="pick-q">"I want Claude to read my inbox and calendar."</div><div class="pick-a">MCP</div></div>
+    <div class="pick-row"><div class="pick-q">"Claude sometimes forgets a rule that really matters."</div><div class="pick-a">Hook</div></div>
+    <div class="pick-row"><div class="pick-q">"I want research done without cluttering my main chat."</div><div class="pick-a">Subagent</div></div>
+    <div class="pick-row"><div class="pick-q">"I want my assistant set up exactly the same for a new client."</div><div class="pick-a">Plugin</div></div>
+  </div>
+
+  <div class="callout"><p><strong>The easy part:</strong> you don't have to write any of these files yourself. Ask Claude Code in plain English to create a CLAUDE.md, write a skill, set up a hook, or make a subagent, and it builds the files for you. Knowing <em>which</em> one to ask for is the skill that matters.</p></div>
+
+  <div class="article-eyebrow">Copy And Paste</div>
+  <h2>Three prompts to set up your kitchen</h2>
+  <p>Open Claude Code in your project folder and paste these in, one at a time.</p>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Write your briefing (CLAUDE.md)</div>
+    <pre id="promptBrief">Interview me, one question at a time, about my business: what we do, who our customers are, how we like to sound, and the rules you should always follow.
+
+When we're done, write it all into a CLAUDE.md file in this folder. Keep it short and practical. Only include things that should be true every time you work here.</pre>
+    <button class="copy-btn" onclick="copyBlock('promptBrief', this)">Copy prompt</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Save a recipe card (Skill)</div>
+    <pre id="promptSkill">Every [week / month] I [describe the job step by step, as if explaining it to a new hire].
+
+Turn this into a skill you can reuse whenever I ask for it. Show me the finished instructions in plain English before you save it.</pre>
+    <button class="copy-btn" onclick="copyBlock('promptSkill', this)">Copy prompt</button>
+  </div>
+
+  <div class="copy-block">
+    <div class="copy-block-label">Add a rule that just runs (Hook)</div>
+    <pre id="promptHook">I want a rule that runs automatically, every time, without relying on you to remember it: [describe the rule, e.g. "notify me when you finish a long task" or "never edit anything in my Finance folder"].
+
+Set it up as a hook. Explain in plain English what it does and when it fires, and ask me before you save it.</pre>
+    <button class="copy-btn" onclick="copyBlock('promptHook', this)">Copy prompt</button>
+  </div>
+
+  <div class="article-eyebrow">Quick Start</div>
+  <h2>Set up your kitchen in the right order</h2>
+
+  <div class="step-list">
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>Write the briefing first</h3><p>CLAUDE.md is the foundation. Everything else works better once Claude knows your business.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>Save one recipe card</h3><p>Pick the job you explain most often and turn it into a skill.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>Connect one supplier</h3><p>Start with the single tool you live in most: email, calendar or your documents.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content"><h3>Add one rule that just runs</h3><p>Choose the one thing that must never be forgotten and make it a hook.</p></div>
+    </div>
+    <div class="step-item">
+      <div class="step-num">5</div>
+      <div class="step-content"><h3>Bring in specialists, then package it</h3><p>Once it's working, add subagents for focused jobs, and bundle the whole setup as a plugin when you want to reuse it.</p></div>
+    </div>
+  </div>
+
+  <ul class="checklist-simple">
+    <li>Does your project have a CLAUDE.md yet?</li>
+    <li>Have you turned your most repeated task into a skill?</li>
+    <li>Is Claude connected to at least one tool you use every day?</li>
+  </ul>
+
+  <div class="final-line">CLAUDE.md and Skills are what Claude knows. MCP is what it can reach. Hooks are rules that enforce themselves. Subagents are workers you don't babysit.</div>
+
+  <div class="article-eyebrow">Questions</div>
+  <h2>Common questions</h2>
+  <h3>Do I need to be technical to use any of this?</h3>
+  <p>No. You can ask Claude Code in plain English to build every one of these for you. Understanding what each one is for matters far more than knowing how the files are written.</p>
+  <h3>What's the difference between CLAUDE.md and a skill?</h3>
+  <p>CLAUDE.md is read every single time, so keep it to what always applies. A skill only gets pulled in when its job comes up. Briefing versus recipe card.</p>
+  <h3>Is MCP safe to connect to my email?</h3>
+  <p>Connect only what you actually need, start with read access where you can, and keep a rule in your CLAUDE.md (or better, a hook) that Claude asks before sending or deleting anything.</p>
+
+</div>
+
+<div class="article-cta">
+  <div class="article-cta-box">
+    <h2>Want more guides like this?</h2>
+    <p>Join our free list, free AI guides, tools and strategies for small business owners, straight to your inbox.</p>
+    <a href="/#waitlist" class="btn-primary">Get free access ✦</a>
+  </div>
+</div>
+
+<div class="related">
+  <h2>More resources</h2>
+  <a href="/resources/claude-chat-vs-cowork-vs-code/">Claude Chat vs Cowork vs Code: Which One Should You Actually Use?</a>
+  <a href="/resources/claude-code-automate-reports-spreadsheets/">Claude Code for Small Business Owners</a>
+  <a href="/resources/claude-weekly-workflow-guide/">The Weekly Claude Workflow Guide</a>
+  <a href="/resources/">← Back to all resources</a>
+</div>
+
+<footer>
+  <div class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100"><polygon points="50,10 60.6,39.4 90,50 60.6,60.6 50,90 39.4,60.6 10,50 39.4,39.4" fill="#D4A55A"/></svg>
+    <div>
+      <span class="footer-logo-text">AI for Small Businesses</span>
+      <span class="footer-logo-sub">by Banana Digital</span>
+    </div>
+  </div>
+  <div class="footer-links">
+    <a href="/#what">What we do</a>
+    <a href="/resources/">Resources</a>
+    <a href="https://bananadigital.co" target="_blank">Banana Digital</a>
+  </div>
+  <div class="footer-copy">© 2026 Banana Digital. All rights reserved.</div>
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()" role="dialog" aria-label="Full-size cheat sheet">
+  <img src="claude-code-kitchen-cheat-sheet.jpg" alt="Claude Code explained as a kitchen, full size">
+</div>
+
+<script>
+function openLightbox() { document.getElementById('lightbox').classList.add('open'); }
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+function downloadArticlePdf() {
+  window.print();
+}
+function shareArticle(btn) {
+  const shareData = { title: document.title, url: window.location.href };
+  if (navigator.share) {
+    navigator.share(shareData).catch(() => {});
+    return;
+  }
+  navigator.clipboard.writeText(window.location.href).then(() => {
+    const original = btn.innerHTML;
+    btn.textContent = 'Link copied ✓';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.innerHTML = original; btn.classList.remove('copied'); }, 1800);
+  });
+}
+function copyBlock(id, btn) {
+  const text = document.getElementById(id).textContent;
+  navigator.clipboard.writeText(text).then(() => flashCopied(btn));
+}
+function flashCopied(btn) {
+  const original = btn.textContent;
+  btn.textContent = 'Copied ✓';
+  btn.classList.add('copied');
+  setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+}
+</script>
+
+</body>
+</html>
