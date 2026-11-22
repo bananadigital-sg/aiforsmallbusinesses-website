@@ -1,0 +1,21 @@
+# AI for Small Businesses
+
+> Free, practical AI guides, prompts and workflows for small business owners, in plain English, with no tech degree required. Created by Hearty Dave, founder of Banana Digital.
+
+## Free resources
+
+- [Resources hub](https://smallbizgrowth.ai/resources/): every free guide, prompt and workflow in one searchable list.
+- [Claude Code for Small Business Owners: Automate Reports & Spreadsheets Without a Developer](https://smallbizgrowth.ai/resources/claude-code-automate-reports-spreadsheets/): No coding background needed. How a non-technical small business owner can use Claude Code to build recurring reports, clean up spreadsheets, and automate busywork.
+- [The Business AI Prompt Framework: A Beginner-Friendly System for Better AI Output](https://smallbizgrowth.ai/resources/business-ai-prompt-framework/): A beginner-friendly system for turning vague AI requests into useful, on-brand business output. Includes the five words that fix most AI output (context, goal, constraints, examples, format), the BRIEF framework, a fill-in business brief, a master prompt, five ready-to-use prompts, and seven habits that improve the answer.
+- [The Weekly Claude Workflow Guide for Small Business Owners](https://smallbizgrowth.ai/resources/claude-weekly-workflow-guide/): Five things a small business owner actually uses Claude for every week (proposals, email, social content, research, and decision-making), plus the exact prompts to copy and use today.
+- [The AI SOP Template: Turn One Person's AI Skill Into a Team System](https://smallbizgrowth.ai/resources/ai-sop-template/): One person on your team is great at using AI. That's fragile until it's written down. Here's the free 5-part template for turning any AI skill into an SOP anyone can repeat, plus a filled-in example.
+- [The Trigger, Action, Owner Framework: AI Workflows Your Team Can Actually Explain](https://smallbizgrowth.ai/resources/ai-workflow-framework/): The best automation is the one your team can explain in a sentence. The free 3-part framework (Trigger, Action, Owner) for building AI workflows that actually get used.
+- [Claude Chat vs Cowork vs Code: Which One Should You Actually Use?](https://smallbizgrowth.ai/resources/claude-chat-vs-cowork-vs-code/): Claude Chat, Cowork and Claude Code do three different jobs. Here's the plain-English difference, what each one is genuinely good at, and which to open for the task in front of you. Written for non-technical small business owners.
+- [The Small Business AI Toolkit: 5 Free AI Tools and What Each One Is Actually For](https://smallbizgrowth.ai/resources/small-business-ai-toolkit/): ChatGPT, Claude, Gemini, NotebookLM (now Gemini Notebook) and Canva AI: what each free AI tool is best for, how a small business can actually use it, what the free plan gets you, and when a paid plan is worth it.
+- [Claude Code, Explained as a Kitchen: CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins](https://smallbizgrowth.ai/resources/claude-code-kitchen-cheat-sheet/): A plain-English cheat sheet for Claude Code. CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins explained through one simple picture: running a restaurant kitchen. Written for non-technical small business owners.
+
+## About
+
+- [Homepage](https://smallbizgrowth.ai/): who the guides are for, what they cover (step-by-step guides, copy-paste prompts, tool recommendations, real business examples, time-saving automation) and the founder's background.
+- Created by Hearty Dave, founder of Banana Digital. Background in accounting, finance and audit, then Meta ads and digital marketing.
+- Parent company: Banana Digital Pte. Ltd. (Singapore), https://bananadigital.co/
