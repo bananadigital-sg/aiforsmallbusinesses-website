@@ -13,6 +13,7 @@
 - [Claude Chat vs Cowork vs Code: Which One Should You Actually Use?](https://smallbizgrowth.ai/resources/claude-chat-vs-cowork-vs-code/): Claude Chat, Cowork and Claude Code do three different jobs. Here's the plain-English difference, what each one is genuinely good at, and which to open for the task in front of you. Written for non-technical small business owners.
 - [The Small Business AI Toolkit: 5 Free AI Tools and What Each One Is Actually For](https://smallbizgrowth.ai/resources/small-business-ai-toolkit/): ChatGPT, Claude, Gemini, NotebookLM (now Gemini Notebook) and Canva AI: what each free AI tool is best for, how a small business can actually use it, what the free plan gets you, and when a paid plan is worth it.
 - [Claude Code, Explained as a Kitchen: CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins](https://smallbizgrowth.ai/resources/claude-code-kitchen-cheat-sheet/): A plain-English cheat sheet for Claude Code. CLAUDE.md, Skills, MCP, Hooks, Subagents and Plugins explained through one simple picture: running a restaurant kitchen. Written for non-technical small business owners.
+- [How to Get Your Business Listed in ChatGPT: The Business Hub Setup Guide](https://smallbizgrowth.ai/resources/chatgpt-business-hub-guide/): A step-by-step guide to ChatGPT Business Hub for small business owners: who can claim a listing, how verification works, what you can update, what the insights show, and what claiming will not do.
 
 ## About
 
