@@ -408,7 +408,7 @@ footer {
 **What I want**
 1. **Claude talks back.** Every time you finish a reply in the Claude Code panel in VS Code, the start of your reply is read out loud with a free, natural-sounding voice that runs entirely on my computer. No paid voice service and no API key.
 2. **A little robot on my screen.** A cute pixel-art robot (a small orange block with two eyes, little arms and four legs) floats on top of all my windows in the bottom-right corner. It bounces in time with your voice while you talk and blinks now and then.
-3. **Tap the robot to control you.** While you're talking: tap to pause, tap again to resume. While you're quiet: tap to start listening, I talk, I tap again, and my words get typed into the Claude Code chat box and sent.
+3. **Tap the robot to control you.** While you're talking: tap to pause, tap again to resume, or tap a small red ✕ on the robot to stop talking completely. While you're quiet: tap to start listening, I talk, I tap again, and my words get typed into the Claude Code chat box and sent.
 
 **How to build it (decisions already made, please follow them)**
 
@@ -425,7 +425,8 @@ footer {
 - Faces: happy `&gt; &lt;` eyes while talking, closed eyes when paused, open square eyes when idle, big eyes plus a blinking red dot when listening, and eyes looking up while waiting for my words.
 - Listen on a local socket (127.0.0.1 only) for JSON commands such as `say`, `stop` and `toggle`. The hook sends text there, and starts the robot first if it isn't running.
 - Dragging moves the robot, but keep it inside the screen's work area so it can't get lost behind the taskbar. Only treat a click as a tap if the mouse barely moved.
-- Right-click menu: Cancel recording, Replay last answer, Minimize to taskbar, Hide until you next talk, Quit.
+- While you're talking or paused, show a small red ✕ at the robot's top-right corner. Tapping the ✕ stops the reply completely; tapping anywhere else on the robot pauses or resumes.
+- Right-click menu: Stop talking, Cancel recording, Replay last answer, Minimize to taskbar, Hide until you next talk, Quit.
 - Minimize to taskbar: a borderless window can't sit in the taskbar, so switch borders on, `iconify()`, and switch them off again when the window is restored (catch the `&lt;Map&gt;` event). Give it its own taskbar icon (a tiny pixel copy of the robot) and call `SetCurrentProcessExplicitAppUserModelID` so it doesn't group under Python.
 - Add a Startup-folder shortcut and a Start Menu shortcut ("Claude Robot") that run it with `pythonw.exe`, so there's no console window.
 
@@ -450,8 +451,9 @@ The voice and the speech-to-text both run on my computer. My messages to Claude 
   <div class="control-grid">
     <div class="control-card"><strong>Tap while it talks</strong><span>Pause. Tap again to resume.</span></div>
     <div class="control-card"><strong>Tap while it's quiet</strong><span>It listens (big eyes, red light). Tap again to send.</span></div>
+    <div class="control-card"><strong>Red ✕ while it talks</strong><span>Stops the reply completely. Tap anywhere else to just pause.</span></div>
     <div class="control-card"><strong>Red ✕ while listening</strong><span>Throws the recording away. Nothing is sent.</span></div>
-    <div class="control-card"><strong>Right-click</strong><span>Replay the last answer, minimize to the taskbar, hide, or quit.</span></div>
+    <div class="control-card"><strong>Right-click</strong><span>Stop talking, replay the last answer, minimize to the taskbar, hide, or quit.</span></div>
     <div class="control-card"><strong>Drag</strong><span>Move the robot anywhere on your screen.</span></div>
     <div class="control-card"><strong>Lost it?</strong><span>Windows key, type "Claude Robot", press Enter.</span></div>
   </div>
