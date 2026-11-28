@@ -120,6 +120,16 @@ nav {
 
 .article-header { max-width:720px; margin:0 auto; padding:24px 24px 40px; }
 .article-tags { display:flex; gap:8px; margin-bottom:16px; }
+/* animated Claude Robot: same pixel shape as the real app and its Windows icon */
+.robot-mascot { display:flex; justify-content:center; margin:0 0 20px; }
+.robot-mascot svg { max-width:100%; height:auto; overflow:visible; }
+.robot-hop { animation:robot-hop 1.6s cubic-bezier(.4,0,.3,1) infinite; transform-box:fill-box; transform-origin:50% 100%; }
+.robot-eyes { animation:robot-blink 4.2s infinite; transform-box:fill-box; transform-origin:50% 50%; }
+.robot-shadow { fill:rgba(58,44,32,0.14); animation:robot-shadow 1.6s cubic-bezier(.4,0,.3,1) infinite; transform-box:fill-box; transform-origin:50% 50%; }
+@keyframes robot-hop { 0%,100% { transform:translateY(0) scale(1.04,.96); } 15% { transform:translateY(0) scale(1); } 45% { transform:translateY(-1.3px) scale(.98,1.02); } 75% { transform:translateY(0) scale(1); } }
+@keyframes robot-blink { 0%,90%,100% { transform:scaleY(1); } 94% { transform:scaleY(.1); } }
+@keyframes robot-shadow { 0%,15%,75%,100% { transform:scaleX(1); opacity:1; } 45% { transform:scaleX(.75); opacity:.6; } }
+@media (prefers-reduced-motion: reduce) { .robot-hop, .robot-eyes, .robot-shadow { animation:none; } }
 .article-tag { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--amber); }
 .article-tag.tool { color:var(--gold); }
 .article-header h1 {
@@ -304,6 +314,18 @@ footer {
 <div class="breadcrumb"><a href="/resources/">Resources</a> / Guide</div>
 
 <div class="article-header">
+  <div class="robot-mascot" role="img" aria-label="The Claude Robot, a little orange pixel robot, hopping and blinking">
+    <svg viewBox="-0.6 -1.6 12.2 11" width="132" height="119" aria-hidden="true">
+      <ellipse class="robot-shadow" cx="5.5" cy="9" rx="4.2" ry="0.35"/>
+      <g class="robot-hop">
+        <g fill="#D97757">
+          <rect x="1" y="0" width="9" height="6.6"/><rect x="0" y="2" width="1" height="2.3"/><rect x="10" y="2" width="1" height="2.3"/>
+          <rect x="1" y="6.5" width="1" height="2.2"/><rect x="3" y="6.5" width="1" height="2.2"/><rect x="7" y="6.5" width="1" height="2.2"/><rect x="9" y="6.5" width="1" height="2.2"/>
+        </g>
+        <g class="robot-eyes" fill="#000"><rect x="2.2" y="2.1" width="0.7" height="1.1"/><rect x="8.0" y="2.1" width="0.7" height="1.1"/></g>
+      </g>
+    </svg>
+  </div>
   <div class="article-tags"><span class="article-tag">Guide</span><span class="article-tag tool">Claude Code</span></div>
   <h1>Make Claude Code Talk Back: A Free Voice and a Desktop Robot</h1>
   <p class="article-dek">One copy-and-paste prompt gives Claude Code a natural voice that reads its replies out loud, plus a cute little robot on your screen. Tap it to pause Claude. Tap it to talk to Claude. Free, and it runs on your own computer.</p>
@@ -429,6 +451,8 @@ footer {
 - Right-click menu: Stop talking, Cancel recording, Replay last answer, Minimize to taskbar, Hide until you next talk, Quit.
 - Minimize to taskbar: a borderless window can't sit in the taskbar, so switch borders on, `iconify()`, and switch them off again when the window is restored (catch the `&lt;Map&gt;` event). Give it its own taskbar icon (a tiny pixel copy of the robot) and call `SetCurrentProcessExplicitAppUserModelID` so it doesn't group under Python.
 - Add a Startup-folder shortcut and a Start Menu shortcut ("Claude Robot") that run it with `pythonw.exe`, so there's no console window.
+- Give both shortcuts the robot's own icon: save a multi-size `.ico` (16 to 256 px, transparent background) drawn from the same pixel robot, and set it as each shortcut's icon, so searching "Claude Robot" in the Windows Start menu shows the little robot instead of the Python logo.
+- If the robot is launched while it's already running (for example from the Start menu after it was hidden or minimized), the new copy should send the running one a `show` command over the socket and then quit. The running robot un-minimizes and un-hides itself, so searching "Claude Robot" always brings it back.
 
 *Tap-to-talk*
 - Record the microphone with `sounddevice` at 16 kHz and transcribe it locally with `faster-whisper` (`small.en`, using the GPU if available, otherwise the CPU). Pass a short vocabulary list (Claude, Claude Code and any names I use) as `initial_prompt` so names are spelled right.
